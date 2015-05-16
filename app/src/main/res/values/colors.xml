@@ -1,0 +1,20 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="base">#B0D46F</color>
+    <color name="fondo">#F2F2F2</color>
+    <color name="fondo_barra">#4C4C4C</color>
+    <color name="naranja">#E26F58</color>
+    <color name="blanco">#fff</color>
+    <color name="gris_claro">#C2C2C2</color>
+    <color name="verde">#ffb0d46f</color>
+    <color name="barra_sup">#212121</color>
+
+    //textos
+    <color name="disable">#c4c4c4</color>
+    <color name="gris_oscuro">#4c4c4c</color>
+    <color name="gris_sub">#7c7a7b</color>
+    <color name="cafe">#473521</color>
+
+
+</resources>

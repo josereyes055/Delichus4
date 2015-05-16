@@ -1,0 +1,99 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!--Recomendados-->
+
+    <dimen name="section_title">24sp</dimen>
+    <dimen name="recomended_title">32sp</dimen>
+    <dimen name="compartida_por">20sp</dimen>
+    <dimen name="grid_recipe_descripcion">22sp</dimen>
+
+    <!--Receta_intro-->
+
+    <dimen name="atributos_receta">17sp</dimen>
+    <dimen name="descripción_larga">24sp</dimen>
+    <dimen name="titulo_receta">36sp</dimen>
+    <dimen name="sub_ingrediente">18sp</dimen>
+    <dimen name="ingredientes">24sp</dimen>
+    <dimen name="texto_botones">22sp</dimen>
+    <dimen name="user_titulo">24sp</dimen>
+    <dimen name="rank_numero">80sp</dimen>
+    <dimen name="personas_hicieron_receta">20sp</dimen>
+
+    <!--Activar ayudante-->
+
+    <dimen name="texto_activar_ayudante">40sp</dimen>
+
+    <!--Perfil-->
+
+    <dimen name="lables">24sp</dimen>
+    <dimen name="titulo_cocinero">20sp</dimen>
+    <dimen name="porcentaje">13sp</dimen>
+
+
+    <!--Busqueda avanzada-->
+
+    <dimen name="busqueda_boton">28sp</dimen>
+    <dimen name="busqueda_descripcion">24sp</dimen>
+
+    <!--Comentarios-->
+
+    <dimen name="user_coment">18sp</dimen>
+
+    <!--Crear receta-->
+
+    <dimen name="no_disponible">30sp</dimen>
+
+    <!--Deli_menu-->
+
+    <dimen name="deli_menu">12sp</dimen>
+    <dimen name="deli_menu_select">15sp</dimen>
+
+    <!--Header-->
+
+    <dimen name="header">14sp</dimen>
+
+    <!--Logros-->
+
+    <dimen name="logro">20sp</dimen>
+    <dimen name="descipcion_logro">18sp</dimen>
+
+    <!--Min_user-->
+
+    <dimen name="grid_recipe_autor">24sp</dimen>
+    <dimen name="grid_recipe_titulo">16sp</dimen>
+
+    <!--Perfil de otro usuario-->
+
+    <dimen name="otro_usuario_titulo">20sp</dimen>
+    <dimen name="nivel_cocina">30sp</dimen>
+
+    <!--Receta_paso-->
+
+    <dimen name="numero_paso">35sp</dimen>
+    <dimen name="tipo">36sp</dimen>
+    <dimen name="descripcion_paso">27sp</dimen>
+
+    <!--Recipe-->
+
+    <dimen name="grid_recipe_title">22sp</dimen>
+    <dimen name="grid_recipe_autor_recipe">15sp</dimen>
+
+    <!--Registro-->
+
+    <dimen name="registro">25sp</dimen>
+
+    <!--Spinner custom-->
+
+    <dimen name="spinner">25sp</dimen>
+
+
+    <dimen name="perfil_labels">24sp</dimen>
+    <dimen name="receta_texto">24sp</dimen>
+    <dimen name="grid_recipe_descripcion_recom">28sp</dimen>
+
+</resources>

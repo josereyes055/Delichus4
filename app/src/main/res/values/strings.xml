@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Delichus</string>
+    <string name="usuario">User</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">807918469277605</string>
+
+
+    <string name="menu_recomendadas">RECOMENDADAS</string>
+    <string name="menu_perfil">PERFIL</string>
+    <string name="menu_busqueda">BÚSQUEDA</string>
+    <string name="menu_crear">CREAR</string>
+    <string name="menu_todas">TODAS</string>
+
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent egestas sem ex, vitae accumsan dolor convallis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent egestas sem ex, vitae accumsan dolor convallis eget. </string>
+
+
+    <!-- Busqueda Avanzada !-->
+    <string name="busqueda_lbl1">Gradúa</string>
+    <string name="busqueda_lbl2">los filtros a tu gusto</string>
+    <string name="busqueda_p1">¿Qué ingredientes quieres?</string>
+    <string name="busqueda_p2">¿Cúantas personas son?</string>
+    <string name="busqueda_p3">¿En qué quieres cocinar?</string>
+    <string name="busqueda_p4">¿Qué estilo de plato quieres?</string>
+    <string name="busqueda_p3_op1">Microondas</string>
+    <string name="busqueda_p3_op2">Olla rapida</string>
+    <string name="busqueda_p3_op3">Refrigerador</string>
+    <string name="busqueda_p3_op4">Horno</string>
+    <string name="busqueda_p3_op5">Thermomix</string>
+    <string name="busqueda_p4_op1">Aperitivo</string>
+    <string name="busqueda_p4_op2">Plato fuerte</string>
+    <string name="busqueda_p4_op3">Ensalada</string>
+    <string name="busqueda_p4_op4">Pan</string>
+    <string name="busqueda_p4_op5">Brevaje</string>
+    <string name="busqueda_p4_op6">Segundo plato</string>
+    <string name="busqueda_p4_op7">Sopa</string>
+
+    <string-array name="filtros_recetas">
+        <item>Todas las recetas</item>
+        <item>Mejor valoradas</item>
+        <item>Más nuevas</item>
+        <item>Vegetarianas</item>
+        <item>Veganas</item>
+    </string-array>
+
+    <string-array name="filtros_seguidos">
+        <item>Todas las recetas</item>
+        <item>Mejor valoradas</item>
+        <item>Más nuevas</item>
+        <item>Vegetarianas</item>
+        <item>Veganas</item>
+    </string-array>
+
+     <string-array name="arreglo_ingredientes">
+        <item>Acelga</item>
+        <item>Aguacate</item>
+        <item>Ajo</item>
+        <item>Alcachofa</item>
+        <item>Alfalfa</item>
+        <item>Apio</item>
+        <item>Berenjena</item>
+        <item>Berros</item>
+        <item>Boniato</item>
+        <item>Brócoli</item>
+        <item>Calabacín</item>
+        <item>Calabaza</item>
+        <item>Canónigos</item>
+        <item>Cardo</item>
+        <item>Cebolla</item>
+        <item>Chicoria</item>
+        <item>Chirivía</item>
+        <item>Col</item>
+        <item>Endibias</item>
+        <item>Escarola</item>
+        <item>Espárragos</item>
+        <item>Espinacas</item>
+        <item>Grelos</item>
+        <item>Guisantes</item>
+        <item>Habas</item>
+        <item>Judías Verdes</item>
+        <item>Lechuga</item>
+        <item>Nabos</item>
+        <item>Papa</item>
+        <item>Pepino</item>
+        <item>Pimientos</item>
+        <item>Puerros</item>
+        <item>Remolacha</item>
+        <item>Tomate</item>
+        <item>Tomates Raf</item>
+        <item>Zanahoria</item>
+        <item>Remolacha</item>
+        <item>Albaricoque</item>
+        <item>Anana</item>
+        <item>Caquis</item>
+        <item>Chirimoyas</item>
+        <item>Cerezas</item>
+        <item>Ciruela</item>
+        <item>Coco</item>
+        <item>Dátiles</item>
+        <item>Frambuesa</item>
+        <item>Fresas</item>
+        <item>Frutas del bosque</item>
+        <item>Granadas</item>
+        <item>Grosellas</item>
+        <item>Guanábana, Chirimoya brasileña</item>
+        <item>Higos</item>
+        <item>Higo Chumbo</item>
+        <item>Kiwis</item>
+        <item>Limas</item>
+        <item>Limón</item>
+        <item>Mamón</item>
+        <item>Mandarinas</item>
+        <item>Mango</item>
+        <item>Manzana</item>
+        <item>Maracayá</item>
+        <item>Melocotón</item>
+        <item>Melón</item>
+        <item>Membrillo</item>
+        <item>Naranja</item>
+        <item>Níspero</item>
+        <item>Oliva</item>
+        <item>Papaya</item>
+        <item>Pera</item>
+        <item>Piña</item>
+        <item>Plátano</item>
+        <item>Pomelo</item>
+        <item>Sandía</item>
+        <item>Uva</item>
+        <item>Lyches</item>
+        <item>Abulon</item>
+        <item>Almeja</item>
+        <item>Anchoa</item>
+        <item>Arenque</item>
+        <item>Atun</item>
+        <item>Bacalao</item>
+        <item>Bogavante</item>
+        <item>Calamar</item>
+        <item>Callos de hacha</item>
+        <item>Camarón</item>
+        <item>Cangrejo</item>
+        <item>Concha</item>
+        <item>Huachinango</item>
+        <item>Jaiba</item>
+        <item>Langosta</item>
+        <item>Langostino</item>
+        <item>Lenguado</item>
+        <item>Mariscos</item>
+        <item>Mejillón</item>
+        <item>Ostra</item>
+        <item>Pulpo</item>
+        <item>Róbalo</item>
+        <item>Salmón</item>
+        <item>Sardina</item>
+        <item>Tiburón</item>
+        <item>Trucha</item>
+        <item>Aceite</item>
+        <item>Achiote</item>
+        <item>Arroz</item>
+        <item>Azùcar</item>
+        <item>Cilantro</item>
+        <item>Cuitlacoche</item>
+        <item>Fideos</item>
+        <item>Frijoles</item>
+        <item>Harina</item>
+        <item>Manteca de puerco</item>
+        <item>Miel de abejas</item>
+        <item>Nixtamal</item>
+        <item>Nopales</item>
+        <item>Pimienta blanca</item>
+        <item>Pimienta nagra</item>
+        <item>Jalapeño</item>
+        <item>Sal</item>
+        <item>Tallarines</item>
+        <item>Vainilla</item>
+        <item>Vinagre</item>
+        <item>Ajo</item>
+        <item>Achiote</item>
+        <item>Albahaca</item>
+        <item>Albahaca dulce</item>
+        <item>Alcaparra</item>
+        <item>Alcaravea</item>
+        <item>Ajedrea</item>
+        <item>Anis</item>
+        <item>Azafran</item>
+        <item>Azucar</item>
+        <item>Canela</item>
+        <item>Cardamomo</item>
+        <item>Cebollino</item>
+        <item>Chile</item>
+        <item>Chimaja</item>
+        <item>Cilantro</item>
+        <item>Clavo</item>
+        <item>Comino</item>
+        <item>Curry</item>
+        <item>Epazote</item>
+        <item>Estragon</item>
+        <item>Hierbabuena</item>
+        <item>Hinojo</item>
+        <item>Hoja de eneldo</item>
+        <item>Hoja de laurel</item>
+        <item>Jengibre</item>
+        <item>Macis</item>
+        <item>Mayonesa</item>
+        <item>Mejorama</item>
+        <item>Menta</item>
+        <item>Mostaza</item>
+        <item>Nuez moscada</item>
+        <item>Orégano</item>
+        <item>Perejil</item>
+        <item>Pimentón</item>
+        <item>Páprika</item>
+        <item>Pimienta inglesa</item>
+        <item>Salvia</item>
+        <item>Semilla de ajonjolí</item>
+        <item>Semilla de alcaravea</item>
+        <item>Semilla de apio</item>
+        <item>Tomillo</item>
+        <item>Leche de búfalo</item>
+        <item>Leche de camello</item>
+        <item>Leche de vaca</item>
+        <item>Leche de soya</item>
+        <item>Leche de reno</item>
+        <item>Leche de oveja</item>
+        <item>Leche de cabra</item>
+        <item>Leche de yegua</item>
+        <item>Leche de yak</item>
+        <item>Cabrito</item>
+        <item>Res</item>
+        <item>Pollo</item>
+        <item>Carnero</item>
+        <item>Codorniz</item>
+        <item>Cerdo</item>
+        <item>Conejo</item>
+        <item>Cordero</item>
+        <item>Costillas</item>
+        <item>Faisan</item>
+        <item>Gallina</item>
+        <item>Ganso</item>
+        <item>Pavo</item>
+        <item>Menudencias</item>
+        <item>Pato</item>
+        <item>Ternera</item>
+        <item>Venado</item>
+        <item>Ababol</item>
+        <item>Abedul</item>
+        <item>Abrojo de agua</item>
+        <item>Abrótano macho</item>
+        <item>Absenta</item>
+        <item>Achicoria</item>
+        <item>Alpiste</item>
+        <item>Árbol de Neem</item>
+        <item>Árbol del té</item>
+        <item>Árnica</item>
+        <item>Bardana</item>
+        <item>Berro</item>
+        <item>Boldo</item>
+        <item>Café</item>
+        <item>Canelo</item>
+        <item>Cardo Mariano</item>
+        <item>Castaño de Indias</item>
+        <item>Cola de Caballo</item>
+        <item>Cúrcuma</item>
+        <item>Dátil</item>
+        <item>Desmodium Adscendens</item>
+        <item>Diente de león</item>
+        <item>Equinácea Purpúrea</item>
+        <item>Espirulina</item>
+        <item>Estevia</item>
+        <item>Eucalipto</item>
+        <item>Genciana</item>
+        <item>Ginkgo biloba</item>
+        <item>Graviola</item>
+        <item>Hipérico</item>
+        <item>Hierba Luisa</item>
+        <item>Hortensia</item>
+        <item>Jengibre</item>
+        <item>Judía Mungo</item>
+        <item>Lavanda</item>
+        <item>Lino</item>
+        <item>Malvavisco</item>
+        <item>Menta</item>
+        <item>Milenrama</item>
+        <item>Olivo</item>
+        <item>Pau D’Arco</item>
+        <item>Perejil</item>
+        <item>Poleo</item>
+        <item>Pulmonaria</item>
+        <item>Regaliz</item>
+        <item>Rodhiola</item>
+        <item>Romero</item>
+        <item>Rosa Mosqueta</item>
+        <item>Vaina de Judía</item>
+        <item>Valeriana</item>
+        <item>Verónica</item>
+        <item>Semillas de chía</item>
+        <item>Semillas de lino</item>
+        <item>Semilla de cáñamo</item>
+        <item>Semilla de amapola</item>
+        <item>Semillas de calabaza</item>
+        <item>Semillas de sésamo</item>
+        <item>Semilla de cártamo</item>
+        <item>Semilla de girasol</item>
+        <item>Almendra</item>
+        <item>Mamoncillo</item>
+        <item>Nuez Maya</item>
+        <item>Mongongo</item>
+        <item>Bellotas de roble</item>
+        <item>Nuez del paraíso</item>
+        <item>Pacana</item>
+        <item>Nuez persa</item>
+        <item>Nuez Pili</item>
+        <item>Piñones</item>
+        <item>Piñoneros</item>
+        <item>Pistacho</item>
+        <item>Pistacia</item>
+        <item>Almendras en rodajas</item>
+        <item>Almendra Dulce</item>
+        <item>Castaña dulce</item>
+        <item>Terminalia catappa</item>
+        <item>Chufa</item>
+        <item>Nuez</item>
+        <item>Abrojo de agua</item>
+        <item>Nuez blanca</item>
+    </string-array>
+
+</resources>
