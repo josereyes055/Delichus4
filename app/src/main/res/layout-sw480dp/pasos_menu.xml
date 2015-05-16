@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Receta"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+
+    android:layout_marginBottom="-20dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/barra_sup">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="-50dp"
+        android:gravity="center">
+
+        <ImageButton
+            android:layout_marginTop="-15dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="-55dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/goBack"
+            android:src="@drawable/atras"
+            android:background="@null"
+            android:onClick="goBack"/>
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/atras"
+            android:src="@drawable/atrasar"
+            android:background="@null"
+            android:onClick="recetaPrev"/>
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/play"
+            android:src="@drawable/play"
+            android:background="@null"
+            android:onClick="recetaPlay"/>
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/adelantar"
+            android:src="@drawable/adelantar"
+            android:background="@null"
+            android:onClick="recetaNext"/>
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/asistente"
+            android:src="@drawable/no_asistente"
+            android:background="@null"
+            android:onClick="toggleVieja"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+

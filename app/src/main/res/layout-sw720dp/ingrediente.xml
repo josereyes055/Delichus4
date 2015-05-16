@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="45dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox"
+            android:checked="false"
+            android:clickable="true"
+            android:layout_marginTop="-4dp"
+            android:enabled="true"
+            android:layout_marginRight="5dp"
+            android:nestedScrollingEnabled="false"
+            android:singleLine="false" />
+
+        <TextView
+            android:textSize="@dimen/ingredientes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:id="@+id/ingrediente_cantidad"/>
+
+        <TextView
+            android:textSize="@dimen/ingredientes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="  x  "/>
+
+        <TextView
+            android:textSize="@dimen/ingredientes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  unidades   "
+            android:id="@+id/ingrediente_unidad"
+            android:ellipsize="none" />
+
+        <TextView
+            android:textSize="@dimen/ingredientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ingrediente"
+        android:id="@+id/ingrediente_nombre"
+            android:ellipsize="none" />
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

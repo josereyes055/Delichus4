@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:transitionGroup="false">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="¿Deseas "
+                android:textSize="@dimen/texto_activar_ayudante"
+                android:textColor="@color/gris_oscuro"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="habilitar "
+                android:textSize="@dimen/texto_activar_ayudante"
+                android:id="@+id/textView4"
+                android:textColor="#ffe26f58"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="el asistente de cocina?"
+            android:id="@+id/textView5"
+            android:textSize="@dimen/texto_activar_ayudante"
+            android:textColor="@color/gris_oscuro"
+            android:layout_gravity="center_horizontal" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viejaOff"
+            android:src="@drawable/no_ayudante_grande"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:onClick="shutUpVieja"/>
+
+
+        <ToggleButton
+            android:layout_width="82dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="New ToggleButton"
+            android:id="@+id/viejaToggle"
+            android:background="@drawable/toggle_swich"
+            android:textOff=""
+            android:textOn=""
+            android:layout_gravity="center"
+            android:onClick="toggleVieja"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viejaOn"
+            android:src="@drawable/si_ayudante_grande"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:onClick="letItBeVieja"/>
+
+        </LinearLayout>
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:text="¡ Comenzar !"
+        android:id="@+id/comenzar_receta"
+        android:textColor="@color/blanco"
+        android:background="@color/verde"
+        android:enabled="true"
+        android:textSize="@dimen/texto_botones"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:onClick="comenzarReceta"/>
+
+
+</LinearLayout>
