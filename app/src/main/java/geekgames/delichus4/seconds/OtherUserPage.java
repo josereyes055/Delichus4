@@ -97,7 +97,7 @@ public class OtherUserPage extends ActionBarActivity {
                                 @Override
                                 public void onClick(View v) {
                                     Log.i("FUCKING DEBUG", "se va a adherir " + MainApplication.getInstance().laReceta.autor +" como seguido" );
-                                    MainApplication.getInstance().addFollow(MainApplication.getInstance().usuario.id, MainApplication.getInstance().laReceta.idAutor );
+                                    //MainApplication.getInstance().addFollow(MainApplication.getInstance().usuario.id, MainApplication.getInstance().laReceta.idAutor );
                                 }
                             });
                             RatingBar rating = (RatingBar)findViewById(R.id.otro_rating);

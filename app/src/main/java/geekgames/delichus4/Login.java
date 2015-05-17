@@ -35,7 +35,6 @@ import geekgames.delichus4.seconds.RegistroUsuario;
 
 public class Login extends Activity {
 
-    private static final long SPLASH_SCREEN_DELAY = 3000;
     CallbackManager callbackManager;
     JSONObject fbjson;
 
@@ -207,7 +206,6 @@ public class Login extends Activity {
             Toast.makeText(getApplicationContext(), "Autenticado", Toast.LENGTH_SHORT).show();
 
             JSONObject user = response.getJSONObject("user");
-            MainApplication.getInstance().fetchUserData(user.getInt("id"));
             SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
             SharedPreferences.Editor editor = app_preferences.edit();
@@ -218,10 +216,8 @@ public class Login extends Activity {
             editor.putInt("userNivel", user.getInt("nivel"));
             editor.putInt("userPuntaje", user.getInt("puntaje"));
             editor.putInt("userPromedio", user.getInt("promedio"));
+            editor.putString("userLogros", user.getJSONArray("logros").toString());
             editor.commit(); // Very important
-
-            Usuario elUsuario = new Usuario(user.getInt("id"), user.getString("foto"), user.getString("nombre"), user.getString("titulo"), user.getInt("puntaje"), user.getInt("nivel"));
-            MainApplication.getInstance().usuario = elUsuario;
 
             Intent mainIntent = new Intent().setClass(
                     Login.this, MainActivity.class);

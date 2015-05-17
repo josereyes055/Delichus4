@@ -49,7 +49,10 @@ public class Perfil extends Fragment {
         ProgressBar exp = (ProgressBar)getView().findViewById((R.id.expBar));
         TextView expLayout = (TextView)getView().findViewById(R.id.expLayout);
 
-        int porcentaje = app_preferences.getInt("userPromedio",0);
+        int score = app_preferences.getInt("userPuntaje",0);
+        double nivelPromedio = 1 + (Math.sqrt(score/10));
+        int lvl = (int) Math.floor( nivelPromedio );
+        int porcentaje = (int) Math.floor( ( nivelPromedio - lvl)*100 );
 
         Picasso.with(getActivity()).load(app_preferences.getString("userFoto", "null")).resize(100, 100).centerCrop().into(profile);
         nombre.setText(app_preferences.getString("userNombre", "null"));

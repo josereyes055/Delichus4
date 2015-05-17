@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
@@ -30,7 +31,6 @@ public class ActivitySeguidos extends ActionBarActivity {
 
     private SeguidoAdapter mAdapter;
     int idUser;
-    private String currentHeader = "";
     ListView cargadas;
 
     @Override
@@ -49,7 +49,7 @@ public class ActivitySeguidos extends ActionBarActivity {
 
         final SharedPreferences app_preferences =
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        idUser = app_preferences.getInt("id",0);
+        idUser = app_preferences.getInt("userId",0);
 
         fetch();
 
@@ -87,15 +87,14 @@ public class ActivitySeguidos extends ActionBarActivity {
     }
 
     private void fetch() {
-
+        Toast.makeText(getApplicationContext(), "Cargando usuarios seguidos", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=14&userId="+MainApplication.getInstance().usuario.id,
+                "http://www.geekgames.info/dbadmin/test.php?v=14&userId="+idUser,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         try {
-                            currentHeader = "";
                             List<Seguido> segsRecords = parse(jsonObject);
 
                             AlphaAnimation animate_apear = new AlphaAnimation(0,1);
@@ -106,18 +105,20 @@ public class ActivitySeguidos extends ActionBarActivity {
                             cargadas.startAnimation(animate_apear);
 
                             mAdapter.swapRecords(segsRecords);
-                            Toast.makeText(getApplicationContext(), "Cargando usuarios seguidos", Toast.LENGTH_SHORT).show();
+
 
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error al crear la lista de personas a las que sigues", Toast.LENGTH_SHORT).show();
+                            Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error al cargar la lista de personas a las que sigues", Toast.LENGTH_SHORT).show();
+                        Log.e("FETCH JSON ERROR", volleyError.getMessage());
                     }
                 });
 

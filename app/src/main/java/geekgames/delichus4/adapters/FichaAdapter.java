@@ -68,7 +68,7 @@ public class FichaAdapter extends ArrayAdapter<Ficha> {
                 //Log.i("FUCKING DEBUG", "se va a adherir " + unaFicha.nombre +" como favorito" );
                 v.startAnimation(animScale);
                 MainApplication.mp.start();
-                MainApplication.getInstance().addFav(MainApplication.getInstance().usuario.id, unaFicha.id );
+                //MainApplication.getInstance().addFav(MainApplication.getInstance().usuario.id, unaFicha.id );
             }
         });
         ImageView foto = (ImageView) convertView.findViewById(R.id.recipe_foto);
@@ -81,8 +81,16 @@ public class FichaAdapter extends ArrayAdapter<Ficha> {
         }*/
 
         nombre.setText(unaFicha.nombre);
-        Picasso.with(idkContext).load(unaFicha.imagen).fit().centerCrop().into(imagen);
-        Picasso.with(idkContext).load(unaFicha.foto).fit().centerCrop().into(foto);
+        Picasso.with(idkContext)
+                .load(unaFicha.imagen)
+                .placeholder(R.drawable.img_no_encontrada_recomendado)
+                .error(R.drawable.img_no_encontrada_recetas)
+                .fit().centerCrop().into(imagen);
+        Picasso.with(idkContext)
+                .load(unaFicha.foto)
+                .placeholder(R.drawable.noob)
+                .error(R.drawable.noob)
+                .fit().centerCrop().into(foto);
         autor.setText(unaFicha.autor);
         puntuacion.setRating(unaFicha.puntuacion);
         descripcion.setText(unaFicha.descripcion);

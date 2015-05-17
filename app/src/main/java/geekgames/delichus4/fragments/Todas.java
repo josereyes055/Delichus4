@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.FichaAdapter;
 import geekgames.delichus4.customObjects.Ficha;
@@ -48,7 +49,7 @@ public class Todas extends Fragment {
     private ListView listViewRight;
     private FichaAdapter leftAdapter;
     private FichaAdapter rightAdapter;
-    public JSONArray recetas;
+    JSONArray recetas;
     List<Ficha> lista1;
     List<Ficha> lista2;
 
@@ -56,7 +57,7 @@ public class Todas extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getRecetas();
+
         leftAdapter = new FichaAdapter(getActivity());
         rightAdapter = new FichaAdapter(getActivity());
 
@@ -120,8 +121,15 @@ public class Todas extends Fragment {
             }
         });
 
+        String stringArray = MainApplication.getInstance().sp.getString("recetas",null);
+        if( stringArray != null ){
+            try {
+                recetas = new JSONArray(stringArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
-        //fetch();
         setAllRecipeList(0);
     }
 
@@ -146,18 +154,7 @@ public class Todas extends Fragment {
         }
     };
 
-    public void getRecetas(){
-        SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String prefArray = app_preferences.getString("recetas", null);
-        Log.i("FUCKING DEBUG", prefArray);
-        if( prefArray != null ){
-            try {
-                recetas = new JSONArray(prefArray);
-            } catch (JSONException e) {
-                Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+
     private void setAllRecipeList(int orden){
 
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -201,7 +198,7 @@ public class Todas extends Fragment {
                             Ficha unaFicha = crearFicha(i);
 
                             if( listas == 2 ) {
-                                if (i % 2 == 0) {
+                                if (a % 2 == 0) {
                                     lista1.add(unaFicha);
                                 } else {
                                     lista2.add(unaFicha);
@@ -243,15 +240,4 @@ public class Todas extends Fragment {
         return unaFicha;
     }
 
-
-
-    private List<Recipe> parse(JSONObject json) throws JSONException {
-        ArrayList<Recipe> records = new ArrayList<Recipe>();
-
-
-
-        return records;
-    }
-
-    
 }

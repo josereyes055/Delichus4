@@ -110,7 +110,7 @@ public class Recomendados extends Fragment {
                Log.i("FUCKING DEBUG", "se va a adherir " + unaFicha.nombre +" como favorito" );
                v.startAnimation(animScale);
                MainApplication.mp.start();
-               MainApplication.getInstance().addFav(MainApplication.getInstance().usuario.id, unaFicha.id );
+               //MainApplication.getInstance().addFav(MainApplication.getInstance().usuario.id, unaFicha.id );
 
             }
         });
@@ -122,9 +122,17 @@ public class Recomendados extends Fragment {
 
 
         tnombre.setText(unaFicha.nombre);
-
-        Picasso.with(getActivity()).load(unaFicha.imagen).fit().centerCrop().into(imagenV);
-        Picasso.with(getActivity()).load(unaFicha.foto).fit().centerCrop().into(fotoV);
+        Picasso.with(getActivity()).setIndicatorsEnabled(true);
+        Picasso.with(getActivity())
+                .load(unaFicha.imagen)
+                .placeholder(R.drawable.img_no_encontrada_recomendado)
+                .error(R.drawable.img_no_encontrada_recetas)
+                .fit().centerCrop().into(imagenV);
+        Picasso.with(getActivity())
+                .load(unaFicha.foto)
+                .placeholder(R.drawable.noob)
+                .error(R.drawable.noob)
+                .fit().centerCrop().into(fotoV);
         autorV.setText(unaFicha.autor);
         descripcionV.setText(descripcion);
         puntuacionV.setRating(unaFicha.puntuacion);

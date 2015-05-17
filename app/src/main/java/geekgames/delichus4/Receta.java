@@ -332,7 +332,7 @@ public class Receta extends ActionBarActivity{
                 default:
                     if(position == totalPasos){
                         //Log.i("FUCKING DEBUG", "se sumo el puntaje");
-                        MainApplication.getInstance().usuario.sumarPuntaje(10);
+                        MainApplication.getInstance().uptadteScore(10);
                         return new CompleteReceta();
                     }else{
                         JSONArray pasos = MainApplication.getInstance().losPasos;

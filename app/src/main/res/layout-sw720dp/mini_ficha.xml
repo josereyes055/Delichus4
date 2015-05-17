@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/background"
+    android:background="@drawable/recipe_background">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:id="@+id/mini_recipe_holder"
+        android:background="@color/blanco">
+
+        <TextView
+            android:padding="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Receta no encontrada"
+            android:gravity="center"
+            android:textSize="@dimen/grid_recipe_title"
+            android:id="@+id/mini_recipe_nombre"
+            android:textColor="@color/gris_oscuro"
+            android:background="@color/blanco"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/mini_recipe_imagen"
+                android:src="@drawable/img_no_encontrada_recomendado"
+                />
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/grid_recipe_autor_recipe"
+                android:textColor="@color/gris_oscuro"
+                android:text="Compartida por "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/grid_recipe_autor_recipe"
+                android:text="Delichus"
+                android:textStyle="bold"
+                android:textColor="@color/base"
+                android:id="@+id/mini_recipe_autor" />
+        </LinearLayout>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mini_recipe_puntuacion"
+            style = "?android:attr/ratingBarStyleSmall"
+            android:numStars = "5"
+            android:isIndicator="true"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

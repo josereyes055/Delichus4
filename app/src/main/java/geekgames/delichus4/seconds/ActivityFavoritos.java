@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AlphaAnimation;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,14 +30,18 @@ import java.util.List;
 
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
+import geekgames.delichus4.adapters.MiniFichaAdapter;
 import geekgames.delichus4.adapters.SimpleRecipeAdapter;
 import geekgames.delichus4.customObjects.Ficha;
+import geekgames.delichus4.customObjects.MiniFicha;
 
 public class ActivityFavoritos extends ActionBarActivity {
 
-    private SimpleRecipeAdapter mAdapter;
+    private MiniFichaAdapter mAdapter;
     int idUser;
     private String currentHeader = "";
+    JSONArray recetas;
+    ListView listaFavs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +50,21 @@ public class ActivityFavoritos extends ActionBarActivity {
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdapter = new SimpleRecipeAdapter(this);
-
-        ListView listView = (ListView) findViewById(R.id.list_favoritos);
-        listView.setAdapter(mAdapter);
+        mAdapter = new MiniFichaAdapter(this);
+        String stringArray = MainApplication.getInstance().sp.getString("recetas",null);
+        if( stringArray != null ){
+            try {
+                recetas = new JSONArray(stringArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        listaFavs = (ListView) findViewById(R.id.list_favoritos);
+        listaFavs.setAdapter(mAdapter);
         setTitle("Favoritos");
 
-        final SharedPreferences app_preferences =
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        idUser = app_preferences.getInt("id",0);
-
+        idUser = MainApplication.getInstance().sp.getInt("userId",0);
         fetch();
-
-
     }
 
     @Override
@@ -91,28 +98,37 @@ public class ActivityFavoritos extends ActionBarActivity {
     }
 
     private void fetch() {
-
+        Toast.makeText(getApplicationContext(), "Cargando favoritos", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=12&userId="+MainApplication.getInstance().usuario.id,
+                "http://www.geekgames.info/dbadmin/test.php?v=12&userId="+idUser,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         try {
                             currentHeader = "";
-                            List<Ficha> favsRecords = parse(jsonObject);
+                            List<MiniFicha> favsRecords = parse(jsonObject);
 
-                            mAdapter.swapRecipeRecords(favsRecords);
+                            AlphaAnimation animate_apear = new AlphaAnimation(0,1);
+                            animate_apear.setDuration(400);
+
+
+                            animate_apear.setFillAfter(true);
+                            listaFavs.startAnimation(animate_apear);
+
+                            mAdapter.swapRecords(favsRecords);
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error al crear la lista de favoritos", Toast.LENGTH_SHORT).show();
+                            Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "No se pudo cargar la lista de favoritos", Toast.LENGTH_SHORT).show();
+                        Log.e("FETCH JSON ERROR", volleyError.getMessage());
                     }
                 });
 
@@ -120,8 +136,8 @@ public class ActivityFavoritos extends ActionBarActivity {
         //MainApplication.getInstance().fetchUserAchievements(  MainApplication.getInstance().getUserId() );
     }
 
-    private List<Ficha> parse(JSONObject json) throws JSONException {
-        ArrayList<Ficha> records = new ArrayList<Ficha>();
+    private List<MiniFicha> parse(JSONObject json) throws JSONException {
+        ArrayList<MiniFicha> records = new ArrayList<MiniFicha>();
 
         JSONArray favs = json.getJSONArray("favoritos");
 
@@ -163,38 +179,52 @@ public class ActivityFavoritos extends ActionBarActivity {
         cal.add(Calendar.DATE, -1);
         String yesterday = simpledateformat.format(cal.getTime());
 
-        for(int i =0; i < favs.length(); i++) {
+        for(int i =favs.length()-1; i > 0; i--) {
             JSONObject jsonContent = favs.getJSONObject(i);
-            JSONObject jsonImage = jsonContent.getJSONObject("plato");
-            int id = jsonImage.getInt("id");
-            String receta = jsonImage.getString("receta");
-            String imagen = jsonImage.getString("imagen");
-            int idAutor = Integer.parseInt(jsonImage.getString("idAutor"));
-            String autor = jsonImage.getString("autor");
-            String foto = jsonImage.getString("foto");
-            float puntuacion = Float.parseFloat(jsonImage.getString("puntuacion"));
-            String descripcion = jsonImage.getString("descripcion");
-            int pasos = jsonImage.getInt("pasos");
+
             String fecha = jsonContent.getString("fechaFav");
 
             // Se añade el encabezado
             if(fecha.equals(today) && !currentHeader.equals("FAVORITOS DE HOY")) {
-                //records.add(new Ficha(-1, "FAVORITOS DE HOY", "", "", "", ""));
+                records.add(new MiniFicha(-1, "FAVORITOS DE HOY", "",  "", 0));
                 currentHeader = "FAVORITOS DE HOY";
             }else if(fecha.equals(yesterday) && !currentHeader.equals("FAVORITOS DE AYER")) {
-               // records.add(new Ficha(-1, "FAVORITOS DE AYER", "", "", "", ""));
+                records.add(new MiniFicha(-1, "FAVORITOS DE AYER", "",  "", 0));
                 currentHeader = "FAVORITOS DE AYER";
             }else if(!fecha.equals(yesterday) && !fecha.equals(today) && !currentHeader.equals("FAVORITOS DE ANTES")){
-              //  records.add(new Ficha(-1, "FAVORITOS DE ANTES", "", "", "", ""));
+                records.add(new MiniFicha(-1, "FAVORITOS DE ANTES", "",  "", 0));
                 currentHeader = "FAVORITOS DE ANTES";
             }
 
-             Ficha record = new Ficha(id, receta, imagen, idAutor, autor, foto, puntuacion, descripcion, pasos);
-             records.add(record);
+            int idFav = jsonContent.getInt("favId");
+
+
+            for(int r =0; r < recetas.length(); r++) {
+                int id = recetas.getJSONObject(r).getInt("id");
+
+                if(id == idFav) {
+                    MiniFicha record = crearMiniFicha(r);
+                    records.add(record);
+                }
+            }
+
         }
 
         return records;
     }
+
+    public MiniFicha crearMiniFicha( int index ) throws JSONException {
+        JSONObject ficha = recetas.getJSONObject(index);
+        int id = ficha.getInt("id");
+        String nombre = ficha.getString("receta");
+        String imagen = ficha.getString("imagen");
+        String autor = ficha.getString("autor");
+        float puntuacion = Float.parseFloat( ficha.getString("puntuacion") );
+
+        MiniFicha unaMiniFicha = new MiniFicha(id, nombre, imagen, autor, puntuacion);
+        return unaMiniFicha;
+    }
+
 
     private Date stringToDate(String aDate,String aFormat) {
 

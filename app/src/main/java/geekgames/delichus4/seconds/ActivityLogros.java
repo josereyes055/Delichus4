@@ -88,12 +88,20 @@ public class ActivityLogros extends ActionBarActivity {
 
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String prefArray = app_preferences.getString("logros", null);
-        //JSONArray logros = MainApplication.getInstance().logros;
-        JSONArray logros;
+
+        JSONArray logros ;
+        JSONArray completed = null;
+        String prefArray2 = app_preferences.getString("userLogros", null);
+        try {
+            completed = new JSONArray(prefArray2);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         if(prefArray != null) {
             logros = new JSONArray(prefArray);
 
-            JSONArray completed = MainApplication.getInstance().usuario.logros;
+
 
             if (completed == null) {
                 completed = new JSONArray();

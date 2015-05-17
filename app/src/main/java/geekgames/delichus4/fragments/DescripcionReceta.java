@@ -46,7 +46,6 @@ public class DescripcionReceta extends Fragment {
     public ComentarioAdapter mAdapter2;
     public ListView listView;
     public ListView listComentarios;
-    public JSONObject fullReceta;
 
     TextView nombre;
     TextView autor;
@@ -133,7 +132,7 @@ public class DescripcionReceta extends Fragment {
 
     private void setLabels(JSONObject laReceta) throws JSONException {
 
-        Usuario me = MainApplication.getInstance().usuario;
+        //Usuario me = MainApplication.getInstance().usuario;
 
         nombre.setText(laReceta.getString("receta"));
         autor.setText(laReceta.getString("autor"));
@@ -158,11 +157,19 @@ public class DescripcionReceta extends Fragment {
         }
         difImg.setImageDrawable(mecagoenDios);
 
-        myName.setText(me.nombre + " - " + me.titulo);
+        //myName.setText(me.nombre + " - " + me.titulo);
         rating.setRating(Float.parseFloat( laReceta.getString("puntuacion") ) );
-        Picasso.with(getActivity()).load(laReceta.getString("imagen")).fit().centerCrop().into(imagen);
-        Picasso.with(getActivity()).load(laReceta.getString("foto")).fit().centerCrop().into(foto);
-        Picasso.with(getActivity()).load(me.foto).fit().centerCrop().into(myPhoto);
+        Picasso.with(getActivity())
+                .load(laReceta.getString("imagen"))
+                .placeholder(R.drawable.img_no_encontrada_recomendado)
+                .error(R.drawable.img_no_encontrada_recetas)
+                .fit().centerCrop().into(imagen);
+        Picasso.with(getActivity())
+                .load(laReceta.getString("foto"))
+                .placeholder(R.drawable.noob)
+                .error(R.drawable.noob)
+                .fit().centerCrop().into(foto);
+       // Picasso.with(getActivity()).load(me.foto).fit().centerCrop().into(myPhoto);
 
         List<Ingrediente> ingredientes = parse( laReceta.getJSONArray("ingredientes") );
         mAdapter.swapRecords(ingredientes);
