@@ -6,15 +6,6 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/base">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:layout_marginTop="20dp">
-
-        <include layout="@layout/splash_screen" />
-
-    </LinearLayout>
 
 
     <LinearLayout
@@ -23,8 +14,8 @@
         android:gravity="center"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="fill_parent"
@@ -36,7 +27,7 @@
 
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:padding="5dp"
             android:layout_marginRight="40dp"
             android:layout_marginLeft="40dp"
@@ -44,7 +35,7 @@
             android:ems="10"
             android:id="@+id/nombre_de_usuario"
             android:background="#fff"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:layout_width="fill_parent"
@@ -56,11 +47,11 @@
 
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:padding="5dp"
             android:layout_marginRight="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/mail_de_usuario"
@@ -76,7 +67,7 @@
 
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:padding="5dp"
             android:layout_marginRight="40dp"
             android:layout_marginLeft="40dp"
@@ -96,7 +87,7 @@
 
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:padding="5dp"
             android:layout_marginRight="40dp"
             android:layout_marginLeft="40dp"
@@ -112,7 +103,7 @@
             android:id="@+id/registro"
             android:layout_below="@+id/contrasena2_de_usuario"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:onClick="registro_completo"/>
 
 

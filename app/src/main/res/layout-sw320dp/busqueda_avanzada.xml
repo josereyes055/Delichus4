@@ -59,7 +59,7 @@
                     android:textAlignment="gravity"
                     android:gravity="left|center"
                     android:focusable="false"
-                    android:paddingLeft="38dp"
+                    android:paddingLeft="42dp"
                     android:nestedScrollingEnabled="true" />
 
 
@@ -100,7 +100,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:background="@drawable/botonbusq"
-                    android:paddingLeft="38dp"
+                    android:paddingLeft="42dp"
                     android:paddingRight="10dp"
                     android:textColor="#ffffffff"
                     android:gravity="left|center"
@@ -136,7 +136,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="27">
+            android:layout_weight="38">
 
         </LinearLayout>
 

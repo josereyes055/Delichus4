@@ -19,7 +19,7 @@
                  android:layout_width="fill_parent"
                  android:layout_height="30dp"
                  android:textColor="@color/blanco"
-                 android:textSize="18dp"
+                 android:textSize="@dimen/separador"
                  android:text="PERFIL"
                  android:gravity="center_vertical"
                  android:paddingLeft="10dp"
@@ -29,12 +29,12 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="18dp"
+                android:padding="10dp"
                 android:onClick="openFavoritos">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/favoritos"
                     android:id="@+id/ico_perfil" />
 
@@ -49,8 +49,8 @@
                     android:id="@+id/textView7" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/next1"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"
@@ -66,12 +66,12 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="18dp"
+                android:padding="10dp"
                 android:onClick="openFavoritos">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/titulo_cocinero"
                     android:id="@+id/ico_titulo" />
 
@@ -85,8 +85,8 @@
                     android:layout_toEndOf="@+id/ico_titulo" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/next2"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"
@@ -98,7 +98,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"
                 android:textColor="@color/blanco"
-                android:textSize="18dp"
+                android:textSize="@dimen/separador"
                 android:text="GESTIÓN"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
@@ -108,12 +108,12 @@
              <RelativeLayout
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
-                 android:padding="18dp"
+                 android:padding="10dp"
                  android:onClick="openSeguidos">
 
                  <ImageView
-                     android:layout_width="60dp"
-                     android:layout_height="60dp"
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
                      android:src="@drawable/gestion_seguidos"
                      android:id="@+id/ico_follow" />
 
@@ -127,8 +127,8 @@
                      android:layout_toEndOf="@+id/ico_follow" />
 
                  <ImageView
-                     android:layout_width="25dp"
-                     android:layout_height="25dp"
+                     android:layout_width="15dp"
+                     android:layout_height="15dp"
                      android:id="@+id/next3"
                      android:src="@drawable/flechita"
                      android:layout_centerVertical="true"
@@ -143,12 +143,12 @@
              <RelativeLayout
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
-                 android:padding="18dp"
+                 android:padding="10dp"
                  android:onClick="openFavoritos">
 
                  <ImageView
-                     android:layout_width="60dp"
-                     android:layout_height="60dp"
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
                      android:src="@drawable/tamano_textos"
                      android:id="@+id/ico_typo" />
 
@@ -162,8 +162,8 @@
                      android:layout_toEndOf="@+id/ico_typo" />
 
                  <ImageView
-                     android:layout_width="25dp"
-                     android:layout_height="25dp"
+                     android:layout_width="15dp"
+                     android:layout_height="15dp"
                      android:id="@+id/next4"
                      android:src="@drawable/flechita"
                      android:layout_centerVertical="true"
@@ -179,12 +179,12 @@
              <RelativeLayout
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
-                 android:padding="18dp"
+                 android:padding="10dp"
                  android:onClick="logOut">
 
                  <ImageView
-                     android:layout_width="60dp"
-                     android:layout_height="60dp"
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
                      android:src="@drawable/logout"
                      android:id="@+id/ico_logout" />
 

@@ -1,67 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="¡FELICIDADES!"
-        android:textColor="@color/naranja"
-        android:id="@+id/textView2"
-        android:layout_marginBottom="60dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="28dp"
-        android:text="¡Haz terminado tu plato!"/>
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="28dp"
-            android:text="Has ganado "/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="@dimen/receta_fin_felicidades"
             android:textStyle="bold"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="¡FELICIDADES!"
             android:textColor="@color/naranja"
-            android:textSize="28dp"
-            android:text="+ 10 puntos"
-            android:id="@+id/puntos_inicial"/>
+            android:id="@+id/textView2"/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="28dp"
-            android:text=" de experiencia"/>
+            android:textSize="@dimen/receta_fin"
+            android:gravity="center_horizontal"
+            android:text="¡Haz terminado tu plato!"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/receta_fin"
+                android:text="Has ganado "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/naranja"
+                android:textSize="@dimen/receta_fin"
+                android:text="+ 10 puntos"
+                android:id="@+id/puntos_inicial"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/receta_fin"
+                android:text=" de experiencia"/>
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1.2">
+
     <ImageButton
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:padding="10dp"
         android:id="@+id/boton_camara_grande"
         android:src="@drawable/foto_grande"
-        android:layout_margin="20dp"
+        android:scaleType="fitCenter"
         android:layout_gravity="center_horizontal"
         android:background="@null"
         android:adjustViewBounds="false" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="28dp"
+        android:gravity="center"
+        android:textSize="@dimen/receta_fin"
         android:text="Comparte una foto de tu trabajo"/>
 
     <LinearLayout
@@ -74,47 +107,59 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28dp"
+            android:textSize="@dimen/receta_fin"
             android:text="Y gana "/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textColor="@color/naranja"
-            android:textSize="28dp"
+            android:textSize="@dimen/receta_fin"
             android:text="+ 15 merecidos puntos"/>
 
     </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="28dp"
+        android:gravity="center"
+        android:textSize="@dimen/receta_fin"
         android:text="de experiencia"/>
 
     <TextView
-        android:layout_marginTop="40dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="@dimen/sub_ingrediente"
         android:text="Califica esta receta"/>
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style = "?android:attr/ratingBarStyleSmall"/>
+
+    </LinearLayout>
 
     <Button
-        android:layout_width="210dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
         android:text="Seguir cocinando"
         android:id="@+id/volver_inicio"
         android:textColor="@color/blanco"
         android:background="@color/verde"
         android:enabled="false"
-        android:textSize="22dp"
+        android:textSize="@dimen/texto_botones"
         android:layout_gravity="center"
         android:textAllCaps="false"/>
 
+    </LinearLayout>
 
 </LinearLayout>

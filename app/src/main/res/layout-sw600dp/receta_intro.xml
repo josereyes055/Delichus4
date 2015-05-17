@@ -18,98 +18,98 @@
             android:id="@+id/receta_imagen"
             android:src="@drawable/img_no_encontrada_recetas"/>
 
-    <geekgames.delichus4.customViews.CircleImage
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="-50dp"
-        android:id="@+id/receta_foto"
-        android:src="@drawable/noob"
-        android:onClick="viewOtherUser"/>
-
-    <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/compartida_por"
-            android:text="compartida por: "/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/compartida_por"
-            android:text="Delichus"
-            android:textStyle="bold"
-            android:textColor="@color/base"
-            android:id="@+id/receta_autor"
+        <geekgames.delichus4.customViews.CircleImage
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="-50dp"
+            android:id="@+id/receta_foto"
+            android:src="@drawable/noob"
             android:onClick="viewOtherUser"/>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:isIndicator="true"
-        android:id="@+id/receta_rating"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/compartida_por"
+                android:text="compartida por: "/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/compartida_por"
+                android:text="Delichus"
+                android:textStyle="bold"
+                android:textColor="@color/base"
+                android:id="@+id/receta_autor"
+                android:onClick="viewOtherUser"/>
 
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <ImageView
+        <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/dificultad_medidor"
-            android:src="@drawable/dificultad_facil"/>
+            android:isIndicator="true"
+            android:id="@+id/receta_rating"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fácil"
-            android:layout_marginRight="20dp"
-            android:id="@+id/dificultad_receta"
-            android:textSize="@dimen/atributos_receta"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:src="@drawable/tiempo_preparacion"
-            android:layout_marginLeft="60dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tiempo_receta"
-            android:layout_marginRight="20dp"
-            android:text="20 mins"
-            android:textSize="@dimen/atributos_receta"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="60dp"
-            android:src="@drawable/cantidad_personas"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dificultad_medidor"
+                android:src="@drawable/dificultad_facil"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cantidad_personas_receta"
-            android:text="4"
-            android:layout_marginLeft="-10dp"
-            android:textSize="@dimen/atributos_receta"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fácil"
+                android:layout_marginRight="20dp"
+                android:id="@+id/dificultad_receta"
+                android:textSize="@dimen/atributos_receta"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:src="@drawable/tiempo_preparacion"
+                android:layout_marginLeft="60dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tiempo_receta"
+                android:layout_marginRight="20dp"
+                android:text="20 mins"
+                android:textSize="@dimen/atributos_receta"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:src="@drawable/cantidad_personas"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cantidad_personas_receta"
+                android:text="4"
+                android:layout_marginLeft="-10dp"
+                android:textSize="@dimen/atributos_receta"/>
 
         </LinearLayout>
 
@@ -126,35 +126,35 @@
             android:textAllCaps="false"
             android:textAlignment="center"
             />
-    <TextView
-        android:padding="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/receta_larga"
-        android:textColor="@color/gris_oscuro"
-        android:textSize="@dimen/descripción_larga"
-        android:gravity="center"
-        android:lineSpacingExtra="5dp"
-        android:text="@string/lorem"/>
+        <TextView
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/receta_larga"
+            android:textColor="@color/gris_oscuro"
+            android:textSize="@dimen/descripción_larga"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+            android:text="@string/lorem"/>
 
 
 
-    <View
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
-    <TextView
-        android:layout_marginTop="15dp"
-        android:paddingBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/titulo_receta"
-        android:textColor="@color/naranja"
-        android:text="Ingredientes"
-        />
+        <TextView
+            android:layout_marginTop="15dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titulo_receta"
+            android:textColor="@color/naranja"
+            android:text="Ingredientes"
+            />
         <TextView
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -164,57 +164,57 @@
             android:lineSpacingExtra="5dp"
             android:textSize="@dimen/sub_ingrediente"
             android:textColor="@color/gris_sub"
-           android:gravity="center"
+            android:gravity="center"
             android:text="Selecciona los ingredientes que ya tienes,
 los que no selecciones puedes agregarlos a la lista de compras"
             />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingBottom="20dp">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
 
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:text="Select. todos"
-            android:id="@+id/select_all"
-            android:textColor="@color/blanco"
-            android:background="@color/verde"
-            android:enabled="true"
-            android:textSize="@dimen/texto_botones"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:textAllCaps="false"
-            android:onClick="selectAllIngredients"/>
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:text="Select. todos"
+                android:id="@+id/select_all"
+                android:textColor="@color/blanco"
+                android:background="@color/verde"
+                android:enabled="true"
+                android:textSize="@dimen/texto_botones"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="false"
+                android:onClick="selectAllIngredients"/>
 
-        <Button
-            android:layout_width="340dp"
-            android:layout_height="60dp"
-            android:text="Agregar a lista de compras"
-            android:textColor="@color/blanco"
-            android:background="@color/verde"
-            android:textSize="@dimen/texto_botones"
-            android:layout_gravity="left"
-            android:layout_marginLeft="35dp"
-            android:textAllCaps="false"
-            android:id="@+id/carrito_compras_boton"
-            android:onClick="carrito_ingredientes"/>
+            <Button
+                android:layout_width="340dp"
+                android:layout_height="60dp"
+                android:text="Agregar a lista de compras"
+                android:textColor="@color/blanco"
+                android:background="@color/verde"
+                android:textSize="@dimen/texto_botones"
+                android:layout_gravity="left"
+                android:layout_marginLeft="35dp"
+                android:textAllCaps="false"
+                android:id="@+id/carrito_compras_boton"
+                android:onClick="carrito_ingredientes"/>
 
         </LinearLayout>
 
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="5dp"
-                android:padding="30dp"
-                android:paddingTop="30dp"
-                android:paddingBottom="20dp"
-                android:textSize="22dp"
-                android:transcriptMode="disabled"
-                android:id="@+id/lista_ingredientes"/>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:padding="30dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="20dp"
+            android:textSize="22dp"
+            android:transcriptMode="disabled"
+            android:id="@+id/lista_ingredientes"/>
 
 
         <Button
@@ -298,74 +298,74 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:text="Calificación de la receta"
             />
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:padding="20dp">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:textSize="@dimen/rank_numero"
                 android:textColor="@color/gris_oscuro"
-                android:gravity="left"
-                android:text="4.4"
-                android:layout_column="0"
-                android:layout_row="0"
-                android:layout_rowSpan="2"
-                android:layout_gravity="center_vertical" />
+                android:text="4.4"/>
 
-            <RatingBar
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:isIndicator="true"
-                android:id="@+id/receta_rating2"
-                android:layout_column="1"
-                android:layout_row="0"
-                android:layout_gravity="bottom|left" />
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:id="@+id/receta_rating2"
+                    style = "?android:attr/ratingBarStyleSmall"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:layout_gravity="bottom|left" />
 
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/persona_calificacion"
-                android:id="@+id/imageView10"
-                android:layout_rowSpan="1"
-                android:layout_column="1"
-                android:layout_row="1"
-                android:layout_gravity="top" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:paddingBottom="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/personas_hicieron_receta"
-                android:layout_marginTop="9dp"
-                android:layout_marginLeft="50dp"
-                android:layout_rowSpan="1"
-                android:layout_column="1"
-                android:layout_row="1"
-                android:textColor="@color/gris_sub"
-                android:text="123456"
-                />
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/persona_calificacion"
+                        android:id="@+id/imageView10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/personas_hicieron_receta"
+                        android:layout_marginTop="9dp"
+                        android:textColor="@color/gris_sub"
+                        android:text="123456"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="100dp"
                 android:id="@+id/compartir"
                 android:src="@drawable/compartir"
-                android:layout_column="2"
-                android:layout_row="0"
-                android:layout_rowSpan="2"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="40dp"
-                android:background="@null"
-                android:layout_gravity="top" />
+                android:background="@null" />
 
+        </LinearLayout>
 
-        </GridLayout>
 
         <View
             android:layout_marginTop="30dp"

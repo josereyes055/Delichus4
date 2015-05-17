@@ -15,26 +15,26 @@
 
     <!--Receta_intro-->
 
-    <dimen name="atributos_receta">17sp</dimen>
-    <dimen name="descripción_larga">24sp</dimen>
-    <dimen name="titulo_receta">36sp</dimen>
-    <dimen name="sub_ingrediente">18sp</dimen>
-    <dimen name="ingredientes">24sp</dimen>
-    <dimen name="texto_botones">22sp</dimen>
+    <dimen name="atributos_receta">14sp</dimen>
+    <dimen name="descripción_larga">17sp</dimen>
+    <dimen name="titulo_receta">24sp</dimen>
+    <dimen name="sub_ingrediente">14sp</dimen>
+    <dimen name="ingredientes">18sp</dimen>
+    <dimen name="texto_botones">14sp</dimen>
     <dimen name="user_titulo">17sp</dimen>
-    <dimen name="rank_numero">80sp</dimen>
-    <dimen name="personas_hicieron_receta">20sp</dimen>
+    <dimen name="rank_numero">50sp</dimen>
+    <dimen name="personas_hicieron_receta">14sp</dimen>
 
     <!--Activar ayudante-->
 
-    <dimen name="texto_activar_ayudante">40sp</dimen>
+    <dimen name="texto_activar_ayudante">27sp</dimen>
 
     <!--Perfil-->
 
     <dimen name="lables">18sp</dimen>
     <dimen name="titulo_cocinero">16sp</dimen>
     <dimen name="porcentaje">12sp</dimen>
-
+    <dimen name="separador">16sp</dimen>
 
     <!--Busqueda avanzada-->
 
@@ -43,11 +43,11 @@
 
     <!--Comentarios-->
 
-    <dimen name="user_coment">18sp</dimen>
+    <dimen name="user_coment">16sp</dimen>
 
     <!--Crear receta-->
 
-    <dimen name="no_disponible">22sp</dimen>
+    <dimen name="no_disponible">20sp</dimen>
 
     <!--Deli_menu-->
 
@@ -73,11 +73,12 @@
     <dimen name="otro_usuario_titulo">20sp</dimen>
     <dimen name="nivel_cocina">30sp</dimen>
 
+
     <!--Receta_paso-->
 
-    <dimen name="numero_paso">35sp</dimen>
-    <dimen name="tipo">36sp</dimen>
-    <dimen name="descripcion_paso">27sp</dimen>
+    <dimen name="numero_paso">20sp</dimen>
+    <dimen name="tipo">22sp</dimen>
+    <dimen name="descripcion_paso">18sp</dimen>
 
     <!--Recipe-->
 
@@ -88,11 +89,17 @@
 
     <!--Registro-->
 
-    <dimen name="registro">25sp</dimen>
+    <dimen name="registro">18sp</dimen>
 
     <!--Spinner custom-->
 
     <dimen name="spinner">25sp</dimen>
+
+    <!--Recetas fin-->
+
+    <dimen name="receta_fin">16sp</dimen>
+    <dimen name="receta_fin_felicidades">30sp</dimen>
+
 
 
 
