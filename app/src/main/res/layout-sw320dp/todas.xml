@@ -19,7 +19,6 @@
                 android:layout_height="wrap_content"
                 android:text="Todas las recetas"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:id="@+id/recomendadosTitle"
                 android:textColor="@color/naranja"

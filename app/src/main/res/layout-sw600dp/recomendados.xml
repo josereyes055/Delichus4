@@ -8,14 +8,14 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_height="150dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingTop="10dp"
             android:text="Recomendada para ti"
             android:gravity="center"
             android:id="@+id/recomendadosTitle"
@@ -29,6 +29,8 @@
             android:layout_weight="1"
             android:text="Cargando..."
             android:textSize="@dimen/recomended_title"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textStyle="bold"
             android:gravity="center"
             android:id="@+id/recipe_nombre"

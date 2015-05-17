@@ -123,12 +123,12 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="18dp"
+                android:padding="16dp"
                 android:onClick="openFavoritos">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/favoritos"
                     android:id="@+id/imageView5" />
 
@@ -142,8 +142,8 @@
                     android:layout_toEndOf="@+id/imageView5" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/imageView100"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"
@@ -159,12 +159,12 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="18dp"
+                android:padding="16dp"
                 android:onClick="openLogros">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/logros"
                     android:id="@+id/imageView6" />
 
@@ -178,8 +178,8 @@
                     android:layout_toEndOf="@+id/imageView6" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/imageView101"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"
@@ -196,11 +196,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:onClick="openShoppingList"
-                android:padding="18dp">
+                android:padding="16dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/listacompras"
                     android:id="@+id/imageView7" />
 
@@ -209,13 +209,13 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="Lista de compras"
-                    android:textSize="@dimen/perfil_labels"
+                    android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/imageView7" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/imageView102"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"
@@ -231,11 +231,11 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="18dp">
+                android:padding="16dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/crearreceta_p"
                     android:alpha="0.6"
                     android:id="@+id/imageView8" />
@@ -245,14 +245,14 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="Recetas agregadas"
-                    android:textSize="@dimen/perfil_labels"
+                    android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
                     android:textColor="@color/gris_claro"
                     android:layout_toEndOf="@+id/imageView8" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/imageView103"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"
@@ -268,11 +268,11 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="18dp">
+                android:padding="16dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/recientes"
                     android:id="@+id/imageView9" />
 
@@ -281,13 +281,13 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:text="Cocinadas recientemente"
-                    android:textSize="@dimen/perfil_labels"
+                    android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/imageView9" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/imageView104"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"
@@ -303,12 +303,12 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="18dp"
+                android:padding="16dp"
                 android:onClick="openAjustes">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/ajustes"
                     android:id="@+id/imageView10" />
 
@@ -317,13 +317,13 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="Ajustes de perfil"
-                    android:textSize="@dimen/perfil_labels"
+                    android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/imageView10" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/imageView105"
                     android:src="@drawable/flechita"
                     android:layout_centerVertical="true"

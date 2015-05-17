@@ -7,10 +7,11 @@
 
     <!--Recomendados-->
 
-    <dimen name="section_title">24sp</dimen>
-    <dimen name="recomended_title">32sp</dimen>
-    <dimen name="compartida_por">20sp</dimen>
-    <dimen name="grid_recipe_descripcion">22sp</dimen>
+    <dimen name="section_title">16sp</dimen>
+    <dimen name="recomended_title">21sp</dimen>
+    <dimen name="compartida_por">14sp</dimen>
+    <dimen name="grid_recipe_descripcion_recom">18sp</dimen>
+
 
     <!--Receta_intro-->
 
@@ -20,7 +21,7 @@
     <dimen name="sub_ingrediente">18sp</dimen>
     <dimen name="ingredientes">24sp</dimen>
     <dimen name="texto_botones">22sp</dimen>
-    <dimen name="user_titulo">24sp</dimen>
+    <dimen name="user_titulo">17sp</dimen>
     <dimen name="rank_numero">80sp</dimen>
     <dimen name="personas_hicieron_receta">20sp</dimen>
 
@@ -30,15 +31,15 @@
 
     <!--Perfil-->
 
-    <dimen name="lables">24sp</dimen>
-    <dimen name="titulo_cocinero">20sp</dimen>
-    <dimen name="porcentaje">13sp</dimen>
+    <dimen name="lables">18sp</dimen>
+    <dimen name="titulo_cocinero">16sp</dimen>
+    <dimen name="porcentaje">12sp</dimen>
 
 
     <!--Busqueda avanzada-->
 
-    <dimen name="busqueda_boton">28sp</dimen>
-    <dimen name="busqueda_descripcion">24sp</dimen>
+    <dimen name="busqueda_boton">18sp</dimen>
+    <dimen name="busqueda_descripcion">14sp</dimen>
 
     <!--Comentarios-->
 
@@ -50,8 +51,8 @@
 
     <!--Deli_menu-->
 
-    <dimen name="deli_menu">12sp</dimen>
-    <dimen name="deli_menu_select">15sp</dimen>
+    <dimen name="deli_menu">7sp</dimen>
+    <dimen name="deli_menu_select">8sp</dimen>
 
     <!--Header-->
 
@@ -82,6 +83,8 @@
 
     <dimen name="grid_recipe_title">22sp</dimen>
     <dimen name="grid_recipe_autor_recipe">15sp</dimen>
+    <dimen name="grid_recipe_descripcion">18sp</dimen>
+
 
     <!--Registro-->
 
@@ -92,8 +95,11 @@
     <dimen name="spinner">25sp</dimen>
 
 
-    <dimen name="perfil_labels">24sp</dimen>
+
+
+
+
     <dimen name="receta_texto">24sp</dimen>
-    <dimen name="grid_recipe_descripcion_recom">28sp</dimen>
+
 
 </resources>

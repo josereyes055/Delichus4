@@ -8,9 +8,10 @@
     <!--Recomendados-->
 
     <dimen name="section_title">24sp</dimen>
-    <dimen name="recomended_title">32sp</dimen>
+    <dimen name="recomended_title">30sp</dimen>
     <dimen name="compartida_por">20sp</dimen>
-    <dimen name="grid_recipe_descripcion">22sp</dimen>
+    <dimen name="grid_recipe_descripcion_recom">25sp</dimen>
+
 
     <!--Receta_intro-->
 
@@ -30,15 +31,15 @@
 
     <!--Perfil-->
 
-    <dimen name="lables">24sp</dimen>
+    <dimen name="lables">22sp</dimen>
     <dimen name="titulo_cocinero">20sp</dimen>
     <dimen name="porcentaje">13sp</dimen>
 
 
     <!--Busqueda avanzada-->
 
-    <dimen name="busqueda_boton">28sp</dimen>
-    <dimen name="busqueda_descripcion">24sp</dimen>
+    <dimen name="busqueda_boton">25sp</dimen>
+    <dimen name="busqueda_descripcion">20sp</dimen>
 
     <!--Comentarios-->
 
@@ -50,8 +51,8 @@
 
     <!--Deli_menu-->
 
-    <dimen name="deli_menu">12sp</dimen>
-    <dimen name="deli_menu_select">15sp</dimen>
+    <dimen name="deli_menu">10sp</dimen>
+    <dimen name="deli_menu_select">12sp</dimen>
 
     <!--Header-->
 
@@ -80,8 +81,10 @@
 
     <!--Recipe-->
 
-    <dimen name="grid_recipe_title">22sp</dimen>
-    <dimen name="grid_recipe_autor_recipe">15sp</dimen>
+    <dimen name="grid_recipe_title">30sp</dimen>
+    <dimen name="grid_recipe_autor_recipe">18sp</dimen>
+    <dimen name="grid_recipe_descripcion">22sp</dimen>
+
 
     <!--Registro-->
 
@@ -92,8 +95,7 @@
     <dimen name="spinner">25sp</dimen>
 
 
-    <dimen name="perfil_labels">24sp</dimen>
     <dimen name="receta_texto">24sp</dimen>
-    <dimen name="grid_recipe_descripcion_recom">28sp</dimen>
+
 
 </resources>
