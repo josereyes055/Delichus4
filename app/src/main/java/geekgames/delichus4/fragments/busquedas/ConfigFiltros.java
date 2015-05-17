@@ -11,20 +11,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
 
+import geekgames.delichus4.BusquedaFiltros;
 import geekgames.delichus4.R;
-import geekgames.delichus4.fragments.Busqueda;
 
 public class ConfigFiltros extends Fragment {
 
     Button filtros;
     ConfigFiltros instance;
-    Busqueda parent;
 
     NumberPicker cantidad;
     NumberPicker tiempo;
@@ -35,6 +35,7 @@ public class ConfigFiltros extends Fragment {
     //NumberPicker origen;
     //NumberPicker autor;
 
+    public boolean[] chosen;
     View rootView;
 
     @Override
@@ -42,12 +43,13 @@ public class ConfigFiltros extends Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.config_filtros, container, false);
-        parent = (Busqueda) getParentFragment();
-
 
 
         filtros = (Button)rootView.findViewById(R.id.buttonConfigFiltros);
         instance = this;
+
+        chosen = getArguments().getBooleanArray("chosen");
+        Log.i("FUCKING DEBUG", getArguments().getString("prueba"));
 
         cantidad = (NumberPicker) rootView.findViewById(R.id.filtros_cantidad);
         tiempo = (NumberPicker) rootView.findViewById(R.id.filtros_tiempo);
@@ -58,7 +60,19 @@ public class ConfigFiltros extends Fragment {
         //origen = (NumberPicker) rootView.findViewById(R.id.filtros_origen);
         //autor = (NumberPicker) rootView.findViewById(R.id.filtros_autor);
 
+        LinearLayout vcantidad = (LinearLayout) rootView.findViewById(R.id.selectorCantidad);
+        LinearLayout vtiempo = (LinearLayout) rootView.findViewById(R.id.selectorTiempo);
+        LinearLayout vcategoria = (LinearLayout) rootView.findViewById(R.id.selectorCategoria);
+        LinearLayout vtipo = (LinearLayout) rootView.findViewById(R.id.selectorTipo);
+        LinearLayout vingrediente = (LinearLayout) rootView.findViewById(R.id.selectorIngredientes);
+        LinearLayout vcoccion = (LinearLayout) rootView.findViewById(R.id.selectorCoccion);
 
+        if( !chosen[0]) vcantidad.setVisibility(View.GONE);
+        if( !chosen[1]) vtiempo.setVisibility(View.GONE);
+        if( !chosen[2]) vcategoria.setVisibility(View.GONE);
+        if( !chosen[3]) vtipo.setVisibility(View.GONE);
+        if( !chosen[4]) vingrediente.setVisibility(View.GONE);
+        if( !chosen[5]) vcoccion.setVisibility(View.GONE);
 
         return rootView;
     }
@@ -105,19 +119,11 @@ public class ConfigFiltros extends Fragment {
         //setValues(coccion, tipo_coccion);
         //setValues(origen, list_origen);
 
-        LinearLayout vcantidad = (LinearLayout) rootView.findViewById(R.id.selectorCantidad);
-        LinearLayout vtiempo = (LinearLayout) rootView.findViewById(R.id.selectorTiempo);
-        LinearLayout vcategoria = (LinearLayout) rootView.findViewById(R.id.selectorCategoria);
-        LinearLayout vtipo = (LinearLayout) rootView.findViewById(R.id.selectorTipo);
-        LinearLayout vingrediente = (LinearLayout) rootView.findViewById(R.id.selectorIngredientes);
-        LinearLayout vcoccion = (LinearLayout) rootView.findViewById(R.id.selectorCoccion);
 
-        if( !parent.chosen[0]) vcantidad.setVisibility(View.GONE);
-        if( !parent.chosen[1]) vtiempo.setVisibility(View.GONE);
-        if( !parent.chosen[2]) vcategoria.setVisibility(View.GONE);
-        if( !parent.chosen[3]) vtipo.setVisibility(View.GONE);
-        if( !parent.chosen[4]) vingrediente.setVisibility(View.GONE);
-        if( !parent.chosen[5]) vcoccion.setVisibility(View.GONE);
+
+
+
+
 
 
 
@@ -125,8 +131,7 @@ public class ConfigFiltros extends Fragment {
         {
             @Override
             public void onClick(View v) {
-                Busqueda parent = (Busqueda) getParentFragment();
-                int[] valores = parent.values;
+                /*int[] valores = parent.values;
 
                 valores[0] = cantidad.getValue();
                 valores[1] = tiempo.getValue();
@@ -135,9 +140,8 @@ public class ConfigFiltros extends Fragment {
                 valores[4] = ingrediente.getValue();
                 valores[5] = coccion.getValue();
 
-                parent.values = valores;
+                parent.values = valores;*/
 
-                parent.change(3);
             }});
 
     }
