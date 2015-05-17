@@ -82,7 +82,7 @@ public class ResultFiltros extends Fragment {
         //else{ vals[5] = "0"; }
 
         query = "http://www.geekgames.info/dbadmin/test.php?" +
-                "v=14&h={" +
+                "v=15&h={" +
                 "%22categorias%22:["+vals[2]+"]," +
                 "%22ingredientes%22:["+vals[4]+"]," +
                 "%22coccion%22:["+vals[5]+"]," +

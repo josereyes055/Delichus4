@@ -145,15 +145,15 @@ public class DescripcionReceta extends Fragment {
         Drawable mecagoenDios = null;
         if(dificultad < 3 ){
             mecagoenDios = getResources().getDrawable(R.drawable.dificultad_facil);
-            difText.setText("facil");
+            difText.setText("Fácil");
         }
         if(dificultad>2 && dificultad<5 ){
             mecagoenDios = getResources().getDrawable(R.drawable.dificultad_media);
-            difText.setText("media");
+            difText.setText("Media");
         }
         if(dificultad>4){
             mecagoenDios = getResources().getDrawable(R.drawable.dificultad_dificil);
-            difText.setText("difícil");
+            difText.setText("Difícil");
         }
         difImg.setImageDrawable(mecagoenDios);
 

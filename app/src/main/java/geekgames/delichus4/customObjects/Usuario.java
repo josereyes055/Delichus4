@@ -11,6 +11,8 @@ public class Usuario {
     public int score;
     public int lvl;
     public JSONArray logros;
+    public JSONArray favoritos;
+    public JSONArray completadas;
     public int porcentaje = 0;
 
 
