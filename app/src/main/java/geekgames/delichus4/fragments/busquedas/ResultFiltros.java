@@ -28,12 +28,10 @@ import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.FichaAdapter;
 import geekgames.delichus4.customObjects.Recipe;
-import geekgames.delichus4.fragments.Busqueda;
 
 public class ResultFiltros extends Fragment {
 
     ResultFiltros instance;
-    Busqueda parent;
 
     private ListView listViewLeft;
     private ListView listViewRight;
@@ -50,7 +48,6 @@ public class ResultFiltros extends Fragment {
 
         View rootView = inflater.inflate(R.layout.busqueda_resulado, container, false);
         instance = this;
-        parent = (Busqueda) getParentFragment();
 
         //JSONObject categorias = MainApplication.getInstance().categoria;
         //JSONObject tipo = MainApplication.getInstance().tipo_plato;
@@ -63,11 +60,11 @@ public class ResultFiltros extends Fragment {
         //String[] lcoccion = setLista(coccion);
 
         String[] vals = new String[6];
-        if(parent.chosen[0]){ vals[0] = Integer.toString(parent.values[0]); }
-        else{ vals[0] = "0"; }
+       // if(parent.chosen[0]){ vals[0] = Integer.toString(parent.values[0]); }
+        //else{ vals[0] = "0"; }
 
-        if(parent.chosen[1]){ vals[1] = Integer.toString(parent.values[1]*60); }
-        else{ vals[1] = "0"; }
+       // if(parent.chosen[1]){ vals[1] = Integer.toString(parent.values[1]*60); }
+        //else{ vals[1] = "0"; }
 
         //if(parent.chosen[2]){ vals[2] = lcategorias[ parent.values[2] ]; }
         //else{ vals[2] = "0"; }
@@ -165,7 +162,7 @@ public class ResultFiltros extends Fragment {
                             JSONArray jsonImages = jsonObject.getJSONArray("recipes");
                             if(jsonImages.length()<1){
                                 Toast.makeText(getActivity(), "No se encontraron recetas", Toast.LENGTH_SHORT).show();
-                                parent.change(1);
+
                             }
 
                             for(int i =0; i < jsonImages.length(); i++) {

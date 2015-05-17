@@ -36,9 +36,6 @@ import geekgames.delichus4.customObjects.Recipe;
 
 public class ActivityAjustes extends ActionBarActivity {
 
-    private SimpleRecipeAdapter mAdapter;
-    int idUser;
-    private String currentHeader = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
