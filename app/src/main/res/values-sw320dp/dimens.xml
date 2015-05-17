@@ -47,7 +47,7 @@
 
     <!--Crear receta-->
 
-    <dimen name="no_disponible">30sp</dimen>
+    <dimen name="no_disponible">22sp</dimen>
 
     <!--Deli_menu-->
 
