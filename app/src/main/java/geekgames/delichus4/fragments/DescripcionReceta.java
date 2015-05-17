@@ -256,5 +256,4 @@ public class DescripcionReceta extends Fragment {
         listView.setLayoutParams(params);
         listView.requestLayout();
     }
-
 }

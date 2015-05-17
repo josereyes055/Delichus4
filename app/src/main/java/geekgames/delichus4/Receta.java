@@ -2,6 +2,7 @@ package geekgames.delichus4;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,11 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,6 +62,9 @@ public class Receta extends ActionBarActivity{
     ImageButton next;
     ImageButton speak;
 
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +99,11 @@ public class Receta extends ActionBarActivity{
                         }
                     }
                 });
+
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);
 
     }
 
@@ -239,7 +253,7 @@ public class Receta extends ActionBarActivity{
         ListView listaIngrediente = (ListView) findViewById(R.id.lista_ingredientes);
         int totalIngredientes = listaIngrediente.getChildCount();
         Button selectAllButton = (Button) findViewById(R.id.select_all);
-        CheckBox checkBox = null;
+        CheckBox checkBox;
         boolean allChecked = true;
 
         for (int i = 0; i < totalIngredientes; i++){
@@ -279,7 +293,7 @@ public class Receta extends ActionBarActivity{
         int totalIngredientes = listaIngrediente.getChildCount();
         Button selectAllButton = (Button) findViewById(R.id.select_all);
         Button comenzar = (Button) findViewById((R.id.botonComenzar));
-        CheckBox checkBox = null;
+        CheckBox checkBox;
         boolean allChecked = true;
 
         for (int i = 0; i < totalIngredientes; i++){
@@ -302,6 +316,34 @@ public class Receta extends ActionBarActivity{
         view.startAnimation(animScaleSutile);
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         startActivity(intent);
+    }
+
+    public void onShareRecipe(View view) {
+
+        /*ImageView image = (ImageView)this.findViewById(R.id.receta_imagen);
+        image.setDrawingCacheEnabled(true);
+        image.buildDrawingCache(true);
+
+        Bitmap bitMapImage = Bitmap.createBitmap(image.getDrawingCache());
+        image.setDrawingCacheEnabled(false);
+
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(bitMapImage)
+                .build();
+
+        SharePhotoContent content = new SharePhotoContent.Builder()
+                .addPhoto(photo)
+                .build();*/
+
+        if (ShareDialog.canShow(ShareLinkContent.class)) {
+            ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                    .setContentTitle(this.laReceta.nombre)
+                    .setContentDescription(this.laReceta.descripcion)
+                    .setImageUrl(Uri.parse(this.laReceta.imagen))
+                    .build();
+
+            shareDialog.show(linkContent);
+        }
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
