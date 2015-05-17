@@ -362,7 +362,18 @@ los que no selecciones puedes agregarlos a la lista de compras"
                 android:layout_marginLeft="100dp"
                 android:id="@+id/compartir"
                 android:src="@drawable/compartir"
+<<<<<<< HEAD
                 android:background="@null" />
+=======
+                android:layout_column="2"
+                android:layout_row="0"
+                android:layout_rowSpan="2"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:background="@null"
+                android:layout_gravity="top"
+                android:onClick="onShareRecipe"/>
+>>>>>>> origin/master
 
         </LinearLayout>
 
