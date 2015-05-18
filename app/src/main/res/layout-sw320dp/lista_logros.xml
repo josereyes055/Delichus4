@@ -5,9 +5,10 @@
     android:padding="10dp">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="10dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitCenter"
+        android:gravity="center"
         android:id="@+id/logro_imagen"
         android:src="@drawable/nologro_completo"/>
 
@@ -16,10 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
         android:layout_toEndOf="@+id/logro_imagen">
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="fill_parent"
             android:textSize="@dimen/logro"
             android:textStyle="bold"
@@ -29,7 +30,6 @@
             android:id="@+id/logro_nombre" />
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="fill_parent"
             android:textSize="@dimen/descipcion_logro"
             android:layout_height="wrap_content"
@@ -38,8 +38,7 @@
             android:id="@+id/logro_titulo"/>
 
         <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:textSize="@dimen/descipcion_logro"
             android:layout_height="wrap_content"
             android:text="Descripcion"

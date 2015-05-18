@@ -8,9 +8,10 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:layout_weight="4"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="fill_parent"
@@ -30,6 +31,8 @@
             android:text="Cargando..."
             android:textSize="@dimen/recomended_title"
             android:textStyle="bold"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:gravity="center"
             android:id="@+id/recipe_nombre"
             android:textColor="@color/gris_oscuro"
@@ -40,17 +43,20 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_weight="1">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.8">
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:id="@+id/recipe_imagen"
                 android:src="@drawable/img_no_encontrada_recomendado"
                 />
@@ -64,47 +70,57 @@
                 android:layout_alignParentEnd="true"
                 android:id="@+id/recomendado_fav"/>
 
+
         </RelativeLayout>
 
         <geekgames.delichus4.customViews.CircleImage
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
-            android:layout_marginTop="-50dp"
+            android:layout_marginTop="-45dp"
+            android:layout_below="@+id/recipe_imagen"
             android:id="@+id/recipe_foto"
             android:src="@drawable/noob"
             android:layout_centerHorizontal="true" />
 
         <LinearLayout
-            android:layout_margin="10dp"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-            <TextView
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/compartida_por"
+                    android:text="compartida por: "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/compartida_por"
+                    android:text="Delichus"
+                    android:textStyle="bold"
+                    android:textColor="@color/base"
+                    android:id="@+id/recipe_autor" />
+            </LinearLayout>
+
+
+            <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="compartida por: "/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Delichus"
-                android:textStyle="bold"
-                android:textColor="@color/base"
-                android:id="@+id/recipe_autor" />
-        </LinearLayout>
-
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipe_puntuacion"
-            android:isIndicator="true"
-            android:layout_gravity="center"
-            android:layout_centerHorizontal="true"/>
+                android:id="@+id/recipe_puntuacion"
+                style = "?android:attr/ratingBarStyleSmall"
+                android:numStars = "5"
+                android:isIndicator="true"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"/>
 
 
             <TextView
@@ -113,10 +129,14 @@
                 android:textSize="@dimen/grid_recipe_descripcion_recom"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
                 android:text=""
                 android:id="@+id/recipe_descripcion"
                 android:gravity="center"
                 android:layout_centerHorizontal="true"/>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

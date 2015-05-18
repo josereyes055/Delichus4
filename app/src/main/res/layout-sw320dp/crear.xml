@@ -32,7 +32,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Por el momento no puedes crear nuevas recetas"
             android:gravity="center"
-            android:paddingTop="20dp"
+            android:paddingTop="10dp"
             android:textSize="@dimen/no_disponible"
             android:textColor="@color/gris_sub"
             android:id="@+id/textView"

@@ -14,10 +14,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
         android:background="@color/fondo"
-        android:paddingRight="10dp">
+        android:paddingRight="5dp">
 
 
         <ListView
@@ -25,18 +25,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:paddingRight="5dp"
             android:scrollbars="none" >
         </ListView>
 
-        <ListView
-            android:id="@+id/search_list_view_right"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingLeft="5dp"
-            android:scrollbars="none" >
-        </ListView>
 
     </LinearLayout>
 </RelativeLayout>

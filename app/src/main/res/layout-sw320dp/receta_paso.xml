@@ -10,19 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:gravity="center_horizontal">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:paddingTop="20dp">
 
             <LinearLayout
-                android:layout_margin="25dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:gravity="center">
 
                 <TextView
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/tipo"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="40dp"
                 android:textColor="@color/naranja"
                 android:text="tipo"
                 android:id="@+id/paso_tipo"
@@ -60,13 +60,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center">
 
                 <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:src="@drawable/cronometro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
                     android:id="@+id/cronometro"
                     android:background="@null"/>
 
@@ -84,20 +86,12 @@
 
         </FrameLayout>
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/cocer"
-            android:layout_marginTop="10dp"
-            android:id="@+id/paso_imagen"/>
-
-
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="200px"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginTop="-30dp"
+            android:layout_weight="1.5"
+            android:layout_marginTop="-20dp"
+            android:padding="10dp"
             android:textSize="@dimen/descripcion_paso"
             android:text="descripcion"
             android:id="@+id/paso_descripcion"
@@ -110,25 +104,26 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:layout_marginTop="-40dp"
         android:layout_weight="2">
 
-
         <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/camara"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
             android:id="@+id/camara"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@null"/>
 
         <org.lucasr.twowayview.TwoWayView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/fotosPasos"
             style="@style/TwoWayView"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
             android:drawSelectorOnTop="false"
             tools:context=".Receta" />
 

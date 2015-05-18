@@ -139,6 +139,7 @@ public class SplashScreen extends Activity{
             Intent mainIntent = new Intent().setClass(
                     SplashScreen.this, Login.class);
             startActivity(mainIntent);
+            finish();
         }
         else{
 

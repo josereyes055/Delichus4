@@ -53,6 +53,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:onClick="buscarFiltros"
                     android:background="@drawable/botonbusq"
                     android:textSize="@dimen/busqueda_boton"
                     android:textColor="#ffffffff"

@@ -121,7 +121,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
+                android:padding="10dp"
                 android:onClick="openFavoritos">
 
                 <ImageView
@@ -157,7 +157,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
+                android:padding="10dp"
                 android:onClick="openLogros">
 
                 <ImageView
@@ -194,7 +194,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:onClick="openShoppingList"
-                android:padding="12dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -229,7 +229,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -266,7 +266,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -301,7 +301,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
+                android:padding="10dp"
                 android:onClick="openAjustes">
 
                 <ImageView

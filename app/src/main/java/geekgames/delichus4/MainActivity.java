@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import geekgames.delichus4.Dialogs.ListDialog;
-import geekgames.delichus4.fragments.Busqueda;
+import geekgames.delichus4.fragments.BusquedaAvanzada;
 import geekgames.delichus4.fragments.Crear;
 import geekgames.delichus4.fragments.Perfil;
 import geekgames.delichus4.fragments.Recomendados;
@@ -36,13 +36,12 @@ public class MainActivity extends ActionBarActivity {
     SectionsPagerAdapter mSectionsPagerAdapter;
 
     ViewPager mViewPager;
-    int tags[] = {0,1,2,3,4};
 
     Crear crear;
     Todas todas;
     Recomendados recomendados;
     Perfil perfil;
-    Busqueda busqueda;
+    BusquedaAvanzada busqueda;
     Animation animScale;
 
 
@@ -60,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
         todas = new Todas();
         recomendados =new Recomendados();
         perfil = new Perfil();
-        busqueda =new Busqueda();
+        busqueda =new BusquedaAvanzada();
 
 
         // Set up the ViewPager with the sections adapter.
@@ -206,6 +205,13 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    public void buscarFiltros(View view){
+        Intent mainIntent = new Intent().setClass(
+                MainActivity.this, BusquedaFiltros.class);
+        startActivity(mainIntent);
+
+    }
+
     public void viewOtherUser(View elView){
         Intent mainIntent = new Intent().setClass(
                 MainActivity.this, OtherUserPage.class);
@@ -245,20 +251,8 @@ public class MainActivity extends ActionBarActivity {
     public void onBackPressed() {
         //Log.i("FUCKING DEBUG", "Back pressed...");
         // If the fragment exists and has some back-stack entry
-        if (busqueda != null && busqueda.getChildFragmentManager().getBackStackEntryCount() > 0){
-            // Get the fragment fragment manager - and pop the backstack
-            if(busqueda.getChildFragmentManager().getBackStackEntryCount()>2){
-                busqueda.mManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                busqueda.change(1);
-            }else {
-                busqueda.mManager.popBackStack();
-            }
-        }
-        // Else, nothing in the direct fragment back stack
-        else{
-            // Let super handle the back press
-            super.onBackPressed();
-        }
+        super.onBackPressed();
+
     }
 
 

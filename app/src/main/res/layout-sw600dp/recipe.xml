@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Receta no encontrada"
             android:gravity="center"
+            android:textStyle="bold"
             android:textSize="@dimen/grid_recipe_title"
             android:id="@+id/recipe_nombre"
             android:textColor="@color/gris_oscuro"
