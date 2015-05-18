@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Custom" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="customButtonStyle">@style/geekgames.delichus4.customViews.CustomButton</item>
+    </style>
+
+</resources>

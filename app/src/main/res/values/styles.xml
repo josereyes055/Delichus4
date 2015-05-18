@@ -8,24 +8,34 @@
 
     </style>
 
-    <style name="RecipeTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
+    <style name="RecipeTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="customButtonStyle">@style/geekgames.delichus4.customViews.CustomButton</item>
     </style>
 
     <style name="TwoWayView">
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="customButton" parent="@android:style/Widget.Button">
-        <item name="android:gravity">center_vertical|center_horizontal</item>
-        <item name="android:textColor">#FFFFFFFF</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:background">@color/verde</item>
-        <item name="android:focusable">true</item>
-        <item name="android:clickable">true</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+    <declare-styleable name="CustomButton">
+        <attr name="customAttr" format="string"/>
+    </declare-styleable>
+
+
+
+    <style name="geekgames.delichus4.customViews.CustomButton"  parent="android:style/Widget.Button">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/texto_botones</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingRight">25dp</item>
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:background">@drawable/custom_button_shape</item>
+
     </style>
 
 

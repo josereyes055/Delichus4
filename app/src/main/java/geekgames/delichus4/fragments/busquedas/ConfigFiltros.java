@@ -14,12 +14,14 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import org.apmem.tools.layouts.FlowLayout;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
 
 import geekgames.delichus4.BusquedaFiltros;
+import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.customViews.CustomButton;
 
@@ -46,25 +48,36 @@ public class ConfigFiltros extends Fragment {
 
         rootView = inflater.inflate(R.layout.config_filtros, container, false);
 
-
         filtros = (Button)rootView.findViewById(R.id.buttonConfigFiltros);
         instance = this;
 
-        //cantidad = (NumberPicker) rootView.findViewById(R.id.filtros_cantidad);
-        tiempo = (NumberPicker) rootView.findViewById(R.id.filtros_tiempo);
-        categoria = (NumberPicker) rootView.findViewById(R.id.filtros_categoria);
-        tipo = (NumberPicker) rootView.findViewById(R.id.filtros_tipo);
-        ingrediente = (NumberPicker) rootView.findViewById(R.id.filtros_ingrediente);
-        coccion = (NumberPicker) rootView.findViewById(R.id.filtros_coccion);
-        //origen = (NumberPicker) rootView.findViewById(R.id.filtros_origen);
-        //autor = (NumberPicker) rootView.findViewById(R.id.filtros_autor);
-        FlowLayout flow = (FlowLayout)rootView.findViewById(R.id.contenedorFlow);
+        FlowLayout flowCategoria = (FlowLayout)rootView.findViewById(R.id.flowCategoria);
+        FlowLayout flowCoccion = (FlowLayout)rootView.findViewById(R.id.flowCoccion);
+        FlowLayout flowIngredientes = (FlowLayout)rootView.findViewById(R.id.flowIngredientes);
+        FlowLayout flowTipo = (FlowLayout)rootView.findViewById(R.id.flowTipo);
 
-        for (int i = 0; i<6; i++){
-            CustomButton cb = new CustomButton(getActivity());
-            cb.setText("el boton numero "+i*75);
-            flow.addView(cb);
+        String stringArrayCategoria = MainApplication.getInstance().sp.getString("categoria",null);
+        String stringArrayCoccion = MainApplication.getInstance().sp.getString("tipo_coccion",null);
+        String stringArrayIngredientes = MainApplication.getInstance().sp.getString("tipo_ingrediente",null);
+        String stringArrayTipo = MainApplication.getInstance().sp.getString("tipo_plato",null);
 
+        JSONObject categorias;
+        JSONObject cocciones;
+        JSONObject tipoIngredientes;
+        JSONObject tipoPlatos;
+        try {
+            categorias = new JSONObject(stringArrayCategoria);
+            cocciones = new JSONObject(stringArrayCoccion);
+            tipoIngredientes = new JSONObject(stringArrayIngredientes);
+            tipoPlatos = new JSONObject(stringArrayTipo);
+
+            setValues(flowCategoria, categorias);
+            setValues(flowCoccion, cocciones);
+            setValues(flowIngredientes,tipoIngredientes);
+            setValues(flowTipo,tipoPlatos);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
 
@@ -72,23 +85,25 @@ public class ConfigFiltros extends Fragment {
         return rootView;
     }
 
-    public void setValues(NumberPicker np, JSONObject json){
-        String[] lista = new String[json.length()];
+    public void setValues(FlowLayout fl, JSONObject json){
 
         Iterator<String> iterator = json.keys();
-        int contador = 0;
         while(iterator.hasNext()){
             try {
-                lista[contador] = json.getString(iterator.next());
+                String key = iterator.next();
+                String text = json.getString(key);
+                CustomButton cb = new CustomButton(getActivity());
+                cb.setText(text);
+                cb.id = key;
+                Log.i("FUCKING DEBUG","botoncreado, id: "+cb.id+" label: "+cb.label);
+                cb.label = text;
+                fl.addView(cb);
             }catch (JSONException e){
                 Log.e("FUCKING DEBUG", e.toString());
             }
-            contador ++;
         }
 
-        np.setMaxValue(lista.length-1);
-        np.setMinValue(0);
-        np.setDisplayedValues(lista);
+
     }
 
     public void setViews( boolean[] chosen ){
@@ -121,8 +136,8 @@ public class ConfigFiltros extends Fragment {
         //cantidad.setMaxValue(10);
         //cantidad.setMinValue(1);
 
-        tiempo.setMaxValue(60);
-        tiempo.setMinValue(0);
+        //tiempo.setMaxValue(60);
+        //tiempo.setMinValue(0);
 
         //setValues(categoria, list_categoria);
        // setValues(tipo,tipo_plato );
