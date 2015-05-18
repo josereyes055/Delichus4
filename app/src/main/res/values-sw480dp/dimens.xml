@@ -92,7 +92,8 @@
 
     <!--Spinner custom-->
 
-    <dimen name="spinner">25sp</dimen>
+    <dimen name="spinner">22sp</dimen>
+    <dimen name="spinner_items">25sp</dimen>
 
     <!--Recetas fin-->
 

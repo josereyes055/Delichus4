@@ -105,7 +105,7 @@ public class OtherUserPage extends ActionBarActivity {
                             //nombre2.setText( laReceta.autor);
                            // nombre3.setText(laReceta.autor);
                             titulo.setText(userData.getString("titulo"));
-                            nivel.setText(userData.getString("nivel")+".0");
+                            nivel.setText(userData.getString("nivel"));
                             rating.setProgress( Integer.parseInt(userData.getString("promedio")) );
 
                         }

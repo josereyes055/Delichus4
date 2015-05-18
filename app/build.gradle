@@ -27,4 +27,6 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile 'org.lucasr.twowayview:twowayview:0.1.4'
     compile 'org.apmem.tools:layouts:1.9@aar'
+    compile 'com.etsy.android.grid:library:1.0.5'
 }
+

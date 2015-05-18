@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,6 +19,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.etsy.android.grid.StaggeredGridView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,7 +47,8 @@ public class Todas extends Fragment {
         return rootView;
     }
 
-    private int listas = 2;
+    private int listas = 1;
+    private StaggeredGridView grid_op;
     private ListView listViewLeft;
     private ListView listViewRight;
     private FichaAdapter leftAdapter;
@@ -52,6 +56,7 @@ public class Todas extends Fragment {
     JSONArray recetas;
     List<Ficha> lista1;
     List<Ficha> lista2;
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -61,24 +66,27 @@ public class Todas extends Fragment {
         leftAdapter = new FichaAdapter(getActivity());
         rightAdapter = new FichaAdapter(getActivity());
 
+//
+//        LinearLayout contenedorListas = (LinearLayout) getView().findViewById(R.id.contenedorListas);
+//        listas = contenedorListas.getChildCount();
 
-        LinearLayout contenedorListas = (LinearLayout) getView().findViewById(R.id.contenedorListas);
-        listas = contenedorListas.getChildCount();
+//        listViewLeft = (ListView) getView().findViewById(R.id.all_list_view_left);
+//
+//
+//        listViewLeft.setAdapter(leftAdapter);
+//
+//
+//        listViewLeft.setOnTouchListener(touchListener);
 
-        listViewLeft = (ListView) getView().findViewById(R.id.all_list_view_left);
+        grid_op = (StaggeredGridView)getView().findViewById(R.id.grid_super_op);
+        grid_op.setAdapter(leftAdapter);
 
 
-        listViewLeft.setAdapter(leftAdapter);
-
-
-        listViewLeft.setOnTouchListener(touchListener);
-
-
-        if( listas == 2){
-            listViewRight = (ListView) getView().findViewById(R.id.all_list_view_right);
-            listViewRight.setAdapter(rightAdapter);
-            listViewRight.setOnTouchListener(touchListener);
-        }
+//        if( listas == 2){
+//            listViewRight = (ListView) getView().findViewById(R.id.all_list_view_right);
+//            listViewRight.setAdapter(rightAdapter);
+//            listViewRight.setOnTouchListener(touchListener);
+//        }
         //listViewLeft.setOnScrollListener(scrollListener);
         //listViewRight.setOnScrollListener(scrollListener);
 
@@ -87,19 +95,21 @@ public class Todas extends Fragment {
         // create your own spinner array adapter
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_custom,spinnerItems){
             public View getView(int position, View convertView, ViewGroup parent) {
-                View v = super.getView(position, convertView, parent);
+
+                 View v = super.getView(position, convertView, parent);
                 ((TextView) v).setGravity(Gravity.CENTER);
-                ((TextView) v).setTextSize(22);
+                ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.spinner));
+
                 return v;
             }
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View v = super.getDropDownView(position, convertView,parent);
                 ((TextView) v).setGravity(Gravity.CENTER);
-                ((TextView) v).setHeight(69);
+                ((TextView) v).setHeight(100);
                 return v;
             }
         };
-        Spinner spinner = (Spinner) getView().findViewById(R.id.filtro_receta);
+        final Spinner spinner = (Spinner) getView().findViewById(R.id.filtro_receta);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
             R.array.filtros_recetas, R.layout.spinner_custom);
@@ -112,6 +122,8 @@ public class Todas extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                //((TextView) spinner.getChildAt(0)).setTextColor(getResources().getColor(R.color.naranja));
                 setAllRecipeList(position);
             }
 
@@ -134,25 +146,25 @@ public class Todas extends Fragment {
     }
 
     // Passing the touch event to the opposite list
-    View.OnTouchListener touchListener = new View.OnTouchListener() {
-        boolean dispatched = false;
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            if (listas == 2 ) {
-                if (v.equals(listViewLeft) && !dispatched) {
-                    dispatched = true;
-                    listViewRight.dispatchTouchEvent(event);
-                } else if (v.equals(listViewRight) && !dispatched) {
-                    dispatched = true;
-                    listViewLeft.dispatchTouchEvent(event);
-                } // similarly for listViewThree & listViewFour
-                dispatched = false;
-
-            }
-            return false;
-        }
-    };
+//    View.OnTouchListener touchListener = new View.OnTouchListener() {
+//        boolean dispatched = false;
+//
+//        @Override
+//        public boolean onTouch(View v, MotionEvent event) {
+//            if (listas == 2 ) {
+//                if (v.equals(listViewLeft) && !dispatched) {
+//                    dispatched = true;
+//                    listViewRight.dispatchTouchEvent(event);
+//                } else if (v.equals(listViewRight) && !dispatched) {
+//                    dispatched = true;
+//                    listViewLeft.dispatchTouchEvent(event);
+//                } // similarly for listViewThree & listViewFour
+//                dispatched = false;
+//
+//            }
+//            return false;
+//        }
+//    };
 
 
     private void setAllRecipeList(int orden){
@@ -214,7 +226,7 @@ public class Todas extends Fragment {
 
                 leftAdapter.swapRecipeRecords(lista1);
                 if (listas == 2) {
-                    rightAdapter.swapRecipeRecords(lista2);
+//                    rightAdapter.swapRecipeRecords(lista2);
                 }
             }
             catch(JSONException e) {

@@ -90,6 +90,7 @@
     <!--Spinner custom-->
 
     <dimen name="spinner">25sp</dimen>
+    <dimen name="spinner_items">30sp</dimen>
 
 
     <dimen name="perfil_labels">24sp</dimen>

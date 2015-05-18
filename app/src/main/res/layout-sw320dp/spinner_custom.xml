@@ -2,7 +2,10 @@
 
     <TextView  xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_select"
         android:textColor="@color/gris_sub"
-        android:textSize="@dimen/spinner"
+        android:textSize="@dimen/spinner_items"
         android:gravity="center" />
+

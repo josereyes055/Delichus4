@@ -5,279 +5,241 @@
     android:layout_height="fill_parent"
     android:background="@color/fondo">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    >
-
-    <ImageView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="-40px"
-        android:id="@+id/receta_imagen"
-        android:src="@drawable/top_foto"/>
+        android:gravity="center_horizontal">
 
-    <geekgames.delichus4.customViews.CircleImage
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="-90dp"
-        android:id="@+id/other_user_foto"
-        android:src="@drawable/noob"/>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-40dp"
+            android:id="@+id/receta_imagen"
+            android:src="@drawable/top_foto"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textSize="@dimen/user_titulo"
-        android:textColor="@color/cafe"
-        android:gravity="center"
-        android:id="@+id/su_name"
-        android:text="@string/usuario" />
+        <geekgames.delichus4.customViews.CircleImage
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="-90dp"
+            android:id="@+id/other_user_foto"
+            android:src="@drawable/noob"/>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/otro_usuario_titulo"
-        android:textColor="@color/naranja"
-        android:text="La cadete de cocina"
-        android:id="@+id/otro_perfil_titulo"
-        android:gravity="center"/>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp">
-
-
-        <ImageButton
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/seguir"
-            android:src="@drawable/seguir"
-            android:paddingLeft="120dp"
-            android:background="@null" />
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/compartir"
-            android:src="@drawable/compartir"
-            android:paddingLeft="230dp"
-            android:background="@null" />
-
-        </LinearLayout>
-
-    <View
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
-
-
-    <TextView
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/titulo_receta"
-        android:textColor="@color/naranja"
-        android:text="Reputación"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="5dp"
-        android:textSize="@dimen/sub_ingrediente"
-        android:textColor="@color/gris_sub"
-        android:gravity="center"
-        android:text="Comprueba qué tan valorados son los aportes de "></TextView>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-      <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="5dp"
-            android:textSize="@dimen/sub_ingrediente"
-            android:textColor="@color/naranja"
-            android:id="@+id/su_name_reputacion"
-            android:text="@string/usuario"/>
+            android:layout_marginTop="15dp"
+            android:textSize="@dimen/user_titulo"
+            android:textColor="@color/cafe"
+            android:gravity="center"
+            android:id="@+id/su_name"
+            android:text="@string/usuario" />
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/otro_usuario_titulo"
+            android:textColor="@color/naranja"
+            android:text="La cadete de cocina"
+            android:id="@+id/otro_perfil_titulo"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/nivel_cocina"
+                android:textColor="@color/gris_oscuro"
+                android:text="Nivel de cocina"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/otro_nivel"
+                android:textSize="@dimen/nivel_cocina"
+                android:textColor="@color/gris_oscuro"
+                android:text="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingTop="20dp">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/seguir"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/seguir"
+                    android:background="@null" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/compartir"
+                    android:src="@drawable/compartir"
+                    android:background="@null" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+
+        <TextView
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titulo_receta"
+            android:textColor="@color/naranja"
+            android:text="Reputación"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:lineSpacingExtra="5dp"
             android:textSize="@dimen/sub_ingrediente"
             android:textColor="@color/gris_sub"
             android:gravity="center"
-            android:text=" a la comunidad"
-            />
+            android:text="Comprueba qué tan valorados son los aportes de "></TextView>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:textSize="@dimen/sub_ingrediente"
+                android:textColor="@color/naranja"
+                android:id="@+id/su_name_reputacion"
+                android:text="@string/usuario"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:lineSpacingExtra="5dp"
+                android:textSize="@dimen/sub_ingrediente"
+                android:textColor="@color/gris_sub"
+                android:gravity="center"
+                android:text=" a la comunidad"
+                />
+
+        </LinearLayout>
 
 
-
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textSize="@dimen/nivel_cocina"
-            android:textColor="@color/gris_oscuro"
-            android:gravity="left"
-            android:text="Nivel de cocina"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:layout_rowSpan="2"
-            android:layout_gravity="center_vertical"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:id="@+id/otro_nivel"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="10dp"
+            android:id="@+id/otro_reputacion"
             android:textSize="@dimen/rank_numero"
             android:textColor="@color/gris_oscuro"
-            android:gravity="left"
-            android:text="4.4"
-            android:layout_column="0"
-            android:layout_row="2"
-            android:layout_rowSpan="2"
-            android:layout_gravity="center_vertical" />
-
+            android:text="4.4" />
 
         <RatingBar
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-70dp"
+            android:layout_height="fill_parent"
+            android:gravity="center"
             android:isIndicator="true"
-            android:id="@+id/otro_rating"
-            android:layout_column="1"
-            android:layout_row="2"
-            android:layout_rowSpan="2"
-            android:layout_gravity="center|left" />
+            android:id="@+id/otro_rating"/>
 
 
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titulo_receta"
+            android:textColor="@color/naranja"
+            android:text="Aportes a la comunidad"
+            />
+
+        <org.lucasr.twowayview.TwoWayView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/fotos_aportes"
+            style="@style/TwoWayView"
+            android:drawSelectorOnTop="false"
+            tools:context=".Receta" />
 
 
-    </GridLayout>
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
-    <View
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        <TextView
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titulo_receta"
+            android:textColor="@color/naranja"
+            android:text="Recetas agregadas"
+            />
 
-    <TextView
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/titulo_receta"
-        android:textColor="@color/naranja"
-        android:text="Cocinadas recientemente"
-        />
-
-    <org.lucasr.twowayview.TwoWayView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/lvItems"
-        style="@style/TwoWayView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:drawSelectorOnTop="false"
-        tools:context=".Receta" />
-
-<View
-    android:layout_marginTop="30dp"
-    android:layout_marginBottom="30dp"
-    android:layout_width="fill_parent"
-    android:layout_height="1dp"
-    android:background="@android:color/darker_gray"/>
-
-
-<TextView
-    android:paddingTop="20dp"
-    android:paddingBottom="10dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="@dimen/titulo_receta"
-    android:textColor="@color/naranja"
-    android:text="Cocinadas recientemente"
-    />
-
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="5dp"
-        android:textSize="@dimen/sub_ingrediente"
-        android:textColor="@color/gris_sub"
-        android:gravity="center"
-        android:text="Fotos que ha aportado "></TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="5dp"
-        android:textSize="@dimen/sub_ingrediente"
-        android:textColor="@color/naranja"
-        android:gravity="center"
-        android:id="@+id/su_name_recientes"
-        android:text="@string/usuario"/>
-
+        <org.lucasr.twowayview.TwoWayView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/fotos_recetas_agregadas"
+            style="@style/TwoWayView"
+            android:drawSelectorOnTop="false"
+            tools:context=".Receta" />
     </LinearLayout>
-
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:lineSpacingExtra="5dp"
-    android:textSize="@dimen/sub_ingrediente"
-    android:textColor="@color/gris_sub"
-    android:gravity="center"
-    android:text="para ayudar a otros usuarios a guiarse en las recetas"
-    />
-
-
-
-<View
-    android:layout_marginTop="30dp"
-    android:layout_marginBottom="30dp"
-    android:layout_width="fill_parent"
-    android:layout_height="1dp"
-    android:background="@android:color/darker_gray"/>
-
-
-<TextView
-    android:paddingTop="20dp"
-    android:paddingBottom="10dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="@dimen/titulo_receta"
-    android:textColor="@color/naranja"
-    android:text="Recetas agregadas"
-    />
-</LinearLayout>
 
 </ScrollView>
