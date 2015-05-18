@@ -56,7 +56,8 @@
         android:layout_margin="20dp"
         android:layout_gravity="center_horizontal"
         android:background="@null"
-        android:adjustViewBounds="false" />
+        android:adjustViewBounds="false"
+        android:onClick="onTakePictureRecipe"/>
 
     <TextView
         android:layout_width="wrap_content"
