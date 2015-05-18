@@ -165,9 +165,18 @@
         android:id="@+id/otro_nivel"
         android:textSize="@dimen/rank_numero"
         android:textColor="@color/gris_oscuro"
-        android:text="4.4" />
+        android:text="2" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/otro_nivel"
+        android:textSize="@dimen/rank_numero"
+        android:textColor="@color/gris_oscuro"
+        android:text="4.4" />
 
     <RatingBar
         android:layout_width="wrap_content"
