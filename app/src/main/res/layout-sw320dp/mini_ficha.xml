@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Receta no encontrada"
             android:gravity="center"
+            android:textStyle="bold"
             android:textSize="@dimen/grid_recipe_title"
             android:id="@+id/mini_recipe_nombre"
             android:textColor="@color/gris_oscuro"
@@ -71,8 +72,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/mini_recipe_puntuacion"
-            style = "?android:attr/ratingBarStyleSmall"
             android:numStars = "5"
+            android:layout_marginBottom="10dp"
             android:isIndicator="true"
             android:layout_gravity="center"
             android:layout_centerHorizontal="true"/>

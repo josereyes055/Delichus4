@@ -41,7 +41,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/grid_recipe_autor"
+                android:textSize="@dimen/grid_recipe_titulo"
+                android:layout_marginLeft="10dp"
                 android:text="Delichus"
                 android:textColor="@color/gris_sub"
                 android:id="@+id/follow_titulo" />
@@ -53,6 +54,7 @@
                 android:id="@+id/follow_rating"
                 style = "?android:attr/ratingBarStyleSmall"
                 android:numStars = "5"
+                android:layout_marginLeft="10dp"
                 android:isIndicator="true"
                 android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"/>

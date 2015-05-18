@@ -10,7 +10,7 @@
     <dimen name="section_title">24sp</dimen>
     <dimen name="recomended_title">30sp</dimen>
     <dimen name="compartida_por">20sp</dimen>
-    <dimen name="grid_recipe_descripcion_recom">25sp</dimen>
+    <dimen name="grid_recipe_descripcion_recom">22sp</dimen>
 
 
     <!--Receta_intro-->
@@ -20,14 +20,14 @@
     <dimen name="titulo_receta">34sp</dimen>
     <dimen name="sub_ingrediente">16sp</dimen>
     <dimen name="ingredientes">20sp</dimen>
-    <dimen name="texto_botones">20sp</dimen>
+    <dimen name="texto_botones">18sp</dimen>
     <dimen name="user_titulo">24sp</dimen>
     <dimen name="rank_numero">80sp</dimen>
-    <dimen name="personas_hicieron_receta">20sp</dimen>
+    <dimen name="personas_hicieron_receta">18sp</dimen>
 
     <!--Activar ayudante-->
 
-    <dimen name="texto_activar_ayudante">40sp</dimen>
+    <dimen name="texto_activar_ayudante">38sp</dimen>
 
     <!--Perfil-->
 
@@ -56,7 +56,7 @@
 
     <!--Header-->
 
-    <dimen name="header">14sp</dimen>
+    <dimen name="header">16sp</dimen>
 
     <!--Logros-->
 
@@ -65,8 +65,8 @@
 
     <!--Min_user-->
 
-    <dimen name="grid_recipe_autor">24sp</dimen>
-    <dimen name="grid_recipe_titulo">16sp</dimen>
+    <dimen name="grid_recipe_autor">22sp</dimen>
+    <dimen name="grid_recipe_titulo">20sp</dimen>
 
     <!--Perfil de otro usuario-->
 
@@ -75,9 +75,9 @@
 
     <!--Receta_paso-->
 
-    <dimen name="numero_paso">35sp</dimen>
-    <dimen name="tipo">36sp</dimen>
-    <dimen name="descripcion_paso">27sp</dimen>
+    <dimen name="numero_paso">28sp</dimen>
+    <dimen name="tipo">30sp</dimen>
+    <dimen name="descripcion_paso">25sp</dimen>
 
     <!--Recipe-->
 
@@ -93,6 +93,11 @@
     <!--Spinner custom-->
 
     <dimen name="spinner">25sp</dimen>
+
+    <!--Recetas fin-->
+
+    <dimen name="receta_fin">22sp</dimen>
+    <dimen name="receta_fin_felicidades">36sp</dimen>
 
 
     <dimen name="receta_texto">24sp</dimen>

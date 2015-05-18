@@ -20,9 +20,9 @@
 
     <geekgames.delichus4.customViews.CircleImage
         android:layout_gravity="center"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="-40dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="-35dp"
         android:id="@+id/receta_foto"
         android:src="@drawable/noob"
         android:onClick="viewOtherUser"/>
@@ -285,7 +285,6 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:isIndicator="true"
-            style = "?android:attr/ratingBarStyleSmall"
             android:id="@+id/rating_receta_usuario"/>
 
         <Button

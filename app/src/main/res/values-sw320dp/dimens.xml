@@ -34,7 +34,7 @@
     <dimen name="lables">18sp</dimen>
     <dimen name="titulo_cocinero">16sp</dimen>
     <dimen name="porcentaje">12sp</dimen>
-    <dimen name="separador">16sp</dimen>
+
 
     <!--Busqueda avanzada-->
 
@@ -60,8 +60,8 @@
 
     <!--Logros-->
 
-    <dimen name="logro">20sp</dimen>
-    <dimen name="descipcion_logro">18sp</dimen>
+    <dimen name="logro">18sp</dimen>
+    <dimen name="descipcion_logro">14sp</dimen>
 
     <!--Min_user-->
 
@@ -70,7 +70,7 @@
 
     <!--Perfil de otro usuario-->
 
-    <dimen name="otro_usuario_titulo">20sp</dimen>
+    <dimen name="otro_usuario_titulo">15sp</dimen>
     <dimen name="nivel_cocina">30sp</dimen>
 
 
