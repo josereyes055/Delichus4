@@ -32,12 +32,20 @@ public class BusquedaFiltros extends ActionBarActivity{
     public int[] values;
     int cantFiltros = 6;
 
+    SelectFiltros select;
+    ConfigFiltros config;
+    ResultFiltros result;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.busqueda_avanzada_filtros);
+
+        select = new SelectFiltros();
+        config = new ConfigFiltros();
+        result = new ResultFiltros();
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -46,7 +54,9 @@ public class BusquedaFiltros extends ActionBarActivity{
         animScaleSutile = AnimationUtils.loadAnimation(this, R.anim.scale_button_sutile_animation);
         animScaleRectangular = AnimationUtils.loadAnimation(this, R.anim.scale_button_rectangular_animation);
         // Set up the ViewPager with the sections adapter.
+
         mViewPager = (CustomPager) findViewById(R.id.pager_filtros);
+        mViewPager.setOffscreenPageLimit(2);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(1);
 
@@ -76,7 +86,8 @@ public class BusquedaFiltros extends ActionBarActivity{
 
         switch (id){
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                //NavUtils.navigateUpFromSameTask(this);
+                goBack();
                 return true;
 
         }
@@ -84,14 +95,20 @@ public class BusquedaFiltros extends ActionBarActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public  void goBack(View view){
-        view.startAnimation(animScaleSutile);
+    @Override
+    public void onBackPressed() {
+        goBack();
+    }
+
+    public  void goBack(){
+
         if (mViewPager.getCurrentItem() > 0 ){
-            mViewPager.setCurrentItem(0);
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem()-1);
 
         }
         else {
-            onBackPressed();
+            finish();
+            //onBackPressed();
         }
     }
 
@@ -104,24 +121,19 @@ public class BusquedaFiltros extends ActionBarActivity{
         mViewPager.setCurrentItem(state);
     }
 
-    public void busquedaNext(View view){
+    public void startConfig(View view){
         view.startAnimation(animScaleSutile);
-        int state = mViewPager.getCurrentItem();
 
-            View root = view.getRootView();
-            chosen[0] = ((CheckBox) root.findViewById(R.id.check_cantidad)).isChecked();
-            chosen[1] = ((CheckBox) root.findViewById(R.id.check_tiempo)).isChecked();
-            chosen[2] = true;
-            chosen[3] = ((CheckBox) root.findViewById(R.id.check_tipo)).isChecked();
-            chosen[4] = ((CheckBox) root.findViewById(R.id.check_ingredientes)).isChecked();
-            chosen[5] = ((CheckBox) root.findViewById(R.id.check_coccion)).isChecked();
+            chosen[0] = ((CheckBox)findViewById(R.id.check_cantidad)).isChecked();
+            chosen[1] = ((CheckBox)findViewById(R.id.check_tiempo)).isChecked();
+            chosen[2] = ((CheckBox)findViewById(R.id.check_categoria)).isChecked();
+            chosen[3] = ((CheckBox)findViewById(R.id.check_tipo)).isChecked();
+            chosen[4] = ((CheckBox)findViewById(R.id.check_ingredientes)).isChecked();
+            chosen[5] = ((CheckBox)findViewById(R.id.check_coccion)).isChecked();
 
+        config.setViews( chosen );
 
-        if( state < mSectionsPagerAdapter.getCount() ){
-            state ++;
-        }
-
-        mViewPager.setCurrentItem(state);
+        mViewPager.setCurrentItem( mViewPager.getCurrentItem()+1);
     }
 
 
@@ -143,22 +155,16 @@ public class BusquedaFiltros extends ActionBarActivity{
 
             switch (position){
                 case 0:
-                    return new SelectFiltros();
+                    return select;
 
                 case 1:
-                    Bundle bundle=new Bundle();
-                    bundle.putBooleanArray("chosen",chosen);
-                    bundle.putString("prueba", "no me digas lupita");
-                    //set Fragmentclass Arguments
-                    ConfigFiltros fragment = new ConfigFiltros();
-                    fragment.setArguments(bundle);
-                    return fragment;
+                    return config;
 
                 case 2:
-                    return new ResultFiltros();
+                    return result;
 
                 default:
-                    return new SelectFiltros();
+                    return select;
 
             }//end case
 

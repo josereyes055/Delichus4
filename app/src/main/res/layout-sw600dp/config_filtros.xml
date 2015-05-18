@@ -24,32 +24,47 @@
            android:orientation="vertical"
             android:id="@+id/selectorCantidad">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <org.apmem.tools.layouts.FlowLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:id="@+id/contenedorFlow"
+                >
 
-                <TextView
+
+                <geekgames.delichus4.customViews.CustomButton
                     android:gravity="center"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="22sp"
-                    android:layout_weight="1"
-                    android:text="¿Cuántas personas son?"/>
+                    style="@style/customButton"
+                    android:text="una cosa"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <geekgames.delichus4.customViews.CustomButton
                     android:gravity="center"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2">
-                    <NumberPicker
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/filtros_cantidad" />
-                </LinearLayout>
+                    android:textSize="22sp"
+                    style="@style/customButton"
+                    android:text="otra cosa diferente" />
 
-            </LinearLayout>
+                <geekgames.delichus4.customViews.CustomButton
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    style="@style/customButton"
+                    android:text="algo así como variedad" />
+
+                <geekgames.delichus4.customViews.CustomButton
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    style="@style/customButton"
+                    android:text="el cuarto sabroso" />
+
+            </org.apmem.tools.layouts.FlowLayout>
 
             <View
                 android:layout_width="wrap_content"

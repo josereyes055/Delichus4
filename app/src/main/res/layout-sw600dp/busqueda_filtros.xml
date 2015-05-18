@@ -134,7 +134,7 @@
         android:layout_weight="7"
         android:layout_gravity="center"
         android:padding="20dp"
-        android:onClick="busquedaNext"
+        android:onClick="startConfig"
         android:background="@color/gris_claro"
         >
 
