@@ -26,7 +26,7 @@
         <ImageButton
             android:layout_marginTop="-15dp"
             android:layout_weight="1"
-            android:layout_marginLeft="-55dp"
+            android:layout_marginLeft="-20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/goBack"
@@ -35,40 +35,48 @@
             android:onClick="goBack"/>
 
         <ImageButton
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:id="@+id/atras"
             android:src="@drawable/atrasar"
             android:background="@null"
             android:onClick="recetaPrev"/>
 
         <ImageButton
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:id="@+id/play"
             android:src="@drawable/play"
             android:background="@null"
             android:onClick="recetaPlay"/>
 
         <ImageButton
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:id="@+id/adelantar"
             android:src="@drawable/adelantar"
             android:background="@null"
             android:onClick="recetaNext"/>
 
         <ImageButton
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:id="@+id/asistente"
             android:src="@drawable/no_asistente"
             android:background="@null"

@@ -55,7 +55,7 @@
 
     <!--Header-->
 
-    <dimen name="header">14sp</dimen>
+    <dimen name="header">16sp</dimen>
 
     <!--Logros-->
 
@@ -64,8 +64,8 @@
 
     <!--Min_user-->
 
-    <dimen name="grid_recipe_autor">24sp</dimen>
-    <dimen name="grid_recipe_titulo">16sp</dimen>
+    <dimen name="grid_recipe_autor">25sp</dimen>
+    <dimen name="grid_recipe_titulo">20sp</dimen>
 
     <!--Perfil de otro usuario-->
 
