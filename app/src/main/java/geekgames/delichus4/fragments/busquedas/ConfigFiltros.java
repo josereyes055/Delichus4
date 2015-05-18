@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import org.apmem.tools.layouts.FlowLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,13 +21,14 @@ import java.util.Iterator;
 
 import geekgames.delichus4.BusquedaFiltros;
 import geekgames.delichus4.R;
+import geekgames.delichus4.customViews.CustomButton;
 
 public class ConfigFiltros extends Fragment {
 
     Button filtros;
     ConfigFiltros instance;
 
-    NumberPicker cantidad;
+    //NumberPicker cantidad;
     NumberPicker tiempo;
     NumberPicker categoria;
     NumberPicker tipo;
@@ -48,10 +50,7 @@ public class ConfigFiltros extends Fragment {
         filtros = (Button)rootView.findViewById(R.id.buttonConfigFiltros);
         instance = this;
 
-        chosen = getArguments().getBooleanArray("chosen");
-        Log.i("FUCKING DEBUG", getArguments().getString("prueba"));
-
-        cantidad = (NumberPicker) rootView.findViewById(R.id.filtros_cantidad);
+        //cantidad = (NumberPicker) rootView.findViewById(R.id.filtros_cantidad);
         tiempo = (NumberPicker) rootView.findViewById(R.id.filtros_tiempo);
         categoria = (NumberPicker) rootView.findViewById(R.id.filtros_categoria);
         tipo = (NumberPicker) rootView.findViewById(R.id.filtros_tipo);
@@ -59,20 +58,16 @@ public class ConfigFiltros extends Fragment {
         coccion = (NumberPicker) rootView.findViewById(R.id.filtros_coccion);
         //origen = (NumberPicker) rootView.findViewById(R.id.filtros_origen);
         //autor = (NumberPicker) rootView.findViewById(R.id.filtros_autor);
+        FlowLayout flow = (FlowLayout)rootView.findViewById(R.id.contenedorFlow);
 
-        LinearLayout vcantidad = (LinearLayout) rootView.findViewById(R.id.selectorCantidad);
-        LinearLayout vtiempo = (LinearLayout) rootView.findViewById(R.id.selectorTiempo);
-        LinearLayout vcategoria = (LinearLayout) rootView.findViewById(R.id.selectorCategoria);
-        LinearLayout vtipo = (LinearLayout) rootView.findViewById(R.id.selectorTipo);
-        LinearLayout vingrediente = (LinearLayout) rootView.findViewById(R.id.selectorIngredientes);
-        LinearLayout vcoccion = (LinearLayout) rootView.findViewById(R.id.selectorCoccion);
+        for (int i = 0; i<6; i++){
+            CustomButton cb = new CustomButton(getActivity());
+            cb.setText("el boton numero "+i*75);
+            flow.addView(cb);
 
-        if( !chosen[0]) vcantidad.setVisibility(View.GONE);
-        if( !chosen[1]) vtiempo.setVisibility(View.GONE);
-        if( !chosen[2]) vcategoria.setVisibility(View.GONE);
-        if( !chosen[3]) vtipo.setVisibility(View.GONE);
-        if( !chosen[4]) vingrediente.setVisibility(View.GONE);
-        if( !chosen[5]) vcoccion.setVisibility(View.GONE);
+        }
+
+
 
         return rootView;
     }
@@ -96,6 +91,22 @@ public class ConfigFiltros extends Fragment {
         np.setDisplayedValues(lista);
     }
 
+    public void setViews( boolean[] chosen ){
+        LinearLayout vcantidad = (LinearLayout) rootView.findViewById(R.id.selectorCantidad);
+        LinearLayout vtiempo = (LinearLayout) rootView.findViewById(R.id.selectorTiempo);
+        LinearLayout vcategoria = (LinearLayout) rootView.findViewById(R.id.selectorCategoria);
+        LinearLayout vtipo = (LinearLayout) rootView.findViewById(R.id.selectorTipo);
+        LinearLayout vingrediente = (LinearLayout) rootView.findViewById(R.id.selectorIngredientes);
+        LinearLayout vcoccion = (LinearLayout) rootView.findViewById(R.id.selectorCoccion);
+
+        if( !chosen[0]) vcantidad.setVisibility(View.GONE);
+        if( !chosen[1]) vtiempo.setVisibility(View.GONE);
+        if( !chosen[2]) vcategoria.setVisibility(View.GONE);
+        if( !chosen[3]) vtipo.setVisibility(View.GONE);
+        if( !chosen[4]) vingrediente.setVisibility(View.GONE);
+        if( !chosen[5]) vcoccion.setVisibility(View.GONE);
+    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -107,8 +118,8 @@ public class ConfigFiltros extends Fragment {
         //JSONObject list_categoria = MainApplication.getInstance().categoria;
         //JSONObject list_origen = MainApplication.getInstance().getOrigen();
 
-        cantidad.setMaxValue(10);
-        cantidad.setMinValue(1);
+        //cantidad.setMaxValue(10);
+        //cantidad.setMinValue(1);
 
         tiempo.setMaxValue(60);
         tiempo.setMinValue(0);
