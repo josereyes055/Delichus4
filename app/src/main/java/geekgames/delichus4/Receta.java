@@ -154,12 +154,6 @@ public class Receta extends ActionBarActivity{
         super.onPause();
     }
 
-    public void viewOtherUser(View elView){
-        elView.startAnimation(animScaleSutile);
-        Intent mainIntent = new Intent().setClass(
-                Receta.this, OtherUserPage.class);
-        startActivity(mainIntent);
-    }
 
     public void shutUpVieja(View view){
         view.startAnimation(animScale);

@@ -53,7 +53,7 @@ public class RegistroUsuario extends ActionBarActivity {
 
     public void insertUser( String nombre, String correo, String pass){
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=10&nombre="+nombre+"&correo="+correo+"&pass="+pass,
+                "http://www.geekgames.info/dbadmin/test.php?v=10&nombre="+nombre+"&correo="+correo+"&pass="+pass+"&imagen=",
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override

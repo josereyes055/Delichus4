@@ -1,6 +1,7 @@
 package geekgames.delichus4.fragments;
 
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -31,14 +34,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import geekgames.delichus4.MainActivity;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
+import geekgames.delichus4.Receta;
 import geekgames.delichus4.adapters.ComentarioAdapter;
 import geekgames.delichus4.adapters.IngredienteAdapter;
 import geekgames.delichus4.customObjects.Comentario;
 import geekgames.delichus4.customObjects.Ficha;
 import geekgames.delichus4.customObjects.Ingrediente;
 import geekgames.delichus4.customObjects.Usuario;
+import geekgames.delichus4.seconds.OtherUserPage;
 
 public class DescripcionReceta extends Fragment {
 
@@ -61,6 +67,7 @@ public class DescripcionReceta extends Fragment {
     TextView cantidadPersonas;
     ScrollView sv;
 
+    Animation animScaleSutile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +78,7 @@ public class DescripcionReceta extends Fragment {
         mAdapter = new IngredienteAdapter(getActivity());
         listView.setAdapter(mAdapter);
         sv = (ScrollView)rootView.findViewById(R.id.scrolldemierda);
+        animScaleSutile = AnimationUtils.loadAnimation(getActivity(), R.anim.scale_button_sutile_animation);
 
         listComentarios = (ListView) rootView.findViewById((R.id.lista_comentarios));
         mAdapter2 = new ComentarioAdapter(getActivity());
@@ -100,8 +108,6 @@ public class DescripcionReceta extends Fragment {
 
 
         fetchReceta(laReceta.id);
-        //fetchIngredientes(laReceta.id);
-        //fetchComentarios(laReceta.id);
     }
 
     private void fetchReceta(int idReceta){
@@ -130,12 +136,40 @@ public class DescripcionReceta extends Fragment {
         MainApplication.getInstance().getRequestQueue().add(request);
     }
 
-    private void setLabels(JSONObject laReceta) throws JSONException {
+    private void visitAutor(int idAutor){
+        Intent mainIntent = new Intent().setClass(
+                getActivity(), OtherUserPage.class);
+            mainIntent.putExtra("id", String.valueOf(idAutor));
+            startActivity(mainIntent);
+    }
 
-        //Usuario me = MainApplication.getInstance().usuario;
+    private void setLabels(final JSONObject laReceta) throws JSONException {
+
 
         nombre.setText(laReceta.getString("receta"));
         autor.setText(laReceta.getString("autor"));
+        autor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(animScaleSutile);
+                try {
+                    visitAutor(laReceta.getInt("idAutor"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(animScaleSutile);
+                try {
+                    visitAutor(laReceta.getInt("idAutor"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         larga.setText(laReceta.getString("larga"));
 
         cantidadPersonas.setText( Integer.toString( laReceta.getInt("personas") ) );
@@ -157,7 +191,8 @@ public class DescripcionReceta extends Fragment {
         }
         difImg.setImageDrawable(mecagoenDios);
 
-        //myName.setText(me.nombre + " - " + me.titulo);
+        myName.setText(MainApplication.getInstance().sp.getString("userNombre","") +
+                " - " + MainApplication.getInstance().sp.getString("userTitulo",""));
         rating.setRating(Float.parseFloat( laReceta.getString("puntuacion") ) );
         Picasso.with(getActivity())
                 .load(laReceta.getString("imagen"))
@@ -169,7 +204,7 @@ public class DescripcionReceta extends Fragment {
                 .placeholder(R.drawable.noob)
                 .error(R.drawable.noob)
                 .fit().centerCrop().into(foto);
-       // Picasso.with(getActivity()).load(me.foto).fit().centerCrop().into(myPhoto);
+       Picasso.with(getActivity()).load(MainApplication.getInstance().sp.getString("userFoto","")).fit().centerCrop().into(myPhoto);
 
         List<Ingrediente> ingredientes = parse( laReceta.getJSONArray("ingredientes") );
         mAdapter.swapRecords(ingredientes);
@@ -207,7 +242,6 @@ public class DescripcionReceta extends Fragment {
             records.add(ingrediente);
         }
 
-        //MainApplication.getInstance().laReceta.ingredientes = records;
         return records;
     }
 

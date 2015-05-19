@@ -1,6 +1,7 @@
 package geekgames.delichus4.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import geekgames.delichus4.MainActivity;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.customObjects.Ficha;
+import geekgames.delichus4.seconds.OtherUserPage;
 
 public class FichaAdapter extends ArrayAdapter<Ficha> {
 
@@ -68,11 +70,13 @@ public class FichaAdapter extends ArrayAdapter<Ficha> {
                 //Log.i("FUCKING DEBUG", "se va a adherir " + unaFicha.nombre +" como favorito" );
                 v.startAnimation(animScale);
                 MainApplication.mp.start();
-                //MainApplication.getInstance().addFav(MainApplication.getInstance().usuario.id, unaFicha.id );
+                MainApplication.getInstance().addFav( MainApplication.getInstance().sp.getInt("userId",0), unaFicha.id );
             }
         });
         ImageView foto = (ImageView) convertView.findViewById(R.id.recipe_foto);
+
         TextView autor = (TextView) convertView.findViewById(R.id.recipe_autor);
+
         RatingBar puntuacion = (RatingBar) convertView.findViewById(R.id.recipe_puntuacion);
         TextView descripcion = (TextView) convertView.findViewById(R.id.recipe_descripcion);
 

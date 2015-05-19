@@ -1,5 +1,6 @@
 package geekgames.delichus4.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,12 +28,16 @@ import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.FichaAdapter;
 import geekgames.delichus4.customObjects.Ficha;
+import geekgames.delichus4.seconds.OtherUserPage;
+
+
 
 
 public class Recomendados extends Fragment {
 
 
     Animation animScale;
+    Animation animScaleSutile;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class Recomendados extends Fragment {
         View rootView = inflater.inflate(R.layout.recomendados, container, false);
         animScale = AnimationUtils.loadAnimation(getActivity(), R.anim.scale_button_animation);
         return rootView;
+
     }
 
     private FichaAdapter mAdapter;
@@ -47,7 +53,7 @@ public class Recomendados extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        animScaleSutile = AnimationUtils.loadAnimation(getActivity(), R.anim.scale_button_sutile_animation);
         fetch();
     }
 
@@ -83,7 +89,7 @@ public class Recomendados extends Fragment {
         int id = ficha.getInt("id");
         String nombre = ficha.getString("receta");
         String imagen = ficha.getString("imagen");
-        int idAutor = Integer.parseInt(ficha.getString("idAutor"));
+        final int idAutor = Integer.parseInt(ficha.getString("idAutor"));
         String autor = ficha.getString("autor");
         String foto = ficha.getString("foto");
         float puntuacion = Float.parseFloat(ficha.getString("puntuacion"));
@@ -98,6 +104,7 @@ public class Recomendados extends Fragment {
         imagenV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(animScaleSutile);
                 MainApplication.getInstance().laReceta = unaFicha;
                 Log.i("FUCKING DEBUG", "la receta es " + MainApplication.getInstance().laReceta.nombre);
                 ((MainActivity)getActivity()).exploreRecipe(v);
@@ -110,12 +117,26 @@ public class Recomendados extends Fragment {
                Log.i("FUCKING DEBUG", "se va a adherir " + unaFicha.nombre +" como favorito" );
                v.startAnimation(animScale);
                MainApplication.mp.start();
-               //MainApplication.getInstance().addFav(MainApplication.getInstance().usuario.id, unaFicha.id );
+               MainApplication.getInstance().addFav( MainApplication.getInstance().sp.getInt("userId",0), unaFicha.id );
 
             }
         });
         ImageView fotoV = (ImageView) getView().findViewById(R.id.recipe_foto);
+        fotoV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(animScaleSutile);
+                    visitAutor(idAutor);
+            }
+        });
         TextView autorV = (TextView) getView().findViewById(R.id.recipe_autor);
+        autorV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(animScaleSutile);
+                visitAutor(idAutor);
+            }
+        });
         RatingBar puntuacionV = (RatingBar) getView().findViewById(R.id.recipe_puntuacion);
         TextView descripcionV = (TextView) getView().findViewById(R.id.recipe_descripcion);
 
@@ -136,6 +157,13 @@ public class Recomendados extends Fragment {
         descripcionV.setText(descripcion);
         puntuacionV.setRating(unaFicha.puntuacion);
 
+    }
+
+    private void visitAutor(int idAutor){
+        Intent mainIntent = new Intent().setClass(
+                getActivity(), OtherUserPage.class);
+        mainIntent.putExtra("id", String.valueOf(idAutor));
+        startActivity(mainIntent);
     }
 
 

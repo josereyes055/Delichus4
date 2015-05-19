@@ -24,8 +24,7 @@
             android:layout_height="90dp"
             android:layout_marginTop="-40dp"
             android:id="@+id/receta_foto"
-            android:src="@drawable/noob"
-            android:onClick="viewOtherUser"/>
+            android:src="@drawable/noob"/>
 
         <LinearLayout
             android:layout_margin="10dp"
