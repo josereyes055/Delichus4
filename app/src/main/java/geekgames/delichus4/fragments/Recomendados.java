@@ -122,7 +122,6 @@ public class Recomendados extends Fragment {
 
 
         tnombre.setText(unaFicha.nombre);
-        Picasso.with(getActivity()).setIndicatorsEnabled(true);
         Picasso.with(getActivity())
                 .load(unaFicha.imagen)
                 .placeholder(R.drawable.img_no_encontrada_recomendado)

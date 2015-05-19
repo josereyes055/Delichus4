@@ -76,9 +76,7 @@ public class FichaAdapter extends ArrayAdapter<Ficha> {
         RatingBar puntuacion = (RatingBar) convertView.findViewById(R.id.recipe_puntuacion);
         TextView descripcion = (TextView) convertView.findViewById(R.id.recipe_descripcion);
 
-        /*if(unaFicha.pasos == 4) {
-            convertView.findViewById(R.id.background).setBackgroundColor(Color.RED);
-        }*/
+
 
         nombre.setText(unaFicha.nombre);
         Picasso.with(idkContext)
@@ -94,6 +92,22 @@ public class FichaAdapter extends ArrayAdapter<Ficha> {
         autor.setText(unaFicha.autor);
         puntuacion.setRating(unaFicha.puntuacion);
         descripcion.setText(unaFicha.descripcion);
+
+
+        switch (unaFicha.color) {
+            case 0:
+                convertView.findViewById(R.id.background).setBackgroundResource(R.color.verde);
+                break;
+            case 1:
+                convertView.findViewById(R.id.background).setBackgroundResource(R.color.amarillo);
+                break;
+            case 2:
+                convertView.findViewById(R.id.background).setBackgroundResource(R.color.rojo);
+                break;
+            default:
+                convertView.findViewById(R.id.background).setBackgroundResource(R.color.rojo);
+                break;
+        }
 
         return convertView;
     }

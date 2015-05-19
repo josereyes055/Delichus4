@@ -1,7 +1,9 @@
 package geekgames.delichus4.fragments.busquedas;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.etsy.android.grid.StaggeredGridView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,18 +30,17 @@ import java.util.List;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.FichaAdapter;
+import geekgames.delichus4.customObjects.Ficha;
 import geekgames.delichus4.customObjects.Recipe;
 
 public class ResultFiltros extends Fragment {
 
     ResultFiltros instance;
 
-    private ListView listViewLeft;
-    private ListView listViewRight;
+    private StaggeredGridView listViewLeft;
     private FichaAdapter leftAdapter;
-    private FichaAdapter rightAdapter;
-    List<Recipe> lista1;
-    List<Recipe> lista2;
+    List<Ficha> lista1;
+    JSONArray recetas;
 
     String query;
 
@@ -49,51 +51,26 @@ public class ResultFiltros extends Fragment {
         View rootView = inflater.inflate(R.layout.busqueda_resulado, container, false);
         instance = this;
 
-        //JSONObject categorias = MainApplication.getInstance().categoria;
-        //JSONObject tipo = MainApplication.getInstance().tipo_plato;
-        //JSONObject ingredientes = MainApplication.getInstance().tipo_ingrediente;
-        //JSONObject coccion = MainApplication.getInstance().tipo_coccion;
+        return rootView;
+    }
 
-        //String[] lcategorias = setLista(categorias);
-        //String[] ltipo = setLista(tipo);
-        //String[] lingredientes = setLista(ingredientes);
-        //String[] lcoccion = setLista(coccion);
-
-        String[] vals = new String[6];
-       // if(parent.chosen[0]){ vals[0] = Integer.toString(parent.values[0]); }
-        //else{ vals[0] = "0"; }
-
-       // if(parent.chosen[1]){ vals[1] = Integer.toString(parent.values[1]*60); }
-        //else{ vals[1] = "0"; }
-
-        //if(parent.chosen[2]){ vals[2] = lcategorias[ parent.values[2] ]; }
-        //else{ vals[2] = "0"; }
-
-        //if(parent.chosen[3]){ vals[3] = ltipo[ parent.values[3] ]; }
-        //else{ vals[3] = "0"; }
-
-        //if(parent.chosen[4]){ vals[4] = lingredientes[ parent.values[4] ]; }
-        //else{ vals[4] = "0"; }
-
-        //if(parent.chosen[5]){ vals[5] = lcoccion[ parent.values[5] ]; }
-        //else{ vals[5] = "0"; }
+    public void startSearch(String[] vals){
 
         query = "http://www.geekgames.info/dbadmin/test.php?" +
                 "v=15&h={" +
-                "%22categorias%22:["+vals[2]+"]," +
-                "%22ingredientes%22:["+vals[4]+"]," +
-                "%22coccion%22:["+vals[5]+"]," +
-                "%22tipo%22:["+vals[3]+"]," +
-                "%22cantidad%22:"+vals[0]+"," +
-                "%22tiempo%22:"+vals[1]+"," +
-                "%22origen%22:[0]," +
+                vals[2]+","+
+                vals[4]+","+
+                vals[5]+","+
+                vals[3]+","+
+                vals[0]+","+
+                vals[1]+","+
+                vals[6]+","+
                 "%22autor%22:[0]}";
 
         Log.i("FUCKING DEBUG", query);
 
         fetch();
 
-        return rootView;
     }
 
     public String[] setLista(JSONObject json){
@@ -113,37 +90,14 @@ public class ResultFiltros extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         leftAdapter = new FichaAdapter(getActivity());
-        rightAdapter = new FichaAdapter(getActivity());
 
-        listViewLeft = (ListView) getView().findViewById(R.id.search_list_view_left);
-        listViewRight = (ListView) getView().findViewById(R.id.search_list_view_right);
+        listViewLeft = (StaggeredGridView) getView().findViewById(R.id.grilla_resultados);
 
         listViewLeft.setAdapter(leftAdapter);
-        listViewRight.setAdapter(rightAdapter);
 
-        listViewLeft.setOnTouchListener(touchListener);
-        listViewRight.setOnTouchListener(touchListener);
 
 
     }
-
-    // Passing the touch event to the opposite list
-    View.OnTouchListener touchListener = new View.OnTouchListener() {
-        boolean dispatched = false;
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            if (v.equals(listViewLeft) && !dispatched) {
-                dispatched = true;
-                listViewRight.dispatchTouchEvent(event);
-            } else if (v.equals(listViewRight) && !dispatched) {
-                dispatched = true;
-                listViewLeft.dispatchTouchEvent(event);
-            } // similarly for listViewThree & listViewFour
-            dispatched = false;
-            return false;
-        }
-    };
 
 
     private void fetch() {
@@ -155,57 +109,91 @@ public class ResultFiltros extends Fragment {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         try {
-                            lista1 = new ArrayList<Recipe>();
-                            lista2 = new ArrayList<Recipe>();
+                            lista1 = new ArrayList<Ficha>();
 
 
-                            JSONArray jsonImages = jsonObject.getJSONArray("recipes");
+                            JSONArray jsonImages = jsonObject.getJSONArray("resultados");
                             if(jsonImages.length()<1){
                                 Toast.makeText(getActivity(), "No se encontraron recetas", Toast.LENGTH_SHORT).show();
 
+                            }else {
+                                setRecipeList(jsonImages);
                             }
-
-                            for(int i =0; i < jsonImages.length(); i++) {
-                                JSONObject jsonImage = jsonImages.getJSONObject(i);
-                                int id = jsonImage.getInt("id");
-                                String receta = jsonImage.getString("receta");
-                                String larga = jsonImage.getString("larga");
-                                String imagen = jsonImage.getString("imagen");
-                                int idAutor = Integer.parseInt(jsonImage.getString("idAutor"));
-                                String autor = jsonImage.getString("autor");
-                                String foto = jsonImage.getString("foto");
-                                String puntuacion = jsonImage.getString("puntuacion");
-                                String descripcion = jsonImage.getString("descripcion");
-                                int pasos = jsonImage.getInt("pasos");
-                                int cantidad = jsonImage.getInt("personas");
-                                int dificultad = jsonImage.getInt("dificultad");
-                                int tiempo = jsonImage.getInt("tiempoTotal");
-                                JSONArray steps = jsonImage.getJSONArray("steps");
-
-                                Recipe record = new Recipe(id, receta, larga, imagen, idAutor, autor, foto, puntuacion, descripcion, pasos,cantidad,dificultad,tiempo, steps);
-                                if(i%2 == 0) {
-                                    lista1.add(record);
-                                }else{
-                                    lista2.add(record);
-                                }
-                            }
-
-                            //leftAdapter.swapRecipeRecords(lista1);
-                            //rightAdapter.swapRecipeRecords(lista2);
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Error al cargar la lista de resultados", Toast.LENGTH_SHORT).show();
+                            Log.e("PARSE JSON ERROR",  e.getMessage());
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getActivity(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Error al ejecutar la busqueda", Toast.LENGTH_SHORT).show();
+                        Log.e("FETCH JSON ERROR",  volleyError.getMessage());
                     }
                 });
 
         MainApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void setRecipeList(JSONArray lista) throws JSONException {
+
+        String stringArray = MainApplication.getInstance().sp.getString("recetas", null);
+        try {
+            recetas = new JSONArray(stringArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(recetas != null){
+            try {
+                lista1 = new ArrayList<Ficha>();
+
+                for (int a = 0; a<lista.length(); a++){
+                    JSONObject ficha = lista.getJSONObject(a);
+                    int idPos = ficha.getInt("id");
+                    int restantes = ficha.getInt("restantes");
+
+                    for(int i =0; i < recetas.length(); i++) {
+                        int id = recetas.getJSONObject(i).getInt("id");
+
+                        if(id == idPos) {
+                            Ficha unaFicha = crearFicha(i);
+                            unaFicha.color = restantes;
+
+                            lista1.add(unaFicha);
+
+                        }
+                    }
+
+                }
+
+
+                leftAdapter.swapRecipeRecords(lista1);
+
+            }
+            catch(JSONException e) {
+                Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }// end setAllRecipeList
+
+    Ficha crearFicha( int index ) throws JSONException {
+        JSONObject ficha = recetas.getJSONObject(index);
+        int id = ficha.getInt("id");
+        String nombre = ficha.getString("receta");
+        String imagen = ficha.getString("imagen");
+        int idAutor = Integer.parseInt(ficha.getString("idAutor"));
+        String autor = ficha.getString("autor");
+        String foto = ficha.getString("foto");
+        float puntuacion = Float.parseFloat( ficha.getString("puntuacion") );
+        String descripcion = ficha.getString("descripcion");
+        int pasos = ficha.getInt("pasos");
+
+        Ficha unaFicha = new Ficha(id, nombre, imagen, idAutor, autor, foto, puntuacion, descripcion, pasos);
+        return unaFicha;
     }
 
 

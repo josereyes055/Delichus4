@@ -12,6 +12,7 @@ public class Ficha {
     public float puntuacion;
     public String descripcion;
     public int    pasos;
+    public int color = 0;
 
 
     public Ficha(int id, String nombre, String imagen, int idAutor, String autor, String foto, float puntuacion, String descripcion, int pasos) {

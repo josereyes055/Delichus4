@@ -42,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                    android:id="@+id/seekPersonas"
                 android:layout_height="wrap_content" />
 
                 <TextView
@@ -88,6 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:id="@+id/seekTiempo"
                     android:layout_height="wrap_content" />
 
                 <TextView
@@ -250,75 +252,48 @@
 
         </LinearLayout>
 
-
-        <!--LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:id="@+id/selectorOrigen">
-
-            <TextView
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="¿Qué origen buscas?"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-                <NumberPicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/filtros_origen"></NumberPicker>
-            </LinearLayout>
-
-        </LinearLayout>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_margin="20dp"
-            android:background="@color/gris_claro"></View>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:id="@+id/selectorAutor">
+            android:orientation="vertical"
+            android:id="@+id/selectorOrigen">
+
+
 
             <TextView
-                android:gravity="center"
+                android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="¿Qué autor buscas?"/>
+                android:textSize="22sp"
+                android:text="¿Qué origen buscas?"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
+            <org.apmem.tools.layouts.FlowLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-                <NumberPicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/filtros_autor"></NumberPicker>
-            </LinearLayout>
+                xmlns:f="http://schemas.android.com/apk/res/geekgames.delichus4"
+                f:weightDefault="1.0"
+                android:orientation="horizontal"
+                android:id="@+id/flowOrigen"
+                >
+            </org.apmem.tools.layouts.FlowLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_margin="20dp"
+                android:background="@color/gris_claro"/>
 
         </LinearLayout>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_margin="20dp"
-            android:background="@color/gris_claro"></View-->
+
+
+
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="siguiente"
+            android:onClick="setSearch"
             android:id="@+id/buttonConfigFiltros"/>
 
     </LinearLayout>

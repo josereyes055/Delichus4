@@ -49,8 +49,6 @@ public class Todas extends Fragment {
 
     private int listas = 1;
     private StaggeredGridView grid_op;
-    private ListView listViewLeft;
-    private ListView listViewRight;
     private FichaAdapter leftAdapter;
     private FichaAdapter rightAdapter;
     JSONArray recetas;
@@ -66,29 +64,11 @@ public class Todas extends Fragment {
         leftAdapter = new FichaAdapter(getActivity());
         rightAdapter = new FichaAdapter(getActivity());
 
-//
-//        LinearLayout contenedorListas = (LinearLayout) getView().findViewById(R.id.contenedorListas);
-//        listas = contenedorListas.getChildCount();
-
-//        listViewLeft = (ListView) getView().findViewById(R.id.all_list_view_left);
-//
-//
-//        listViewLeft.setAdapter(leftAdapter);
-//
-//
-//        listViewLeft.setOnTouchListener(touchListener);
-
         grid_op = (StaggeredGridView)getView().findViewById(R.id.grid_super_op);
         grid_op.setAdapter(leftAdapter);
 
 
-//        if( listas == 2){
-//            listViewRight = (ListView) getView().findViewById(R.id.all_list_view_right);
-//            listViewRight.setAdapter(rightAdapter);
-//            listViewRight.setOnTouchListener(touchListener);
-//        }
-        //listViewLeft.setOnScrollListener(scrollListener);
-        //listViewRight.setOnScrollListener(scrollListener);
+
 
         // A more complicated dynamic way
         String[] spinnerItems = getResources().getStringArray(R.array.filtros_recetas);
@@ -143,28 +123,6 @@ public class Todas extends Fragment {
 
         setAllRecipeList(0);
     }
-
-    // Passing the touch event to the opposite list
-//    View.OnTouchListener touchListener = new View.OnTouchListener() {
-//        boolean dispatched = false;
-//
-//        @Override
-//        public boolean onTouch(View v, MotionEvent event) {
-//            if (listas == 2 ) {
-//                if (v.equals(listViewLeft) && !dispatched) {
-//                    dispatched = true;
-//                    listViewRight.dispatchTouchEvent(event);
-//                } else if (v.equals(listViewRight) && !dispatched) {
-//                    dispatched = true;
-//                    listViewLeft.dispatchTouchEvent(event);
-//                } // similarly for listViewThree & listViewFour
-//                dispatched = false;
-//
-//            }
-//            return false;
-//        }
-//    };
-
 
     private void setAllRecipeList(int orden){
 

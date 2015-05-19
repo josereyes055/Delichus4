@@ -12,8 +12,12 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
+import android.widget.SeekBar;
+
+import org.apmem.tools.layouts.FlowLayout;
 
 import geekgames.delichus4.R;
+import geekgames.delichus4.customViews.CustomButton;
 import geekgames.delichus4.customViews.CustomPager;
 import geekgames.delichus4.fragments.busquedas.ConfigFiltros;
 import geekgames.delichus4.fragments.busquedas.ResultFiltros;
@@ -29,8 +33,8 @@ public class BusquedaFiltros extends ActionBarActivity{
     CustomPager mViewPager;
 
     public boolean[] chosen;
-    public int[] values;
-    int cantFiltros = 6;
+    public String[] values;
+    int cantFiltros = 7;
 
     SelectFiltros select;
     ConfigFiltros config;
@@ -61,7 +65,7 @@ public class BusquedaFiltros extends ActionBarActivity{
         mViewPager.setOffscreenPageLimit(1);
 
         chosen = new boolean[cantFiltros];
-        values = new int[cantFiltros];
+        values = new String[cantFiltros];
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -112,28 +116,58 @@ public class BusquedaFiltros extends ActionBarActivity{
         }
     }
 
-    public void busquedaPrev(View view){
-        view.startAnimation(animScaleSutile);
-        int state = mViewPager.getCurrentItem();
-        if( state > 2 ){
-            state --;
-        }
-        mViewPager.setCurrentItem(state);
-    }
 
     public void startConfig(View view){
         view.startAnimation(animScaleSutile);
 
-            chosen[0] = ((CheckBox)findViewById(R.id.check_cantidad)).isChecked();
-            chosen[1] = ((CheckBox)findViewById(R.id.check_tiempo)).isChecked();
-            chosen[2] = ((CheckBox)findViewById(R.id.check_categoria)).isChecked();
-            chosen[3] = ((CheckBox)findViewById(R.id.check_tipo)).isChecked();
-            chosen[4] = ((CheckBox)findViewById(R.id.check_ingredientes)).isChecked();
-            chosen[5] = ((CheckBox)findViewById(R.id.check_coccion)).isChecked();
+            chosen[0] = ((CustomButton)findViewById(R.id.check_cantidad)).estado;
+            chosen[1] = ((CustomButton)findViewById(R.id.check_tiempo)).estado;
+            chosen[2] = ((CustomButton)findViewById(R.id.check_categoria)).estado;
+            chosen[3] = ((CustomButton)findViewById(R.id.check_tipo)).estado;
+            chosen[4] = ((CustomButton)findViewById(R.id.check_ingredientes)).estado;
+            chosen[5] = ((CustomButton)findViewById(R.id.check_coccion)).estado;
+            chosen[6] = ((CustomButton)findViewById(R.id.check_origen)).estado;
 
         config.setViews( chosen );
 
         mViewPager.setCurrentItem( mViewPager.getCurrentItem()+1);
+    }
+
+    public void setSearch(View view){
+        view.startAnimation(animScaleSutile);
+
+        SeekBar persos = (SeekBar)findViewById(R.id.seekPersonas);
+        SeekBar time = (SeekBar)findViewById(R.id.seekTiempo);
+        values[0] = "%22cantidad%22:"+persos.getProgress();
+        values[1] = "%22tiempo%22:"+(time.getProgress()*60);
+        values[2] = getParameters( (FlowLayout)findViewById(R.id.flowCategoria), "categorias" );
+        values[3] = getParameters( (FlowLayout)findViewById(R.id.flowTipo), "tipo" );
+        values[4] = getParameters( (FlowLayout)findViewById(R.id.flowIngredientes), "ingredientes" );
+        values[5] = getParameters( (FlowLayout)findViewById(R.id.flowCoccion), "coccion" );
+        values[6] = getParameters( (FlowLayout)findViewById(R.id.flowOrigen), "origen" );
+
+        result.startSearch(values);
+        mViewPager.setCurrentItem( mViewPager.getCurrentItem()+1);
+
+    }
+
+    String getParameters(FlowLayout fl, String label){
+        String campos = "%22"+label+"%22:[";
+
+        int contador = 0;
+        for (int i = 0; i<fl.getChildCount(); i++){
+            CustomButton cb = (CustomButton) fl.getChildAt(i);
+            if( cb.estado ) {
+                campos += cb.id + ",";
+                contador ++;
+            }
+        }
+        if( contador > 0) {
+            campos = campos.substring(0, campos.length() - 1);
+        }
+        campos += "]";
+
+        return campos;
     }
 
 
