@@ -105,5 +105,8 @@
 
     <dimen name="receta_texto">24sp</dimen>
 
+    <!--Filtros-->
+    <dimen name="labels_filtos">20sp</dimen>
+
 
 </resources>

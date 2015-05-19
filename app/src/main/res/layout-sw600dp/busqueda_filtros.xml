@@ -10,32 +10,34 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:layout_weight="2"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:paddingBottom="40dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Selecciona "
+                android:textSize="@dimen/gradua"
                 android:textColor="@color/naranja"
-                android:textSize="@dimen/section_title"/>
+                android:text="Selecciona"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Los filtros que quieres usar "
-                android:textColor="@color/gris_oscuro"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/gradua"
+                android:textColor="@color/gris_sub"
+                android:text=" los filtros que quieres usar"/>
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:padding="20dp"
             android:layout_weight="1"
             android:gravity="center">
 

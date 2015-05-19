@@ -5,6 +5,40 @@
     android:background="@color/fondo"
     >
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingBottom="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/gradua"
+            android:textColor="@color/gris_sub"
+            android:text="Hoy "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/gradua"
+            android:textColor="@color/naranja"
+            android:text="podrías "/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/gradua"
+            android:textColor="@color/gris_sub"
+            android:text="comer"/>
+
+
+    </LinearLayout>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +51,7 @@
         android:id="@+id/grilla_resultados"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:item_margin="8dp"
+        app:item_margin="5dp"
         app:column_count="2" />
 
 </RelativeLayout>

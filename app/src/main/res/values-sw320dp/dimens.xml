@@ -103,7 +103,8 @@
     <dimen name="receta_fin">16sp</dimen>
     <dimen name="receta_fin_felicidades">30sp</dimen>
 
-
+    <!--Filtros-->
+    <dimen name="labels_filtos">20sp</dimen>
 
 
 

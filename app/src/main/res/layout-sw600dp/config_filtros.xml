@@ -8,28 +8,49 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:padding="10dp"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:textSize="@dimen/section_title"
-            android:textColor="@color/naranja"
-            android:layout_margin="20dp"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="configure los filtros"/>
+            android:layout_marginTop="50dp"
+            android:paddingBottom="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/gradua"
+                android:textColor="@color/naranja"
+                android:text="Gradúa "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/gradua"
+                android:textColor="@color/gris_sub"
+                android:text="los filtros a tu gusto"/>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:orientation="vertical"
+            android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/selectorCantidad">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:paddingBottom="20dp"
+                android:textSize="@dimen/labels_filtos"
                 android:text="¿Cuantas personas son?"/>
 
             <LinearLayout
@@ -50,33 +71,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:textSize="22sp"
+                    android:textSize="@dimen/labels_filtos"
                     android:id="@+id/numberPersonas"
                     android:text="0"/>
 
                 </LinearLayout>
 
-
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_margin="20dp"
-                android:background="@color/gris_claro"/>
-
         </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/selectorTiempo">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:paddingBottom="20dp"
+                android:textSize="@dimen/labels_filtos"
                 android:text="¿Cuanto tiempo tienes?"/>
 
             <LinearLayout
@@ -97,39 +122,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:textSize="22sp"
+                    android:textSize="@dimen/labels_filtos"
                     android:id="@+id/numberTiempo"
                     android:text="0"/>
 
             </LinearLayout>
 
-
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_margin="20dp"
-                android:background="@color/gris_claro"/>
-
         </LinearLayout>
 
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gris_claro"/>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/selectorCategoria">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:paddingBottom="20dp"
+                android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué categoría buscas?"/>
-
-
 
             <org.apmem.tools.layouts.FlowLayout
                 android:layout_width="fill_parent"
@@ -141,28 +166,31 @@
                 >
                 </org.apmem.tools.layouts.FlowLayout>
 
-
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_margin="20dp"
-                android:background="@color/gris_claro"/>
-
         </LinearLayout>
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/selectorTipo">
 
                 <TextView
                     android:gravity="start"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
+                    android:paddingBottom="20dp"
+                    android:textSize="@dimen/labels_filtos"
                     android:text="¿Qué Tipo de plato buscas?"/>
 
                 <org.apmem.tools.layouts.FlowLayout
@@ -175,19 +203,24 @@
                     >
                 </org.apmem.tools.layouts.FlowLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_margin="20dp"
-                android:background="@color/gris_claro"/>
 
         </LinearLayout>
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/selectorIngredientes">
 
 
@@ -195,8 +228,9 @@
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
                 android:layout_weight="1"
-                android:textSize="22sp"
+                android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué ingrediente buscas?"/>
 
             <org.apmem.tools.layouts.FlowLayout
@@ -209,19 +243,23 @@
                 >
             </org.apmem.tools.layouts.FlowLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_margin="20dp"
-                android:background="@color/gris_claro"/>
-
         </LinearLayout>
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/selectorCoccion">
 
 
@@ -230,8 +268,9 @@
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
                 android:layout_weight="1"
-                android:textSize="22sp"
+                android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué tipo de cocción buscas?"/>
 
             <org.apmem.tools.layouts.FlowLayout
@@ -244,28 +283,32 @@
                 >
             </org.apmem.tools.layouts.FlowLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_margin="20dp"
-                android:background="@color/gris_claro"/>
-
         </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/selectorOrigen">
-
-
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
                 android:layout_weight="1"
-                android:textSize="22sp"
+                android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué origen buscas?"/>
 
             <org.apmem.tools.layouts.FlowLayout
@@ -278,16 +321,14 @@
                 >
             </org.apmem.tools.layouts.FlowLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_margin="20dp"
-                android:background="@color/gris_claro"/>
-
         </LinearLayout>
 
-
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gris_claro"/>
 
         <Button
             android:layout_width="match_parent"

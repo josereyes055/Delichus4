@@ -22,7 +22,7 @@
     <dimen name="texto_botones">22sp</dimen>
     <dimen name="user_titulo">24sp</dimen>
     <dimen name="rank_numero">80sp</dimen>
-    <dimen name="personas_hicieron_receta">20sp</dimen>
+    <dimen name="personas_hicieron_receta">18sp</dimen>
 
     <!--Activar ayudante-->
 
@@ -98,5 +98,10 @@
     <dimen name="perfil_labels">24sp</dimen>
     <dimen name="receta_texto">24sp</dimen>
     <dimen name="grid_recipe_descripcion_recom">28sp</dimen>
+
+    <!--Filtros-->
+    <dimen name="labels_filtos">26sp</dimen>
+    <dimen name="gradua">32sp</dimen>
+
 
 </resources>

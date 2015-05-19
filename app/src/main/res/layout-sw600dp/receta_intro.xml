@@ -335,8 +335,9 @@ los que no selecciones puedes agregarlos a la lista de compras"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="15dp"
+                        android:layout_width="18dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
                         android:scaleType="fitCenter"
                         android:src="@drawable/persona_calificacion"
                         android:id="@+id/imageView10" />
