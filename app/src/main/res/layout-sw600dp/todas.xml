@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_weight="1">
 
@@ -19,7 +20,6 @@
                 android:layout_height="wrap_content"
                 android:text="Todas las recetas"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:id="@+id/recomendadosTitle"
                 android:textColor="@color/naranja"
@@ -74,7 +74,8 @@
             android:id="@+id/grid_super_op"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:item_margin="8dp"
+            app:item_margin="5dp"
+
             app:column_count="2" />
 
     </LinearLayout>

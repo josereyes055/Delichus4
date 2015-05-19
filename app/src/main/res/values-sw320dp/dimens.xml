@@ -53,6 +53,8 @@
 
     <dimen name="deli_menu">7sp</dimen>
     <dimen name="deli_menu_select">8sp</dimen>
+    <dimen name="responsive_menu">12dp</dimen>
+    <dimen name="responsive_menu_grande">3dp</dimen>
 
     <!--Header-->
 

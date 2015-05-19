@@ -52,6 +52,8 @@
 
     <dimen name="deli_menu">12sp</dimen>
     <dimen name="deli_menu_select">15sp</dimen>
+    <dimen name="responsive_menu">10sp</dimen>
+    <dimen name="responsive_menu_grande">0dp</dimen>
 
     <!--Header-->
 

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -100,11 +101,15 @@ public class MainActivity extends ActionBarActivity {
         btn4.setImageResource(R.drawable.perfil);
         btn5.setImageResource(R.drawable.busqueda);
 
-        btn1.setPadding(10,10,10,10);
-        btn2.setPadding(10,10,10,10);
-        btn3.setPadding(10,10,10,10);
-        btn4.setPadding(10,10,10,10);
-        btn5.setPadding(10,10,10,10);
+        int edward = (int) getResources().getDimension(R.dimen.responsive_menu);
+        int alphonse = (int) getResources().getDimension(R.dimen.responsive_menu_grande);
+
+        btn1.setPadding(edward, edward, edward, edward );
+        btn2.setPadding(edward, edward, edward, edward );
+        btn3.setPadding(edward, edward, edward, edward );
+        btn4.setPadding(edward, edward, edward, edward );
+        btn5.setPadding(edward, edward, edward, edward );
+
 
         TextView textView1 = (TextView)root.findViewById(R.id.delimenu1_text);
         TextView textView2 = (TextView)root.findViewById(R.id.delimenu2_text);
@@ -121,35 +126,35 @@ public class MainActivity extends ActionBarActivity {
             case 0:
                 btn1.startAnimation(animScale);
                 btn1.setImageResource(R.drawable.crearreceta_selec);
-                btn1.setPadding(0,0,0,0);
+                btn1.setPadding(alphonse, alphonse, alphonse, alphonse);
 
                 textView1.setTextSize(selectedSize);
                 break;
             case 1:
                 btn2.startAnimation(animScale);
                 btn2.setImageResource(R.drawable.todas_las_recetas_selec);
-                btn2.setPadding(0,0,0,0);
+                btn2.setPadding(alphonse, alphonse, alphonse, alphonse);
 
                 textView2.setTextSize(selectedSize);
                 break;
             case 2:
                 btn3.startAnimation(animScale);
                 btn3.setImageResource(R.drawable.recomendado_selec);
-                btn3.setPadding(0,0,0,0);
+                btn3.setPadding(alphonse, alphonse, alphonse, alphonse);
 
                 textView3.setTextSize(selectedSize);
                 break;
             case 3:
                 btn4.startAnimation(animScale);
                 btn4.setImageResource(R.drawable.perfil_selec);
-                btn4.setPadding(0,0,0,0);
+                btn4.setPadding(alphonse, alphonse, alphonse, alphonse);
 
                 textView4.setTextSize(selectedSize);
                 break;
             case 4:
                 btn5.startAnimation(animScale);
                 btn5.setImageResource(R.drawable.busqueda_selec);
-                btn5.setPadding(0,0,0,0);
+                btn5.setPadding(alphonse, alphonse, alphonse, alphonse);
 
                 textView5.setTextSize(selectedSize);
                 break;
