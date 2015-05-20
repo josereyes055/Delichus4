@@ -3,6 +3,7 @@ package geekgames.delichus4.seconds;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -52,8 +53,10 @@ public class RegistroUsuario extends ActionBarActivity {
     }
 
     public void insertUser( String nombre, String correo, String pass){
+        String query = "http://www.geekgames.info/dbadmin/test.php?v=10&nombre="+nombre+"&correo="+correo+"&pass="+pass+"&imagen=";
+        Log.i("FUCKING DEBUG", "consulta: "+query);
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=10&nombre="+nombre+"&correo="+correo+"&pass="+pass+"&imagen=",
+                query,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
