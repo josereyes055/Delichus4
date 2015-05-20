@@ -59,6 +59,7 @@ public class PasoFragment extends Fragment{
         mAdapter = new PasoRecetaAdapter(getActivity());
 
         TextView tipo = (TextView)laView.findViewById(R.id.paso_tipo);
+        TextView numero = (TextView)laView.findViewById(R.id.numero_paso);
         TextView descripcion = (TextView)laView.findViewById(R.id.paso_descripcion);
         //TextView tiempo = (TextView)laView.findViewById(R.id.paso_tiempo);
         TwoWayView slider = (TwoWayView)laView.findViewById(R.id.fotosPasos);
@@ -102,6 +103,7 @@ public class PasoFragment extends Fragment{
                 mAdapter.swapRecords(laLista);
 
                 tipo.setText(elTipo);
+                numero.setText(String.valueOf(index+1));
                 descripcion.setText(paso.getString("paso"));
                // tiempo.setText("tiempo: " + paso.getInt("tiempo"));
             }

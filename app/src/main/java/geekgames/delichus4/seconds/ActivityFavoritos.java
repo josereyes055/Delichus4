@@ -186,13 +186,13 @@ public class ActivityFavoritos extends ActionBarActivity {
 
             // Se añade el encabezado
             if(fecha.equals(today) && !currentHeader.equals("FAVORITOS DE HOY")) {
-                records.add(new MiniFicha(-1, "FAVORITOS DE HOY", "",  "", 0));
+                records.add(new MiniFicha(-1, "FAVORITOS DE HOY", "",  "", 0, "", 0));
                 currentHeader = "FAVORITOS DE HOY";
             }else if(fecha.equals(yesterday) && !currentHeader.equals("FAVORITOS DE AYER")) {
-                records.add(new MiniFicha(-1, "FAVORITOS DE AYER", "",  "", 0));
+                records.add(new MiniFicha(-1, "FAVORITOS DE AYER", "",  "", 0,"",0));
                 currentHeader = "FAVORITOS DE AYER";
             }else if(!fecha.equals(yesterday) && !fecha.equals(today) && !currentHeader.equals("FAVORITOS DE ANTES")){
-                records.add(new MiniFicha(-1, "FAVORITOS DE ANTES", "",  "", 0));
+                records.add(new MiniFicha(-1, "FAVORITOS DE ANTES", "",  "", 0,"",0));
                 currentHeader = "FAVORITOS DE ANTES";
             }
 
@@ -220,8 +220,10 @@ public class ActivityFavoritos extends ActionBarActivity {
         String imagen = ficha.getString("imagen");
         String autor = ficha.getString("autor");
         float puntuacion = Float.parseFloat( ficha.getString("puntuacion") );
+        String descripcion = ficha.getString("descripcion");
+        int pasos = ficha.getInt("pasos");
 
-        MiniFicha unaMiniFicha = new MiniFicha(id, nombre, imagen, autor, puntuacion);
+        MiniFicha unaMiniFicha = new MiniFicha(id, nombre, imagen, autor, puntuacion, descripcion,pasos);
         return unaMiniFicha;
     }
 

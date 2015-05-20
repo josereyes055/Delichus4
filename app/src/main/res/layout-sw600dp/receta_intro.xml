@@ -16,7 +16,7 @@
             android:layout_width="fill_parent"
             android:layout_height="250dp"
             android:id="@+id/receta_imagen"
-            android:src="@drawable/img_no_encontrada_recetas"/>
+            android:src="@drawable/img_no_encontrada_recomendado"/>
 
         <geekgames.delichus4.customViews.CircleImage
             android:layout_width="100dp"

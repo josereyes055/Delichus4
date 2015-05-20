@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -44,7 +45,9 @@ public class MiniFichaAdapter extends ArrayAdapter<MiniFicha> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        MiniFicha unaFicha = getItem(position);
+        final MiniFicha unaFicha = getItem(position);
+
+
 
         if(unaFicha.id == -1) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.header, parent, false);
@@ -53,6 +56,16 @@ public class MiniFichaAdapter extends ArrayAdapter<MiniFicha> {
 
         } else {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.mini_ficha, parent, false);
+
+            LinearLayout layou = (LinearLayout)convertView.findViewById(R.id.mini_recipe_holder);
+            layou.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //MainApplication.getInstance().laReceta = unaFicha;
+                    //Log.i("FUCKING DEBUG", "la receta es " + MainApplication.getInstance().laReceta.nombre);
+                    MainApplication.getInstance().exploreRecipe(getContext(), unaFicha.id, unaFicha.nombre, unaFicha.autor, unaFicha.descripcion, unaFicha.pasos);
+                }
+            });
 
             TextView nombre = (TextView) convertView.findViewById(R.id.mini_recipe_nombre);
             ImageView imagen = (ImageView) convertView.findViewById(R.id.mini_recipe_imagen);

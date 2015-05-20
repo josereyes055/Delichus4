@@ -97,8 +97,8 @@ public class OtherUserPage extends ActionBarActivity {
                             favBtn.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Log.i("FUCKING DEBUG", "se va a adherir " + MainApplication.getInstance().laReceta.autor +" como seguido" );
-                                    MainApplication.getInstance().addFollow(MainApplication.getInstance().sp.getInt("userId",0), MainApplication.getInstance().laReceta.idAutor );
+
+                                    MainApplication.getInstance().addFollow(MainApplication.getInstance().sp.getInt("userId",0), Integer.parseInt(idUser) );
                                 }
                             });
                             RatingBar rating = (RatingBar)findViewById(R.id.otro_rating);
@@ -126,16 +126,6 @@ public class OtherUserPage extends ActionBarActivity {
         //MainApplication.getInstance().fetchUserAchievements(  MainApplication.getInstance().getUserId() );
     }
 
-    private void parse(JSONObject json) throws JSONException {
-
-        JSONArray favs = json.getJSONArray("favoritos");
-
-        // Se pasa la lista de recetas a un Array
-        // para poder ordenarlo
-        List<JSONObject> jsonValues = new ArrayList<JSONObject>();
-
-        // Se ordenan por fecha
-    }
 
 
 }

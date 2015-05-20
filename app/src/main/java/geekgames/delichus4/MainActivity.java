@@ -203,12 +203,6 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void exploreRecipe(View view){
-        Intent mainIntent = new Intent().setClass(
-                MainActivity.this, Receta.class);
-        startActivity(mainIntent);
-
-    }
 
     public void buscarFiltros(View view){
         Intent mainIntent = new Intent().setClass(

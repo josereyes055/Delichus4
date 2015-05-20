@@ -69,6 +69,8 @@ public class DescripcionReceta extends Fragment {
 
     Animation animScaleSutile;
 
+    String idReceta;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,7 +92,9 @@ public class DescripcionReceta extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Ficha laReceta = MainApplication.getInstance().laReceta;
+        Intent intent = getActivity().getIntent();
+        idReceta = intent.getStringExtra("id");
+
 
         nombre = (TextView)getView().findViewById(R.id.receta_nombre);
         autor = (TextView)getView().findViewById(R.id.receta_autor);
@@ -107,10 +111,10 @@ public class DescripcionReceta extends Fragment {
         cantidadPersonas = (TextView)getView().findViewById(R.id.cantidad_personas_receta);
 
 
-        fetchReceta(laReceta.id);
+        fetchReceta(idReceta);
     }
 
-    private void fetchReceta(int idReceta){
+    private void fetchReceta(String idReceta){
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=6&recipeId="+idReceta,
                 null,
@@ -136,12 +140,6 @@ public class DescripcionReceta extends Fragment {
         MainApplication.getInstance().getRequestQueue().add(request);
     }
 
-    private void visitAutor(int idAutor){
-        Intent mainIntent = new Intent().setClass(
-                getActivity(), OtherUserPage.class);
-            mainIntent.putExtra("id", String.valueOf(idAutor));
-            startActivity(mainIntent);
-    }
 
     private void setLabels(final JSONObject laReceta) throws JSONException {
 
@@ -153,7 +151,7 @@ public class DescripcionReceta extends Fragment {
             public void onClick(View v) {
                 v.startAnimation(animScaleSutile);
                 try {
-                    visitAutor(laReceta.getInt("idAutor"));
+                    MainApplication.getInstance().visitAutor(getActivity(),laReceta.getInt("idAutor"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -164,7 +162,7 @@ public class DescripcionReceta extends Fragment {
             public void onClick(View v) {
                 v.startAnimation(animScaleSutile);
                 try {
-                    visitAutor(laReceta.getInt("idAutor"));
+                    MainApplication.getInstance().visitAutor(getActivity(),laReceta.getInt("idAutor"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
