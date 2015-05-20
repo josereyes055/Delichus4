@@ -23,6 +23,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -331,7 +332,10 @@ public class Receta extends ActionBarActivity{
     }
 
     public void onCameraClick(View view){
-        view.startAnimation(animScaleSutile);
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.camara);
+        animacion_op.startAnimation(animScaleSutile);
+
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         startActivity(intent);
     }

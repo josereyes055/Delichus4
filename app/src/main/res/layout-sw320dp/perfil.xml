@@ -128,7 +128,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/favoritos"
-                    android:id="@+id/imageView5" />
+                    android:id="@+id/icon_favoritos" />
 
                 <TextView
                     android:layout_marginLeft="15dp"
@@ -137,7 +137,7 @@
                     android:text="Favoritos"
                     android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/imageView5" />
+                    android:layout_toEndOf="@+id/icon_favoritos" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -164,7 +164,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/logros"
-                    android:id="@+id/imageView6" />
+                    android:id="@+id/icon_logros" />
 
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -173,7 +173,7 @@
                     android:text="Logros"
                     android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/imageView6" />
+                    android:layout_toEndOf="@+id/icon_logros" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -200,7 +200,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/listacompras"
-                    android:id="@+id/imageView7" />
+                    android:id="@+id/icon_shopping" />
 
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -209,7 +209,7 @@
                     android:text="Lista de compras"
                     android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/imageView7" />
+                    android:layout_toEndOf="@+id/icon_shopping" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -236,7 +236,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/crearreceta_p"
                     android:alpha="0.6"
-                    android:id="@+id/imageView8" />
+                    android:id="@+id/icon_agregadas" />
 
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -246,7 +246,7 @@
                     android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
                     android:textColor="@color/gris_claro"
-                    android:layout_toEndOf="@+id/imageView8" />
+                    android:layout_toEndOf="@+id/icon_agregadas" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -272,7 +272,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/recientes"
-                    android:id="@+id/imageView9" />
+                    android:id="@+id/icon_cocinadas" />
 
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -281,7 +281,7 @@
                     android:text="Cocinadas recientemente"
                     android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/imageView9" />
+                    android:layout_toEndOf="@+id/icon_cocinadas" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -308,7 +308,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ajustes"
-                    android:id="@+id/imageView10" />
+                    android:id="@+id/icon_ajustes" />
 
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -317,7 +317,7 @@
                     android:text="Ajustes de perfil"
                     android:textSize="@dimen/lables"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/imageView10" />
+                    android:layout_toEndOf="@+id/icon_ajustes" />
 
                 <ImageView
                     android:layout_width="15dp"
