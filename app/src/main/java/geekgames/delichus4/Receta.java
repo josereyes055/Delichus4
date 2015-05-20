@@ -38,8 +38,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -371,8 +376,6 @@ public class Receta extends ActionBarActivity{
                 startActivityForResult(takePictureIntent, CAMERA_IMAGE);
             }
         }
-
-        //startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), CAMERA_IMAGE);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -380,14 +383,15 @@ public class Receta extends ActionBarActivity{
 
         if (resultCode != RESULT_OK) return;
 
-        
+        this.sendPhotoToServer();
+
         if (ShareDialog.canShow(ShareLinkContent.class)) {
 
             // Get the dimensions of the bitmap
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             bmOptions.inJustDecodeBounds = true;
 
-            Bitmap bitMapImage = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+            Bitmap bitMapImage = BitmapFactory.decodeFile("file:"+mCurrentPhotoPath, bmOptions);
 
             SharePhoto photo = new SharePhoto.Builder()
                     .setBitmap(bitMapImage)
@@ -399,6 +403,99 @@ public class Receta extends ActionBarActivity{
 
             shareDialog.show(photoContent);
         }
+    }
+
+    /**
+     * Envia una imagen al servidor por medio de una petición POST
+     */
+    public void sendPhotoToServer(){
+        uploadFile(mCurrentPhotoPath);
+    }
+
+    public int uploadFile(String sourceFileUri) {
+        String upLoadServerUri = "http://www.geekgames.info/dbadmin/php/imgUpload.php";
+        String fileName = sourceFileUri;
+        int serverResponseCode = 0;
+
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+        File sourceFile = new File(sourceFileUri);
+        if (!sourceFile.isFile()) {
+            Log.e("uploadFile", "Source File Does not exist");
+            return 0;
+        }
+        try { // open a URL connection to the Servlet
+            FileInputStream fileInputStream = new FileInputStream(sourceFile);
+            URL url = new URL(upLoadServerUri);
+            conn = (HttpURLConnection) url.openConnection(); // Open a HTTP  connection to  the URL
+            conn.setDoInput(true); // Allow Inputs
+            conn.setDoOutput(true); // Allow Outputs
+            conn.setUseCaches(false); // Don't use a Cached Copy
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Connection", "Keep-Alive");
+            conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+            conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+            conn.setRequestProperty("imagen", fileName);
+            dos = new DataOutputStream(conn.getOutputStream());
+
+            dos.writeBytes(twoHyphens + boundary + lineEnd);
+            dos.writeBytes("Content-Disposition: form-data; name=\"imagen\";filename=\""+ fileName + "\"" + lineEnd);
+            dos.writeBytes(lineEnd);
+
+            bytesAvailable = fileInputStream.available(); // create a buffer of  maximum size
+
+            bufferSize = Math.min(bytesAvailable, maxBufferSize);
+            buffer = new byte[bufferSize];
+
+            // read file and write it into form...
+            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+            while (bytesRead > 0) {
+                dos.write(buffer, 0, bufferSize);
+                bytesAvailable = fileInputStream.available();
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+            }
+
+            // send multipart form data necesssary after file data...
+            dos.writeBytes(lineEnd);
+            dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+            // Responses from the server (code and message)
+            serverResponseCode = conn.getResponseCode();
+            String serverResponseMessage = conn.getResponseMessage();
+
+            Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
+            if(serverResponseCode == 200){
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        //Toast.makeText(this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            //close the streams //
+            fileInputStream.close();
+            dos.flush();
+            dos.close();
+
+        } catch (MalformedURLException ex) {
+
+            ex.printStackTrace();
+            Toast.makeText(this, "MalformedURLException", Toast.LENGTH_SHORT).show();
+            Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("Upload file to server Exception", "Exception : " + e.getMessage(), e);
+        }
+        return serverResponseCode;
     }
 
     private File createImageFile() throws IOException {
@@ -414,7 +511,7 @@ public class Receta extends ActionBarActivity{
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
 
@@ -472,8 +569,4 @@ public class Receta extends ActionBarActivity{
             return laReceta.pasos+2;
         }
     }
-
-
-
-
 }

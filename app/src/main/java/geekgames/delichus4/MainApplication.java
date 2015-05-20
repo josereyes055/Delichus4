@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -16,9 +15,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import geekgames.delichus4.customObjects.*;
 
@@ -122,7 +118,6 @@ public class MainApplication extends Application {
         editor.putInt("userPuntaje",score);
         editor.commit();
     }
-
 
 
 }// end MainApplication
