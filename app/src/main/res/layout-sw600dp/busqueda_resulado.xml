@@ -5,53 +5,60 @@
     android:background="@color/fondo"
     >
 
+
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:paddingBottom="40dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/gradua"
-            android:textColor="@color/gris_sub"
-            android:text="Hoy "/>
+            android:layout_marginTop="50dp"
+            android:paddingBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/gradua"
+                android:textColor="@color/gris_sub"
+                android:text="Hoy "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/gradua"
+                android:textColor="@color/naranja"
+                android:text="podrías "/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/gradua"
+                android:textColor="@color/gris_sub"
+                android:text="comer..."/>
+
+
+        </LinearLayout>
+
+        <View
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/gradua"
-            android:textColor="@color/naranja"
-            android:text="podrías "/>
+            android:layout_height="1dp"
+            android:background="@color/gris_claro"/>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/gradua"
-            android:textColor="@color/gris_sub"
-            android:text="comer"/>
-
+        <com.etsy.android.grid.StaggeredGridView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/grilla_resultados"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:item_margin="5dp"
+            app:column_count="2" />
 
     </LinearLayout>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="cargando..."/>
-
-
-    <com.etsy.android.grid.StaggeredGridView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/grilla_resultados"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:item_margin="5dp"
-        app:column_count="2" />
 
 </RelativeLayout>

@@ -6,6 +6,7 @@
     <color name="fondo_barra">#4C4C4C</color>
     <color name="naranja">#E26F58</color>
     <color name="blanco">#fff</color>
+    <color name="blanco_mimetizado">#fff7f7f7</color>
     <color name="gris_claro">#C2C2C2</color>
     <color name="verde">#ffb0d46f</color>
     <color name="barra_sup">#212121</color>

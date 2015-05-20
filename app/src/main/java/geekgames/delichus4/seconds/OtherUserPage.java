@@ -87,7 +87,7 @@ public class OtherUserPage extends ActionBarActivity {
                             JSONObject userData = jsonObject;
 
                             ImageView foto = (ImageView)findViewById(R.id.other_user_foto);
-                            Picasso.with(getApplicationContext()).load(userData.getString("foto")).placeholder(R.drawable.noob).fit().centerCrop().into(foto);
+                            Picasso.with(getApplicationContext()).load(userData.getString("foto")).placeholder(R.drawable.cargando_perfil).fit().centerCrop().into(foto);
                             TextView nombre = (TextView)findViewById(R.id.su_name);
                             TextView nombre2 = (TextView)findViewById(R.id.su_name_reputacion);
                             TextView titulo = (TextView)findViewById(R.id.otro_perfil_titulo);

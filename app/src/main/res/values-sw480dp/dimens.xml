@@ -44,6 +44,8 @@
     <!--Comentarios-->
 
     <dimen name="user_coment">18sp</dimen>
+    <dimen name="escribir_comentario">22sp</dimen>
+    <dimen name="estrellas_opinion">30sp</dimen>
 
     <!--Crear receta-->
 
@@ -107,6 +109,10 @@
 
     <!--Filtros-->
     <dimen name="labels_filtos">20sp</dimen>
+    <dimen name="gradua">28sp</dimen>
+    <dimen name="custom_button">22sp</dimen>
+    <dimen name="label_siguiente">25sp</dimen>
+
 
 
 </resources>

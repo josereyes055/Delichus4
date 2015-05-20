@@ -10,32 +10,34 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:layout_weight="2"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Selecciona "
+                android:textSize="@dimen/gradua"
                 android:textColor="@color/naranja"
-                android:textSize="@dimen/section_title"/>
+                android:text="Selecciona"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Los filtros que quieres usar "
-                android:textColor="@color/gris_oscuro"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/gradua"
+                android:textColor="@color/gris_sub"
+                android:text=" los filtros que quieres usar"/>
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:padding="5dp"
             android:layout_weight="1"
             android:gravity="center">
 
@@ -55,32 +57,17 @@
                 <geekgames.delichus4.customViews.CustomButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tiempo de Preparación"
-                    style="@style/geekgames.delichus4.customViews.CustomButton"
-                    android:id="@+id/check_tiempo" />
-
-                <geekgames.delichus4.customViews.CustomButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Metodo de cocción"
-                    style="@style/geekgames.delichus4.customViews.CustomButton"
-                    android:id="@+id/check_coccion" />
-
-                <geekgames.delichus4.customViews.CustomButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="Origen"
                     style="@style/geekgames.delichus4.customViews.CustomButton"
                     android:id="@+id/check_origen"
                     android:layout_gravity="center_horizontal" />
 
-
                 <geekgames.delichus4.customViews.CustomButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ingredientes"
+                    android:text="Categoría"
                     style="@style/geekgames.delichus4.customViews.CustomButton"
-                    android:id="@+id/check_ingredientes"
+                    android:id="@+id/check_categoria"
                     android:layout_gravity="center_horizontal" />
 
                 <geekgames.delichus4.customViews.CustomButton
@@ -94,10 +81,28 @@
                 <geekgames.delichus4.customViews.CustomButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Categoría"
+                    android:text="Metodo de cocción"
                     style="@style/geekgames.delichus4.customViews.CustomButton"
-                    android:id="@+id/check_categoria"
+                    android:id="@+id/check_coccion" />
+
+
+                <geekgames.delichus4.customViews.CustomButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiempo de Preparación"
+                    style="@style/geekgames.delichus4.customViews.CustomButton"
+                    android:id="@+id/check_tiempo" />
+
+
+
+                <geekgames.delichus4.customViews.CustomButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredientes"
+                    style="@style/geekgames.delichus4.customViews.CustomButton"
+                    android:id="@+id/check_ingredientes"
                     android:layout_gravity="center_horizontal" />
+
 
                 <!--CheckBox
                     android:layout_width="wrap_content"
@@ -111,25 +116,17 @@
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/btnSelectFiltros"
+        <Button
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:layout_gravity="center"
-            android:padding="20dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2.5"
+            android:text="siguiente"
+            android:gravity="center"
             android:onClick="startConfig"
-            android:background="@color/gris_claro"
-            >
-
-            <ImageView
-                android:layout_gravity="center"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/no_listo"/>
-
-        </LinearLayout>
+            android:background="@color/verde"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/label_siguiente"
+            android:id="@+id/btnSelectFiltros"/>
 
     </LinearLayout>
 

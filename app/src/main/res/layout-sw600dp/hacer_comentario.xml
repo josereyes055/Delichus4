@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/background"
+    android:background="@drawable/recipe_background">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="fill_parent"
+        android:id="@+id/recipe_holder"
+        android:background="@color/fondo">
+
+
+        <geekgames.delichus4.customViews.CircleImage
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/recipe_foto"
+            android:src="@drawable/cargando_perfil"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Revisión por "
+                android:textSize="@dimen/grid_recipe_title"
+                android:id="@+id/comentario_titulo"
+                android:textColor="@color/gris_oscuro"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usuario"
+                android:gravity="center"
+                android:textSize="@dimen/grid_recipe_title"
+                android:id="@+id/comentario_autor"
+                android:textColor="@color/naranja"
+                />
+
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/grid_recipe_title"
+                android:textColor="@color/gris_oscuro"
+                android:text="Cadete de cocina"/>
+
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipe_puntuacion"
+            android:numStars = "5"
+            android:isIndicator="true"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/estrellas_opinion"
+            android:textColor="@color/verde"
+            android:id="@+id/opinion_receta"
+            android:text="Me encantó"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="200dp"
+            android:background="@color/blanco_mimetizado"
+            android:layout_marginTop="15dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/gris_sub"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/escribir_comentario"
+            android:hint="Escribe tu comentario aqui :)"
+            android:textColorHint="@color/gris_claro"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -57,7 +57,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="-40dp"
             android:id="@+id/recipe_foto"
-            android:src="@drawable/noob"
+            android:src="@drawable/cargando_perfil"
             android:layout_centerHorizontal="true" />
 
 

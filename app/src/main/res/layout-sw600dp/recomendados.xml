@@ -81,7 +81,7 @@
             android:layout_marginTop="-45dp"
             android:layout_below="@+id/recipe_imagen"
             android:id="@+id/recipe_foto"
-            android:src="@drawable/noob"
+            android:src="@drawable/cargando_perfil"
             android:layout_centerHorizontal="true" />
 
         <LinearLayout

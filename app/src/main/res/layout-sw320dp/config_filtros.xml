@@ -8,27 +8,27 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:padding="10dp"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/section_title"
+                android:textSize="@dimen/gradua"
                 android:textColor="@color/naranja"
                 android:text="Gradúa "/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/section_title"
+                android:textSize="@dimen/gradua"
                 android:textColor="@color/gris_sub"
                 android:text="los filtros a tu gusto"/>
 
@@ -39,18 +39,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/selectorCantidad">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Cuantas personas son?"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
@@ -66,38 +73,46 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:textSize="22sp"
+                    android:textSize="@dimen/labels_filtos"
                     android:id="@+id/numberPersonas"
                     android:text="0"/>
 
             </LinearLayout>
 
 
-
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gris_claro"/>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/selectorTiempo">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Cuanto tiempo tienes?"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
@@ -113,39 +128,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:textSize="22sp"
+                    android:textSize="@dimen/labels_filtos"
                     android:id="@+id/numberTiempo"
                     android:text="0"/>
 
             </LinearLayout>
 
-
-
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gris_claro"/>
 
         </LinearLayout>
-
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/selectorCategoria">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="20dp"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué categoría buscas?"/>
-
-
 
             <org.apmem.tools.layouts.FlowLayout
                 android:layout_width="fill_parent"
@@ -157,12 +171,11 @@
                 >
             </org.apmem.tools.layouts.FlowLayout>
 
-
-
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gris_claro"/>
 
         </LinearLayout>
@@ -172,12 +185,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/selectorTipo">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="20dp"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué Tipo de plato buscas?"/>
 
@@ -194,16 +212,18 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gris_claro"/>
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/selectorIngredientes">
 
 
@@ -211,6 +231,9 @@
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué ingrediente buscas?"/>
@@ -228,16 +251,18 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gris_claro"/>
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/selectorCoccion">
 
 
@@ -246,6 +271,9 @@
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué tipo de cocción buscas?"/>
@@ -263,23 +291,29 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gris_claro"/>
 
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/selectorOrigen">
-
-
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué origen buscas?"/>
@@ -297,16 +331,20 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gris_claro"/>
 
         </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:text="siguiente"
             android:onClick="setSearch"
+            android:background="@color/verde"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/label_siguiente"
             android:id="@+id/buttonConfigFiltros"/>
 
     </LinearLayout>

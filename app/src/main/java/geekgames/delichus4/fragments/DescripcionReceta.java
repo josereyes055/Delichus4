@@ -201,8 +201,8 @@ public class DescripcionReceta extends Fragment {
                 .fit().centerCrop().into(imagen);
         Picasso.with(getActivity())
                 .load(laReceta.getString("foto"))
-                .placeholder(R.drawable.noob)
-                .error(R.drawable.noob)
+                .placeholder(R.drawable.cargando_perfil)
+                .error(R.drawable.cargando_perfil)
                 .fit().centerCrop().into(foto);
        Picasso.with(getActivity()).load(MainApplication.getInstance().sp.getString("userFoto","")).fit().centerCrop().into(myPhoto);
 

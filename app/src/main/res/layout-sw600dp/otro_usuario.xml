@@ -23,7 +23,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="-90dp"
             android:id="@+id/other_user_foto"
-            android:src="@drawable/noob"/>
+            android:src="@drawable/cargando_perfil"/>
 
         <TextView
             android:layout_width="wrap_content"

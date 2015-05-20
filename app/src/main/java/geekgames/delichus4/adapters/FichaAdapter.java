@@ -90,8 +90,8 @@ public class FichaAdapter extends ArrayAdapter<Ficha> {
                 .fit().centerCrop().into(imagen);
         Picasso.with(idkContext)
                 .load(unaFicha.foto)
-                .placeholder(R.drawable.noob)
-                .error(R.drawable.noob)
+                .placeholder(R.drawable.cargando_perfil)
+                .error(R.drawable.cargando_perfil)
                 .fit().centerCrop().into(foto);
         autor.setText(unaFicha.autor);
         puntuacion.setRating(unaFicha.puntuacion);

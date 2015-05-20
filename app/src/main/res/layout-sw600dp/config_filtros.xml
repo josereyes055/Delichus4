@@ -39,10 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingLeft="20dp"
             android:id="@+id/selectorCantidad">
 
             <TextView
@@ -50,12 +48,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Cuantas personas son?"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
@@ -77,14 +79,16 @@
 
                 </LinearLayout>
 
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/gris_claro"/>
+
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,8 +96,6 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
             android:id="@+id/selectorTiempo">
 
             <TextView
@@ -101,12 +103,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Cuanto tiempo tienes?"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
@@ -128,30 +134,29 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/gris_claro"/>
+
         </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/gris_claro"/>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingLeft="20dp"
             android:id="@+id/selectorCategoria">
 
             <TextView
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:paddingBottom="20dp"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué categoría buscas?"/>
@@ -159,6 +164,7 @@
             <org.apmem.tools.layouts.FlowLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal"
                 xmlns:f="http://schemas.android.com/apk/res/geekgames.delichus4"
                 f:weightDefault="1.0"
@@ -166,29 +172,30 @@
                 >
                 </org.apmem.tools.layouts.FlowLayout>
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/gris_claro"/>
+
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingLeft="20dp"
             android:id="@+id/selectorTipo">
 
                 <TextView
                     android:gravity="start"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
                     android:paddingBottom="20dp"
                     android:textSize="@dimen/labels_filtos"
                     android:text="¿Qué Tipo de plato buscas?"/>
@@ -196,6 +203,7 @@
                 <org.apmem.tools.layouts.FlowLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     xmlns:f="http://schemas.android.com/apk/res/geekgames.delichus4"
                     f:weightDefault="1.0"
                     android:orientation="horizontal"
@@ -203,24 +211,21 @@
                     >
                 </org.apmem.tools.layouts.FlowLayout>
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/gris_claro"/>
 
         </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/gris_claro"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingLeft="20dp"
             android:id="@+id/selectorIngredientes">
 
 
@@ -229,6 +234,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:layout_weight="1"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué ingrediente buscas?"/>
@@ -236,6 +243,7 @@
             <org.apmem.tools.layouts.FlowLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal"
                 android:id="@+id/flowIngredientes"
                 xmlns:f="http://schemas.android.com/apk/res/geekgames.delichus4"
@@ -243,23 +251,21 @@
                 >
             </org.apmem.tools.layouts.FlowLayout>
 
-        </LinearLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/gris_claro"/>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/gris_claro"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingLeft="20dp"
             android:id="@+id/selectorCoccion">
 
 
@@ -269,6 +275,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:layout_weight="1"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué tipo de cocción buscas?"/>
@@ -276,6 +284,7 @@
             <org.apmem.tools.layouts.FlowLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 xmlns:f="http://schemas.android.com/apk/res/geekgames.delichus4"
                 f:weightDefault="1.0"
                 android:orientation="horizontal"
@@ -283,23 +292,23 @@
                 >
             </org.apmem.tools.layouts.FlowLayout>
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/gris_claro"/>
+
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/gris_claro"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingLeft="20dp"
             android:id="@+id/selectorOrigen">
 
             <TextView
@@ -307,6 +316,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:layout_weight="1"
                 android:textSize="@dimen/labels_filtos"
                 android:text="¿Qué origen buscas?"/>
@@ -314,6 +325,7 @@
             <org.apmem.tools.layouts.FlowLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 xmlns:f="http://schemas.android.com/apk/res/geekgames.delichus4"
                 f:weightDefault="1.0"
                 android:orientation="horizontal"
@@ -321,20 +333,24 @@
                 >
             </org.apmem.tools.layouts.FlowLayout>
 
-        </LinearLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/gris_claro"/>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/gris_claro"/>
+        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
+            android:layout_marginTop="-41dp"
             android:text="siguiente"
             android:onClick="setSearch"
+            android:background="@color/verde"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/label_siguiente"
             android:id="@+id/buttonConfigFiltros"/>
 
     </LinearLayout>

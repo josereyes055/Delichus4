@@ -23,7 +23,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="-50dp"
             android:id="@+id/receta_foto"
-            android:src="@drawable/noob"
+            android:src="@drawable/cargando_perfil"
             android:onClick="viewOtherUser"/>
 
         <LinearLayout
@@ -239,7 +239,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
         <geekgames.delichus4.customViews.CircleImage
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/noob"
+            android:src="@drawable/cargando_perfil"
             android:id="@+id/my_photo"/>
 
         <TextView

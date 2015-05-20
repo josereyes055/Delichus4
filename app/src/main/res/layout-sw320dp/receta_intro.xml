@@ -24,7 +24,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="-35dp"
         android:id="@+id/receta_foto"
-        android:src="@drawable/noob"/>
+        android:src="@drawable/cargando_perfil"/>
 
     <LinearLayout
         android:layout_margin="10dp"
@@ -254,7 +254,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
-            android:src="@drawable/noob"
+            android:src="@drawable/cargando_perfil"
             android:id="@+id/my_photo"/>
 
         <TextView
