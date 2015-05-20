@@ -16,7 +16,7 @@
             android:layout_width="fill_parent"
             android:layout_height="200dp"
             android:id="@+id/receta_imagen"
-            android:src="@drawable/img_no_encontrada_recetas"/>
+            android:src="@drawable/img_no_encontrada_recomendado"/>
 
     <geekgames.delichus4.customViews.CircleImage
         android:layout_gravity="center"
@@ -380,6 +380,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
                android:layout_marginLeft="30dp"
                android:id="@+id/compartir"
                android:src="@drawable/compartir"
+               android:onClick="onShareRecipe"
                android:background="@null" />
 
        </LinearLayout>

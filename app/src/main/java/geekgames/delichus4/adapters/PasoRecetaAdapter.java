@@ -47,7 +47,7 @@ public class PasoRecetaAdapter extends ArrayAdapter<ImagenPaso> {
 
         ImageView foto = (ImageView) convertView.findViewById(R.id.imagen_paso_u);
         if (imgPRecord.imagen.equalsIgnoreCase("empty")){
-            Log.i("FUCKING DEBUG", "imagen vacia creada" );
+            //Log.i("FUCKING DEBUG", "imagen vacia creada" );
             Drawable drw = convertView.getResources().getDrawable(R.drawable.img_paso_no_encontrado);
             foto.setImageDrawable(drw);
         }else {

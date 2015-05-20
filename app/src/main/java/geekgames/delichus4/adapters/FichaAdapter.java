@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -52,22 +53,25 @@ public class FichaAdapter extends ArrayAdapter<Ficha> {
 
         final Ficha unaFicha = getItem(position);
 
+        LinearLayout layou = (LinearLayout)convertView.findViewById(R.id.recipe_holder);
+        layou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //MainApplication.getInstance().laReceta = unaFicha;
+                //Log.i("FUCKING DEBUG", "la receta es " + MainApplication.getInstance().laReceta.nombre);
+                MainApplication.getInstance().exploreRecipe(getContext(), unaFicha.id, unaFicha.nombre, unaFicha.descripcion, unaFicha.imagen, unaFicha.pasos);
+            }
+        });
+
 
         TextView nombre = (TextView) convertView.findViewById(R.id.recipe_nombre);
         ImageView imagen = (ImageView) convertView.findViewById(R.id.recipe_imagen);
-        imagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainApplication.getInstance().laReceta = unaFicha;
-                //Log.i("FUCKING DEBUG", "la receta es " + MainApplication.getInstance().laReceta.nombre);
-                ((MainActivity)getContext()).exploreRecipe(v);
-            }
-        });
         ImageView favBtn = (ImageView)convertView.findViewById(R.id.recipe_fav);
         favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Log.i("FUCKING DEBUG", "se va a adherir " + unaFicha.nombre +" como favorito" );
+                v.setBackgroundResource(R.drawable.fav_peque_on);
                 v.startAnimation(animScale);
                 MainApplication.mp.start();
                 MainApplication.getInstance().addFav( MainApplication.getInstance().sp.getInt("userId",0), unaFicha.id );

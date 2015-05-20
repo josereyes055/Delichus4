@@ -23,6 +23,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -49,25 +50,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import geekgames.delichus4.adapters.PasoAdapter;
-import geekgames.delichus4.customObjects.Ficha;
 import geekgames.delichus4.customViews.CustomPager;
 import geekgames.delichus4.fragments.ActivarAyudante;
 import geekgames.delichus4.fragments.CompleteReceta;
 import geekgames.delichus4.fragments.DescripcionReceta;
 import geekgames.delichus4.fragments.PasoFragment;
-import geekgames.delichus4.seconds.OtherUserPage;
 
 public class Receta extends ActionBarActivity{
 
     private static final int CAMERA_IMAGE = 1;
-    Ficha laReceta = MainApplication.getInstance().laReceta;
-    Animation animScale;
+       Animation animScale;
     Animation animScaleSutile;
     Animation animScaleRectangular;
 
     SectionsPagerAdapter mSectionsPagerAdapter;
-    PasoAdapter mAdapter;
     CustomPager mViewPager;
     //ViewPager mViewPager;
     TextToSpeech ttobj;
@@ -81,6 +77,11 @@ public class Receta extends ActionBarActivity{
     CallbackManager callbackManager;
     ShareDialog shareDialog;
     String mCurrentPhotoPath;
+
+    String nombreReceta;
+    String descripcionReceta;
+    String imagenReceta;
+    String pasosReceta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class Receta extends ActionBarActivity{
         // Set up the ViewPager with the sections adapter.
         mViewPager = (CustomPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        setTitle(laReceta.nombre);
+
 
         prev = (ImageButton) findViewById(R.id.atras);
         next = (ImageButton) findViewById(R.id.adelantar);
@@ -121,6 +122,13 @@ public class Receta extends ActionBarActivity{
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);
+
+        Intent intent = getIntent();
+        nombreReceta = intent.getStringExtra("nombre");
+        descripcionReceta = intent.getStringExtra("descripcion");
+        imagenReceta = intent.getStringExtra("imagen");
+        pasosReceta = intent.getStringExtra("pasos");
+
 
     }
 
@@ -201,7 +209,12 @@ public class Receta extends ActionBarActivity{
         Drawable drawPrev = getResources().getDrawable(R.drawable.atrasar);
         Drawable drawPlay = getResources().getDrawable(R.drawable.play);
         Drawable drawNexr = getResources().getDrawable(R.drawable.adelantar);
-        Drawable drawSpeak = getResources().getDrawable(R.drawable.asistente);
+        Drawable drawSpeak;
+        if( laVieja ){
+            drawSpeak = getResources().getDrawable(R.drawable.asistente);
+        }else {
+            drawSpeak = getResources().getDrawable(R.drawable.no_asistente);
+        }
 
         prev.setImageDrawable(drawPrev);
         play.setImageDrawable(drawPlay);
@@ -324,7 +337,10 @@ public class Receta extends ActionBarActivity{
     }
 
     public void onCameraClick(View view){
-        view.startAnimation(animScaleSutile);
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.camara);
+        animacion_op.startAnimation(animScaleSutile);
+
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         startActivity(intent);
     }
@@ -348,9 +364,9 @@ public class Receta extends ActionBarActivity{
 
         if (ShareDialog.canShow(ShareLinkContent.class)) {
             ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                    .setContentTitle(this.laReceta.nombre)
-                    .setContentDescription(this.laReceta.descripcion)
-                    .setImageUrl(Uri.parse(this.laReceta.imagen))
+                    .setContentTitle(this.nombreReceta)
+                    .setContentDescription(this.descripcionReceta)
+                    .setImageUrl(Uri.parse(this.imagenReceta))
                     .build();
 
             shareDialog.show(linkContent);
@@ -520,15 +536,17 @@ public class Receta extends ActionBarActivity{
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
-
+        Intent intent = getIntent();
+        String lpasosReceta = intent.getStringExtra("pasos");
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            int numPasos = Integer.parseInt(lpasosReceta);
 
             String text = "Saludos";
-            int totalPasos = laReceta.pasos+1;
+            int totalPasos = numPasos+1;
 
             switch (position){
                 case 0:
@@ -566,7 +584,11 @@ public class Receta extends ActionBarActivity{
 
         @Override
         public int getCount() {
-            return laReceta.pasos+2;
+            Intent intent = getIntent();
+            String lpasosReceta = intent.getStringExtra("pasos");
+            Log.i("FUCKING DEBUG", "los pasos: "+ lpasosReceta);
+            int result = Integer.parseInt(lpasosReceta);
+            return result+2;
         }
     }
 }

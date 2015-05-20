@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,17 +22,23 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.lucasr.twowayview.TwoWayView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
+import geekgames.delichus4.adapters.PasoRecetaAdapter;
+import geekgames.delichus4.customObjects.ImagenPaso;
 
 public class OtherUserPage extends ActionBarActivity {
 
     String idUser;
     private String currentHeader = "";
+    private PasoRecetaAdapter aportesAdapter;
+    private PasoRecetaAdapter agregadasAdapter;
+    ScrollView sv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,17 @@ public class OtherUserPage extends ActionBarActivity {
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         idUser = intent.getStringExtra("id");
+        sv = (ScrollView)findViewById(R.id.otroscrolldemierda);
+        sv.setVisibility(View.INVISIBLE);
+        aportesAdapter = new PasoRecetaAdapter(getApplicationContext());
+        agregadasAdapter = new PasoRecetaAdapter(getApplicationContext());
+
+        TwoWayView sliderAportes = (TwoWayView)findViewById(R.id.fotos_aportes);
+        TwoWayView sliderAgregadas = (TwoWayView)findViewById(R.id.fotos_recetas_agregadas);
+        sliderAportes.setAdapter(aportesAdapter);
+        sliderAgregadas.setAdapter(agregadasAdapter);
+
+
         fetch();
 
 
@@ -76,7 +95,7 @@ public class OtherUserPage extends ActionBarActivity {
     }
 
     private void fetch() {
-
+        Toast.makeText(getApplicationContext(), "Cargando información del usuario", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=4&userId="+idUser,
                 null,
@@ -97,10 +116,52 @@ public class OtherUserPage extends ActionBarActivity {
                             favBtn.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Log.i("FUCKING DEBUG", "se va a adherir " + MainApplication.getInstance().laReceta.autor +" como seguido" );
-                                    MainApplication.getInstance().addFollow(MainApplication.getInstance().sp.getInt("userId",0), MainApplication.getInstance().laReceta.idAutor );
+
+                                    MainApplication.getInstance().addFollow(MainApplication.getInstance().sp.getInt("userId",0), Integer.parseInt(idUser) );
                                 }
                             });
+                            int indiceinventado = 0;
+                            ArrayList<ImagenPaso> laListaAgregadas = new ArrayList<>();
+                            ArrayList<ImagenPaso> laListaAportes = new ArrayList<>();
+
+                            if (indiceinventado > 0) {
+                                //for (int i = 0; i < indiceinventado; i++) {
+                                    //String unString = lasFotos.getString(i);
+
+                                    //ImagenPaso unaImagen = new ImagenPaso(unString);
+                                    //laLista.add(unaImagen);
+
+                               // }
+                            }
+
+                            if (indiceinventado < 2) {
+                                for (int i = 0; i < 3; i++) {
+                                    ImagenPaso otraImagen = new ImagenPaso("empty");
+                                    laListaAgregadas.add(otraImagen);
+                                }
+                            }
+
+                            if (indiceinventado > 0) {
+                                //for (int i = 0; i < indiceinventado; i++) {
+                                //String unString = lasFotos.getString(i);
+
+                                //ImagenPaso unaImagen = new ImagenPaso(unString);
+                                //laLista.add(unaImagen);
+
+                                // }
+                            }
+
+                            if (indiceinventado < 2) {
+                                for (int i = 0; i < 3; i++) {
+                                    ImagenPaso otraImagen = new ImagenPaso("empty");
+                                    laListaAportes.add(otraImagen);
+                                }
+                            }
+
+
+                            agregadasAdapter.swapRecords(laListaAgregadas);
+                            aportesAdapter.swapRecords(laListaAportes);
+
                             RatingBar rating = (RatingBar)findViewById(R.id.otro_rating);
                             nombre.setText(userData.getString("nombre") );
                             nombre2.setText( userData.getString("nombre") );
@@ -108,6 +169,12 @@ public class OtherUserPage extends ActionBarActivity {
                             nivel.setText(userData.getString("nivel"));
                             reputa.setText(userData.getInt("promedio")+".0");
                             rating.setRating(userData.getInt("promedio"));
+
+                            sv.smoothScrollTo(0, 0);
+                            AlphaAnimation animate_apear = new AlphaAnimation(0,1);
+                            animate_apear.setDuration(400);
+                            animate_apear.setFillAfter(true);
+                            sv.startAnimation(animate_apear);
 
                         }
                         catch(JSONException e) {
@@ -126,16 +193,6 @@ public class OtherUserPage extends ActionBarActivity {
         //MainApplication.getInstance().fetchUserAchievements(  MainApplication.getInstance().getUserId() );
     }
 
-    private void parse(JSONObject json) throws JSONException {
-
-        JSONArray favs = json.getJSONArray("favoritos");
-
-        // Se pasa la lista de recetas a un Array
-        // para poder ordenarlo
-        List<JSONObject> jsonValues = new ArrayList<JSONObject>();
-
-        // Se ordenan por fecha
-    }
 
 
 }

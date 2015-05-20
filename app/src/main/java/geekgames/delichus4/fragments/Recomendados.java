@@ -105,9 +105,8 @@ public class Recomendados extends Fragment {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animScaleSutile);
-                MainApplication.getInstance().laReceta = unaFicha;
-                Log.i("FUCKING DEBUG", "la receta es " + MainApplication.getInstance().laReceta.nombre);
-                ((MainActivity)getActivity()).exploreRecipe(v);
+                Log.i("FUCKING DEBUG", "la receta es " + unaFicha.nombre);
+                MainApplication.getInstance().exploreRecipe(getActivity(),unaFicha.id, unaFicha.nombre, unaFicha.descripcion, unaFicha.imagen, unaFicha.pasos);
             }
         });
         ImageView favBtn = (ImageView)getView().findViewById(R.id.recomendado_fav);
@@ -126,7 +125,7 @@ public class Recomendados extends Fragment {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animScaleSutile);
-                    visitAutor(idAutor);
+                    MainApplication.getInstance().visitAutor(getActivity(),idAutor);
             }
         });
         TextView autorV = (TextView) getView().findViewById(R.id.recipe_autor);
@@ -134,7 +133,7 @@ public class Recomendados extends Fragment {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animScaleSutile);
-                visitAutor(idAutor);
+                MainApplication.getInstance().visitAutor(getActivity(),idAutor);
             }
         });
         RatingBar puntuacionV = (RatingBar) getView().findViewById(R.id.recipe_puntuacion);
@@ -151,6 +150,7 @@ public class Recomendados extends Fragment {
         Picasso.with(getActivity())
                 .load(unaFicha.foto)
                 .placeholder(R.drawable.noob)
+                .placeholder(R.drawable.cargando_perfil)
                 .error(R.drawable.noob)
                 .fit().centerCrop().into(fotoV);
         autorV.setText(unaFicha.autor);
@@ -158,13 +158,5 @@ public class Recomendados extends Fragment {
         puntuacionV.setRating(unaFicha.puntuacion);
 
     }
-
-    private void visitAutor(int idAutor){
-        Intent mainIntent = new Intent().setClass(
-                getActivity(), OtherUserPage.class);
-        mainIntent.putExtra("id", String.valueOf(idAutor));
-        startActivity(mainIntent);
-    }
-
 
 }

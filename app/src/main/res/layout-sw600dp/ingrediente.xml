@@ -4,7 +4,7 @@
     android:layout_height="45dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="5dp"
@@ -46,10 +46,10 @@
 
         <TextView
             android:textSize="@dimen/ingredientes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ingrediente"
-        android:id="@+id/ingrediente_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ingrediente"
+            android:id="@+id/ingrediente_nombre"
             android:ellipsize="none" />
 
 

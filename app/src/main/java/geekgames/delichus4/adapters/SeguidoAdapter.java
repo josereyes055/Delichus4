@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.customObjects.Seguido;
 
@@ -37,9 +39,19 @@ public class SeguidoAdapter extends ArrayAdapter<Seguido> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Seguido seguidoRecord = getItem(position);
+        final Seguido seguidoRecord = getItem(position);
 
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.min_user, parent, false);
+
+            LinearLayout layou = (LinearLayout)convertView.findViewById(R.id.contenedor_mini_user);
+            layou.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //MainApplication.getInstance().laReceta = unaFicha;
+                    //Log.i("FUCKING DEBUG", "la receta es " + MainApplication.getInstance().laReceta.nombre);
+                    MainApplication.getInstance().visitAutor(getContext(), seguidoRecord.id);
+                }
+            });
 
             // NOTE: You would normally use the ViewHolder pattern here
             TextView nombre = (TextView) convertView.findViewById(R.id.follow_nombre);

@@ -1,6 +1,8 @@
 package geekgames.delichus4;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
@@ -17,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import geekgames.delichus4.customObjects.*;
+import geekgames.delichus4.seconds.OtherUserPage;
 
 
 public class MainApplication extends Application {
@@ -26,9 +29,31 @@ public class MainApplication extends Application {
     //public Usuario usuario;
     public static MediaPlayer mp;
 
-    public Ficha laReceta;
+    //public Ficha laReceta;
     public JSONArray losPasos;
     public SharedPreferences sp;
+
+
+    public void exploreRecipe( Context ctx, int idReceta, String nombre, String descripcion, String imagen, int pasos ){
+        Intent mainIntent = new Intent().setClass(
+                ctx.getApplicationContext(), Receta.class);
+        mainIntent.putExtra("id", String.valueOf(idReceta));
+        mainIntent.putExtra("nombre", nombre);
+        mainIntent.putExtra("descripcion", descripcion);
+        mainIntent.putExtra("imagen", imagen);
+        mainIntent.putExtra("pasos", String.valueOf(pasos));
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(mainIntent);
+    }
+
+    public void visitAutor(Context ctx, int idAutor){
+        Intent mainIntent = new Intent().setClass(
+                ctx.getApplicationContext(), OtherUserPage.class);
+
+        mainIntent.putExtra("id", String.valueOf(idAutor));
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(mainIntent);
+    }
 
     @Override
     public void onCreate() {

@@ -2,6 +2,7 @@ package geekgames.delichus4.fragments;
 
 
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +61,9 @@ public class PasoFragment extends Fragment{
         mAdapter = new PasoRecetaAdapter(getActivity());
 
         TextView tipo = (TextView)laView.findViewById(R.id.paso_tipo);
+        TextView numero = (TextView)laView.findViewById(R.id.numero_paso);
         TextView descripcion = (TextView)laView.findViewById(R.id.paso_descripcion);
+        ImageView imagen = (ImageView)laView.findViewById(R.id.paso_imagen);
         //TextView tiempo = (TextView)laView.findViewById(R.id.paso_tiempo);
         TwoWayView slider = (TwoWayView)laView.findViewById(R.id.fotosPasos);
         slider.setAdapter(mAdapter);
@@ -102,6 +106,13 @@ public class PasoFragment extends Fragment{
                 mAdapter.swapRecords(laLista);
 
                 tipo.setText(elTipo);
+
+                int idDraw = getResources().getIdentifier("paso"+paso.getInt("tipo"), "drawable", getActivity().getPackageName());
+                if( idDraw != 0){
+                    imagen.setImageResource(idDraw);
+                }
+
+                numero.setText(String.valueOf(index+1));
                 descripcion.setText(paso.getString("paso"));
                // tiempo.setText("tiempo: " + paso.getInt("tiempo"));
             }

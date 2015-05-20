@@ -115,7 +115,7 @@
                      android:layout_width="60dp"
                      android:layout_height="60dp"
                      android:src="@drawable/gestion_seguidos"
-                     android:id="@+id/ico_follow" />
+                     android:id="@+id/icon_seguir" />
 
                  <TextView
                      android:layout_marginLeft="15dp"
@@ -124,7 +124,7 @@
                      android:text="Personas a las que sigues"
                      android:textSize="@dimen/lables"
                      android:layout_centerVertical="true"
-                     android:layout_toEndOf="@+id/ico_follow" />
+                     android:layout_toEndOf="@+id/icon_seguir" />
 
                  <ImageView
                      android:layout_width="25dp"

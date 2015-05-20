@@ -120,6 +120,7 @@
             android:id="@+id/camara"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="20dp"
+            android:onClick="onCameraClick"
             android:background="@null"/>
 
         <org.lucasr.twowayview.TwoWayView
