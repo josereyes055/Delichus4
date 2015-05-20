@@ -80,6 +80,7 @@
         android:scaleType="fitCenter"
         android:layout_gravity="center_horizontal"
         android:background="@null"
+        android:onClick="onTakePictureRecipe"
         android:adjustViewBounds="false" />
 
     </LinearLayout>

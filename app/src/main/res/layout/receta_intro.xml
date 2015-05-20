@@ -360,6 +360,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
                 android:layout_rowSpan="2"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="40dp"
+                android:onClick="onShareRecipe"
                 android:background="@null"
                 android:layout_gravity="top" />
 

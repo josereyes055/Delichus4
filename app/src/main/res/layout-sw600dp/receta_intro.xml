@@ -362,6 +362,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
                 android:layout_marginLeft="100dp"
                 android:id="@+id/compartir"
                 android:src="@drawable/compartir"
+                android:onClick="onShareRecipe"
                 android:background="@null" />
 
 

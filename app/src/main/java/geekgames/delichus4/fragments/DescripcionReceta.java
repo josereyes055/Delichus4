@@ -80,6 +80,7 @@ public class DescripcionReceta extends Fragment {
         mAdapter = new IngredienteAdapter(getActivity());
         listView.setAdapter(mAdapter);
         sv = (ScrollView)rootView.findViewById(R.id.scrolldemierda);
+        sv.setVisibility(View.INVISIBLE);
         animScaleSutile = AnimationUtils.loadAnimation(getActivity(), R.anim.scale_button_sutile_animation);
 
         listComentarios = (ListView) rootView.findViewById((R.id.lista_comentarios));
@@ -115,6 +116,7 @@ public class DescripcionReceta extends Fragment {
     }
 
     private void fetchReceta(String idReceta){
+        Toast.makeText(getActivity(), "Cargando receta", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=6&recipeId="+idReceta,
                 null,
@@ -215,12 +217,10 @@ public class DescripcionReceta extends Fragment {
         MainApplication.getInstance().losPasos = laReceta.getJSONArray("steps");
 
         sv.smoothScrollTo(0, 0);
-        AlphaAnimation animate = new AlphaAnimation(0,1);
-        animate.setDuration(250);
-
-        animate.setFillAfter(true);
-        sv.startAnimation(animate);
-        sv.setVisibility(View.VISIBLE);
+        AlphaAnimation animate_apear = new AlphaAnimation(0,1);
+        animate_apear.setDuration(400);
+        animate_apear.setFillAfter(true);
+        sv.startAnimation(animate_apear);
     }
 
 
