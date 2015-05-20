@@ -182,9 +182,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void openLogros(View view){
-        view.startAnimation(animScale);
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.icon_logros);
+        animacion_op.startAnimation(animScale);
+
         Intent mainIntent = new Intent().setClass(
-               MainActivity.this, ActivityLogros.class);
+                MainActivity.this, ActivityLogros.class);
         startActivity(mainIntent);
 
     }
@@ -192,7 +195,7 @@ public class MainActivity extends ActionBarActivity {
     public void showDialog(View view){
         view.startAnimation(animScale);
         ListDialog list = new ListDialog();
-        list.show(getFragmentManager(),"unTag");
+        list.show(getFragmentManager(), "unTag");
     }
 
     public void gotoPage(View view){
@@ -225,28 +228,61 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void openFavoritos(View view){
-        view.startAnimation(animScale);
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.icon_favoritos);
+        animacion_op.startAnimation(animScale);
+
         Intent mainIntent = new Intent().setClass(
                 MainActivity.this, ActivityFavoritos.class);
         startActivity(mainIntent);
     }
 
     public void openShoppingList(View view){
-        view.startAnimation(animScale);
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.icon_shopping);
+        animacion_op.startAnimation(animScale);
+
         Intent mainIntent = new Intent().setClass(
                 MainActivity.this, ActivityShoppingList.class);
         startActivity(mainIntent);
     }
 
     public void openAjustes(View view){
-        view.startAnimation(animScale);
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.icon_ajustes);
+        animacion_op.startAnimation(animScale);
+
         Intent mainIntent = new Intent().setClass(
                 MainActivity.this, ActivityAjustes.class);
         startActivity(mainIntent);
     }
+//
+//    public void openCocinadasReciente(View view){
+//
+//        ImageView animacion_op = (ImageView)findViewById(R.id.icon_cocinadas);
+//        animacion_op.startAnimation(animScale);
+//
+//        Intent mainIntent = new Intent().setClass(
+//                MainActivity.this, ActivityAjustes.class);
+//        startActivity(mainIntent);
+//    }
+//
+//    public void openAgregadasReciente(View view){
+//
+//        ImageView animacion_op = (ImageView)findViewById(R.id.icon_agregadas);
+//        animacion_op.startAnimation(animScale);
+//
+//        Intent mainIntent = new Intent().setClass(
+//                MainActivity.this, ActivityAjustes.class);
+//        startActivity(mainIntent);
+//    }
+
 
     public void openSeguidos(View view){
-        view.startAnimation(animScale);
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.icon_seguir);
+        animacion_op.startAnimation(animScale);
+
         Intent mainIntent = new Intent().setClass(
                 MainActivity.this, ActivitySeguidos.class);
         startActivity(mainIntent);
