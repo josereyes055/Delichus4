@@ -375,6 +375,9 @@ public class Receta extends ActionBarActivity{
 
     public void onTakePictureRecipe(View view){
 
+        ImageView animacion_op = (ImageView)findViewById(R.id.boton_camara_grande);
+        animacion_op.startAnimation(animScaleSutile);
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
