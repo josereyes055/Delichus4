@@ -348,7 +348,8 @@ los que no selecciones puedes agregarlos a la lista de compras"
                         android:textSize="@dimen/personas_hicieron_receta"
                         android:layout_marginTop="9dp"
                         android:textColor="@color/gris_sub"
-                        android:text="123456"
+                        android:layout_marginLeft="5dp"
+                        android:text="2"
                         />
 
                 </LinearLayout>

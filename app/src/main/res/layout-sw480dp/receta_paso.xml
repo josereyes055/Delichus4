@@ -89,7 +89,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:src="@drawable/cocer"
+            android:src="@drawable/img_no_encontrada_recetas"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:id="@+id/paso_imagen"/>
