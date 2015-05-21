@@ -49,9 +49,9 @@ public class IngredienteAdapter extends ArrayAdapter<Ingrediente>{
         TextView cantidad = (TextView) convertView.findViewById(R.id.ingrediente_cantidad);
         TextView medida = (TextView) convertView.findViewById(R.id.ingrediente_unidad);
 
-        nombre.setText(" "+ingreRecord.getNombre());
-        cantidad.setText(ingreRecord.getCantidad().toString());
-        medida.setText(ingreRecord.getMedida());
+        nombre.setText(" "+ingreRecord.nombre);
+        cantidad.setText(ingreRecord.cantidad.toString());
+        medida.setText(ingreRecord.medida);
 
 
 

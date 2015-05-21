@@ -47,8 +47,6 @@ public class SeguidoAdapter extends ArrayAdapter<Seguido> {
             layou.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //MainApplication.getInstance().laReceta = unaFicha;
-                    //Log.i("FUCKING DEBUG", "la receta es " + MainApplication.getInstance().laReceta.nombre);
                     MainApplication.getInstance().visitAutor(getContext(), seguidoRecord.id);
                 }
             });

@@ -235,7 +235,7 @@ public class DescripcionReceta extends Fragment {
             Double cantidad = ing.getDouble("cantidad");
             String unidad = ing.getString("medida");
 
-            Ingrediente ingrediente = new Ingrediente(nombre, cantidad, unidad);
+            Ingrediente ingrediente = new Ingrediente(0,nombre, cantidad, unidad);
             Log.i("FUCKING DEBUG", "ingrediente añadido: "+nombre);
             records.add(ingrediente);
         }
@@ -253,8 +253,9 @@ public class DescripcionReceta extends Fragment {
             String foto = ing.getString("foto");
             String autor = ing.getString("autor");
             String coment = ing.getString("comentario");
+            int idAutorComentario = ing.getInt("idAutor");
 
-            Comentario comentario = new Comentario(foto, autor, coment);
+            Comentario comentario = new Comentario(foto, autor, coment, idAutorComentario);
             Log.i("FUCKING DEBUG", "comentario añadido: "+autor);
             records.add(comentario);
         }

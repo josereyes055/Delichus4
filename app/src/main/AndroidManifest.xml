@@ -67,6 +67,16 @@
         </activity>
 
         <activity
+            android:name=".BusquedaIngredientes"
+            android:parentActivityName="geekgames.delichus4.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Custom"
+            android:label="@string/app_name" >
+
+        </activity>
+
+        <activity
             android:name="geekgames.delichus4.seconds.ActivityLogros"
             android:parentActivityName="geekgames.delichus4.MainActivity"
             android:configChanges="orientation"

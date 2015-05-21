@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.customObjects.Comentario;
 
@@ -48,7 +49,19 @@ public class ComentarioAdapter extends ArrayAdapter<Comentario> {
 
 
         TextView nombre = (TextView) convertView.findViewById(R.id.comentario_nombre);
+        nombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainApplication.getInstance().visitAutor(getContext(), comentarioRecord.idAutor);
+            }
+        });
         ImageView foto = (ImageView) convertView.findViewById(R.id.comentario_imagen);
+        foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainApplication.getInstance().visitAutor(getContext(), comentarioRecord.idAutor);
+            }
+        });
         TextView comentario = (TextView) convertView.findViewById(R.id.comentario_otro_usuario);
 
 

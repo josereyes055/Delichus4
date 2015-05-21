@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -90,14 +91,14 @@ public class Receta extends ActionBarActivity{
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
         animScale = AnimationUtils.loadAnimation(this, R.anim.scale_button_animation);
         animScaleSutile = AnimationUtils.loadAnimation(this, R.anim.scale_button_sutile_animation);
         animScaleRectangular = AnimationUtils.loadAnimation(this, R.anim.scale_button_rectangular_animation);
         // Set up the ViewPager with the sections adapter.
         mViewPager = (CustomPager) findViewById(R.id.pager);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
 
         prev = (ImageButton) findViewById(R.id.atras);
         next = (ImageButton) findViewById(R.id.adelantar);
@@ -202,6 +203,8 @@ public class Receta extends ActionBarActivity{
     public void comenzarReceta(View view) {
         view.startAnimation(animScaleRectangular);
         mViewPager.setCurrentItem(2);
+        mViewPager.enableSwipe(true);
+        //Log.i("FUCKING DEBUG", "onreceta:"+mViewPager.onrecipe+" onsteps:"+mViewPager.onsteps);
         showButtons();
     }
 
@@ -242,6 +245,7 @@ public class Receta extends ActionBarActivity{
         view.startAnimation(animScaleSutile);
         if (mViewPager.getCurrentItem() > 0 ){
             mViewPager.setCurrentItem(0);
+            mViewPager.enableSwipe(false);
             hideButtons();
         }
         else {
@@ -560,6 +564,7 @@ public class Receta extends ActionBarActivity{
 
                 case 1:
                     return new ActivarAyudante();
+
 
                 default:
                     if(position == totalPasos){
