@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/background"
+    android:background="@drawable/recipe_background">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="fill_parent"
+        android:id="@+id/recipe_holder"
+        android:background="@color/fondo">
+
+
+       <ImageView
+           android:layout_width="150dp"
+           android:layout_height="150dp"
+           android:paddingTop="20dp"
+           android:layout_marginBottom="10dp"
+           android:src="@drawable/logro_completo"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¡ Felicitaciones !"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:textSize="@dimen/felicitacion_logro"
+                android:textColor="@color/naranja"
+                />
+
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ganado"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/gris_sub"
+                android:text="Has desbloqueado el logro"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titulo"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/verde"
+                android:id="@+id/logro_desbloqueado"
+                android:text="El titulo"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:gravity="center"
+                android:textSize="@dimen/ganado"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/gris_sub"
+                android:id="@+id/descripcion_logro"
+                android:text="Descipción"/>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

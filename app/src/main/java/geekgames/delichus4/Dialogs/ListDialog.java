@@ -53,7 +53,7 @@ public class ListDialog extends DialogFragment {
         final CharSequence[] lalista = listItems.toArray(new CharSequence[listItems.size()]);
 
 
-        builder.setTitle("seleccione")
+        builder.setTitle("Seleccione los ingredientes")
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setMultiChoiceItems(lalista, null,

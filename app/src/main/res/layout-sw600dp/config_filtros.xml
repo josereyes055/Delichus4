@@ -128,9 +128,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:layout_marginTop="-5dp"
                     android:textSize="@dimen/labels_filtos"
                     android:id="@+id/numberTiempo"
                     android:text="0"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginTop="-5dp"
+                    android:textSize="@dimen/labels_filtos"
+                    android:id="@+id/minsTiempo"
+                    android:text="mins"/>
+
 
             </LinearLayout>
 

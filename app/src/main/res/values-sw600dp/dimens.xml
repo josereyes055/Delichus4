@@ -40,6 +40,7 @@
     <dimen name="busqueda_boton">28sp</dimen>
     <dimen name="busqueda_descripcion">24sp</dimen>
     <dimen name="borrar_ingrediente">28sp</dimen>
+    <dimen name="y">45sp</dimen>
 
 
     <!--Comentarios-->
@@ -67,6 +68,10 @@
 
     <dimen name="logro">20sp</dimen>
     <dimen name="descipcion_logro">18sp</dimen>
+    <dimen name="felicitacion_logro">40sp</dimen>
+    <dimen name="ganado">26sp</dimen>
+    <dimen name="titulo">30sp</dimen>
+
 
     <!--Min_user-->
 

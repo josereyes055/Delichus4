@@ -40,6 +40,8 @@
 
     <dimen name="busqueda_boton">25sp</dimen>
     <dimen name="busqueda_descripcion">20sp</dimen>
+    <dimen name="borrar_ingrediente">26sp</dimen>
+    <dimen name="y">38sp</dimen>
 
     <!--Comentarios-->
 
@@ -113,6 +115,11 @@
     <dimen name="custom_button">22sp</dimen>
     <dimen name="label_siguiente">25sp</dimen>
 
+    <!--Formulario-->
+
+    <dimen name="titulo_formulario">26sp</dimen>
+    <dimen name="preguntas_formulario">20sp</dimen>
+    <dimen name="respuestas_formulario">20sp</dimen>
 
 
 </resources>

@@ -6,8 +6,9 @@
     <color name="fondo_barra">#4C4C4C</color>
     <color name="naranja">#E26F58</color>
     <color name="blanco">#fff</color>
-    <color name="amarillo">#fffff604</color>
-    <color name="rojo">#ffff0019</color>
+    <color name="blanco_mimetizado">#fff8f8f8</color>
+    <color name="amarillo">#e4ffbe5f</color>
+    <color name="rojo">#d9e13730</color>
     <color name="gris_claro">#C2C2C2</color>
     <color name="verde">#ffb0d46f</color>
     <color name="barra_sup">#212121</color>
