@@ -45,6 +45,7 @@ public class MainActivity extends ActionBarActivity {
     Perfil perfil;
     BusquedaAvanzada busqueda;
     Animation animScale;
+    Animation animMove;
 
 
     @Override
@@ -57,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         animScale = AnimationUtils.loadAnimation(this, R.anim.scale_button_animation);
+        animMove = AnimationUtils.loadAnimation(this, R.anim.translation_button_animation);
         crear = new Crear();
         todas = new Todas();
         recomendados =new Recomendados();
@@ -197,7 +199,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void showDialog(View view){
-        view.startAnimation(animScale);
+        view.startAnimation(animMove);
         ListDialog list = new ListDialog();
         list.show(getFragmentManager(), "unTag");
     }

@@ -286,15 +286,16 @@
 
         </LinearLayout>
 
-
-
-
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:text="siguiente"
             android:onClick="setSearch"
+            android:background="@color/verde"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/label_siguiente"
             android:id="@+id/buttonConfigFiltros"/>
+
 
     </LinearLayout>
 
