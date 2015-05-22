@@ -1,5 +1,6 @@
 package geekgames.delichus4;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -202,6 +205,37 @@ public class MainActivity extends ActionBarActivity {
         view.startAnimation(animMove);
         ListDialog list = new ListDialog();
         list.show(getFragmentManager(), "unTag");
+    }
+
+    public void buscarNombres(View view){
+        view.startAnimation(animMove);
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.busqueda_nombre);
+
+        // set the custom dialog components - text, image and button
+
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.btn_buscar_nombre);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View parent = v.getRootView();
+                EditText input = (EditText) parent.findViewById(R.id.nombre_receta);
+                Intent mainIntent = new Intent().setClass(
+                        getApplicationContext(), BusquedaNombre.class);
+
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                String nombre = input.getText().toString();
+                mainIntent.putExtra("nombre", nombre);
+                startActivity(mainIntent);
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     public void gotoPage(View view){

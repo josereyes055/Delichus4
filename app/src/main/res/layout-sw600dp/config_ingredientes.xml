@@ -20,6 +20,7 @@
             android:background="@color/verde"
             android:textColor="@color/blanco"
             android:textSize="@dimen/label_siguiente"
+             android:onClick="starSearchIngredientes"
             android:id="@+id/buttonConfigIngredientes"/>
 
 </LinearLayout>

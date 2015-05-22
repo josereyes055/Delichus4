@@ -54,8 +54,9 @@ public class SelectorIngredienteAdapter extends ArrayAdapter<Ingrediente>{
         nombre.setText(" " + ingreRecord.nombre);
         entero.setMaxValue(100);
         entero.setMinValue(1);
-        fraccion.setMaxValue(1);
         fraccion.setMinValue(0);
+        fraccion.setMaxValue(5);
+        fraccion.setDisplayedValues( new String[] { "0", "1/4","1/3", "1/2","2/3", "3/4" } );
 
         entero.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -67,7 +68,17 @@ public class SelectorIngredienteAdapter extends ArrayAdapter<Ingrediente>{
         fraccion.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                ingreRecord.cantidad += (double)newVal;
+                int indiceOld = 1;
+                int indiceNew = 1;
+                if(newVal>3){indiceOld = 2;}
+                if(oldVal>3){indiceOld = 2;}
+                double actual = ingreRecord.cantidad;
+                double restado = 0;
+                double sumado = 0;
+                if(oldVal != 0){restado = (indiceOld/oldVal);}
+                if(newVal != 0){sumado = (indiceNew/newVal);}
+                double nuevo = actual - restado + sumado;
+                ingreRecord.cantidad = nuevo;
                 Log.i("FUCKING DEBUG", "sumado-" + ingreRecord.cantidad);
 
             }

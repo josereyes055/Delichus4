@@ -73,6 +73,13 @@ public class ResultFiltros extends Fragment {
 
     }
 
+    public void startSearchIngrediente(String vals){
+        query = "http://www.geekgames.info/dbadmin/test.php?v=16&h="+vals;
+        Log.i("FUCKING DEBUG", query);
+
+        fetch();
+    }
+
     public String[] setLista(JSONObject json){
         String[] lista = new String[json.length()];
         Iterator<String> keys = json.keys();
@@ -109,8 +116,6 @@ public class ResultFiltros extends Fragment {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         try {
-                            lista1 = new ArrayList<Ficha>();
-
 
                             JSONArray jsonImages = jsonObject.getJSONArray("resultados");
                             if(jsonImages.length()<1){

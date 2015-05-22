@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import geekgames.delichus4.BusquedaIngredientes;
+import geekgames.delichus4.MainActivity;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.seconds.ActivityLogros;
@@ -28,7 +29,8 @@ public class ListDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final ArrayList<Integer> mSelectedItems = new ArrayList<Integer>();  // Where we track the selected items
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final MainActivity activity = (MainActivity) getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         // Set the dialog title
         LayoutInflater inflater = getActivity().getLayoutInflater();
         String stringArray = MainApplication.getInstance().sp.getString("ingrediente",null);
@@ -78,7 +80,7 @@ public class ListDialog extends DialogFragment {
                         // or return them to the component that opened the dialog
 
                         Intent mainIntent = new Intent().setClass(
-                                getActivity(), BusquedaIngredientes.class);
+                                activity, BusquedaIngredientes.class);
 
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         ArrayList<String> nombres = new ArrayList<String>();

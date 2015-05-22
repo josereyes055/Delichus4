@@ -33,8 +33,7 @@ public class ConfigIngredientes extends Fragment {
     ArrayList<String> lista;
     ListView listaSelectores;
     SelectorIngredienteAdapter mAdapter;
-    Button elboton;
-    List<Ingrediente> unaLista;
+    public List<Ingrediente> unaLista;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,13 +43,6 @@ public class ConfigIngredientes extends Fragment {
         listaSelectores = (ListView) rootView.findViewById(R.id.lista_selector_ingredientes);
         mAdapter = new SelectorIngredienteAdapter(getActivity());
         listaSelectores.setAdapter(mAdapter);
-        elboton = (Button)rootView.findViewById(R.id.buttonConfigIngredientes);
-        elboton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getParameters();
-            }
-        });
 
         Intent intent = getActivity().getIntent();
         seleccionados = intent.getIntegerArrayListExtra("seleccionados");
@@ -63,21 +55,7 @@ public class ConfigIngredientes extends Fragment {
     }
 
      public void getParameters(){
-        String campos = "%22ids%22:[";
 
-        int contador = 0;
-        for (int i = 0; i<unaLista.size(); i++){
-            Ingrediente ing = (Ingrediente)unaLista.get(i);
-            campos += "{"+ing.id +","+ing.cantidad+ "},";
-            contador ++;
-
-        }
-        if( contador > 0) {
-            campos = campos.substring(0, campos.length() - 1);
-        }
-        campos += "]";
-
-        Log.i("FUCKING DEBUG", campos) ;
     }
 
 

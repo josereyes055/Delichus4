@@ -18,6 +18,7 @@ import org.apmem.tools.layouts.FlowLayout;
 
 import java.util.ArrayList;
 
+import geekgames.delichus4.customObjects.Ingrediente;
 import geekgames.delichus4.customViews.CustomButton;
 import geekgames.delichus4.customViews.CustomPager;
 import geekgames.delichus4.fragments.busquedas.ConfigFiltros;
@@ -33,6 +34,9 @@ public class BusquedaIngredientes extends ActionBarActivity{
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     CustomPager mViewPager;
+
+    ConfigIngredientes config;
+    ResultFiltros result;
 
 
 
@@ -55,7 +59,8 @@ public class BusquedaIngredientes extends ActionBarActivity{
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(1);
 
-
+        config = new ConfigIngredientes();
+        result = new ResultFiltros();
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -107,41 +112,26 @@ public class BusquedaIngredientes extends ActionBarActivity{
     }
 
 
-    public void startSearch(View view){
+    public void starSearchIngredientes(View view){
         view.startAnimation(animScaleSutile);
-        String fetch = getParameters((ListView)findViewById(R.id.lista_selector_ingredientes),"ids");
-
-
-        mViewPager.setCurrentItem( mViewPager.getCurrentItem()+1);
-    }
-
-    public void setSearch(View view){
-        view.startAnimation(animScaleSutile);
-
-        SeekBar persos = (SeekBar)findViewById(R.id.seekPersonas);
-        SeekBar time = (SeekBar)findViewById(R.id.seekTiempo);
-
-        mViewPager.setCurrentItem( mViewPager.getCurrentItem()+1);
-
-    }
-
-    String getParameters(ListView fl, String label){
-        String campos = "%22"+label+"%22:[";
+        String campos = "[";
 
         int contador = 0;
-        for (int i = 0; i<fl.getChildCount(); i++){
-            CustomButton cb = (CustomButton) fl.getChildAt(i);
-            if( cb.estado ) {
-                campos += cb.id + ",";
-                contador ++;
-            }
+        for (int i = 0; i<config.unaLista.size(); i++){
+            Ingrediente ing = (Ingrediente)config.unaLista.get(i);
+            campos += "["+ing.id +","+ing.cantidad+ "],";
+            contador ++;
+
         }
         if( contador > 0) {
             campos = campos.substring(0, campos.length() - 1);
         }
         campos += "]";
 
-        return campos;
+        result.startSearchIngrediente(campos);
+
+        //Log.i("FUCKING DEBUG", campos) ;
+        mViewPager.setCurrentItem( mViewPager.getCurrentItem()+1);
     }
 
 
@@ -163,8 +153,9 @@ public class BusquedaIngredientes extends ActionBarActivity{
 
             switch (position){
                 case 0:
-                    return new ConfigIngredientes();
-
+                    return config;
+                case 1:
+                    return result;
 
 
                 default:
@@ -176,7 +167,7 @@ public class BusquedaIngredientes extends ActionBarActivity{
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
     }
 
