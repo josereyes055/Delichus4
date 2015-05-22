@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -50,6 +51,7 @@ public class SelectorIngredienteAdapter extends ArrayAdapter<Ingrediente>{
         TextView nombre = (TextView) convertView.findViewById(R.id.nombre_selector_ingrediente);
         NumberPicker entero = (NumberPicker) convertView.findViewById(R.id.picker_ingrediente_entero);
         NumberPicker fraccion = (NumberPicker) convertView.findViewById(R.id.picker_ingrediente_fraccion);
+        final ImageView torta = (ImageView)convertView.findViewById(R.id.torta);
 
         nombre.setText(" " + ingreRecord.nombre);
         entero.setMaxValue(100);
@@ -68,18 +70,49 @@ public class SelectorIngredienteAdapter extends ArrayAdapter<Ingrediente>{
         fraccion.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                int indiceOld = 1;
-                int indiceNew = 1;
-                if(newVal>3){indiceOld = 2;}
-                if(oldVal>3){indiceOld = 2;}
-                double actual = ingreRecord.cantidad;
-                double restado = 0;
-                double sumado = 0;
-                if(oldVal != 0){restado = (indiceOld/oldVal);}
-                if(newVal != 0){sumado = (indiceNew/newVal);}
-                double nuevo = actual - restado + sumado;
-                ingreRecord.cantidad = nuevo;
-                Log.i("FUCKING DEBUG", "sumado-" + ingreRecord.cantidad);
+                switch(oldVal){
+                    case 1:
+                        ingreRecord.cantidad -= 0.25;
+                        break;
+                    case 2:
+                        ingreRecord.cantidad -= 0.33;
+                        break;
+                    case 3:
+                        ingreRecord.cantidad -= 0.5;
+                        break;
+                    case 4:
+                        ingreRecord.cantidad -= 0.66;
+                        break;
+                    case 5:
+                        ingreRecord.cantidad -= 0.75;
+                        break;
+                }
+                switch (newVal){
+                    case 0:
+                        torta.setImageResource(R.drawable.cero);
+                        break;
+                    case 1:
+                        ingreRecord.cantidad += 0.25;
+                        torta.setImageResource(R.drawable.un_cuarto);
+                        break;
+                    case 2:
+                        ingreRecord.cantidad += 0.33;
+                        torta.setImageResource(R.drawable.un_tercio);
+                        break;
+                    case 3:
+                        ingreRecord.cantidad += 0.5;
+                        torta.setImageResource(R.drawable.un_medio);
+                        break;
+                    case 4:
+                        ingreRecord.cantidad += 0.66;
+                        torta.setImageResource(R.drawable.dos_tercios);
+                        break;
+                    case 5:
+                        ingreRecord.cantidad += 0.75;
+                        torta.setImageResource(R.drawable.tres_cuartos);
+                        break;
+                }
+                Log.i("FUCKING DEBUG", "asignado" + ingreRecord.cantidad);
 
             }
         });
