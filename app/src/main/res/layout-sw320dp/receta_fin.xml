@@ -156,8 +156,9 @@
         android:id="@+id/volver_inicio"
         android:textColor="@color/blanco"
         android:background="@color/verde"
-        android:enabled="false"
+        android:enabled="true"
         android:textSize="@dimen/texto_botones"
+        android:onClick="cerrar"
         android:layout_gravity="center"
         android:textAllCaps="false"/>
 

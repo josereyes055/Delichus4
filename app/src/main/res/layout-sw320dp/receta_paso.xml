@@ -85,7 +85,13 @@
 
 
         </FrameLayout>
-
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/img_no_encontrada_recetas"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:id="@+id/paso_imagen"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="200px"

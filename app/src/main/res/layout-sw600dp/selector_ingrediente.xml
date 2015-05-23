@@ -3,6 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:textSize="@dimen/borrar_ingrediente"
+        android:text="@string/gradua"
+        android:id="@+id/gradue"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,6 +25,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/borrar_ingrediente"
             android:id="@+id/borrar_ingrediente"/>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,6 +70,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:scaleType="fitCenter"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:id="@+id/torta"

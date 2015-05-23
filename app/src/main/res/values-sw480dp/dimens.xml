@@ -68,6 +68,9 @@
 
     <dimen name="logro">20sp</dimen>
     <dimen name="descipcion_logro">18sp</dimen>
+    <dimen name="felicitacion_logro">38sp</dimen>
+    <dimen name="ganado">24sp</dimen>
+    <dimen name="titulo">28sp</dimen>
 
     <!--Min_user-->
 

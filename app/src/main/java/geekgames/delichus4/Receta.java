@@ -599,4 +599,9 @@ public class Receta extends ActionBarActivity{
             return result+2;
         }
     }
+
+    public void cerrar(View view){
+        this.finish();
+
+    }
 }

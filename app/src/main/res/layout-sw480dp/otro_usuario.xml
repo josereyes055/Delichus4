@@ -189,6 +189,36 @@
             android:id="@+id/otro_rating"/>
 
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/otro_usuario_titulo"
+                android:textColor="@color/gris_sub"
+                android:text="Seguido por "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/otro_usuario_titulo"
+                android:textColor="@color/verde"
+                android:text="12"
+                android:id="@+id/personas_que_lo_siguen"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/otro_usuario_titulo"
+                android:textColor="@color/gris_sub"
+                android:text=" personas"/>
+
+        </LinearLayout>
+
         <View
             android:layout_marginTop="20dp"
             android:layout_width="fill_parent"

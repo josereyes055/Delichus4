@@ -58,7 +58,7 @@
                     android:background="@drawable/botonbusq"
                     android:textSize="@dimen/busqueda_boton"
                     android:textColor="#ffffffff"
-                    android:onClick="buscarFiltros"
+                    android:onClick="buscarNombres"
                     android:paddingRight="50dp"
                     android:textAlignment="gravity"
                     android:gravity="left|center"

@@ -112,7 +112,8 @@
         android:id="@+id/volver_inicio"
         android:textColor="@color/blanco"
         android:background="@color/verde"
-        android:enabled="false"
+        android:enabled="true"
+        android:onClick="cerrar"
         android:textSize="22dp"
         android:layout_gravity="center"
         android:textAllCaps="false"/>
