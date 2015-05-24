@@ -88,7 +88,7 @@ public class Login extends Activity {
                     JSONObject user = new JSONObject();
                     try {
                         fbjson.put("loginResponse", "ok");
-                        user.put("id", currentProfile.getId());
+                        user.put("userId", currentProfile.getId());
                         user.put("nombre", currentProfile.getFirstName()+currentProfile.getLastName());
                         user.put("foto", currentProfile.getProfilePictureUri(100, 100) );
                         user.put("titulo", "");
@@ -99,7 +99,7 @@ public class Login extends Activity {
                         //Log.i("FUCKING DEBUG", "acceso fb: usuario = "+currentProfile.getName()+" id = "+currentProfile.getId()+" uri = "+currentProfile.getProfilePictureUri(80,80));
 
                         //login(json);
-                        insertUser(currentProfile.getFirstName()+currentProfile.getLastName(), currentProfile.getId(),"12345", currentProfile.getProfilePictureUri(100,100).toString());
+                        insertUser(currentProfile.getFirstName()+"%20"+currentProfile.getLastName(), currentProfile.getId(),"12345", currentProfile.getProfilePictureUri(100,100).toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

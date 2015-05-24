@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -138,10 +140,67 @@ public class MainApplication extends Application {
 
     public void uptadteScore( int puntaje){
         int score = sp.getInt("userPuntaje",0);
+        int idUsuario = sp.getInt("userId",0);
         score += puntaje;
+        double nivelPromedio = 1 + (Math.sqrt(score/10));
+        int lvl = (int) Math.floor( nivelPromedio );
         SharedPreferences.Editor editor  = sp.edit();
         editor.putInt("userPuntaje",score);
+        editor.putInt("userNivel", lvl);
         editor.commit();
+        Log.i("FUCKING DEBUG", "se sumo el puntaje");
+        String query = "http://www.geekgames.info/dbadmin/test.php?v=20&userId="+idUsuario+
+                "&puntaje="+score+"&nivel="+lvl;
+        Log.i("FUCKING DEBUG", query);
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                query,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        Log.i("FUCKING DEBUG", "se guardo el puntaje");
+                        //Toast.makeText(getApplicationContext(), "Calificación guardada", Toast.LENGTH_SHORT).show();
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        //Toast.makeText(getApplicationContext(), "error al guardar la calificación", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        MainApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    public void calificar(String idReceta, double ratingNew){
+
+        String query = "http://www.geekgames.info/dbadmin/test.php?v=18&id="+idReceta+"&nuevo="+ratingNew;
+        Log.i("FUCKING DEBUG", query);
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                query,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+
+                        Toast.makeText(getApplicationContext(), "Calificación guardada", Toast.LENGTH_SHORT).show();
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getApplicationContext(), "error al guardar la calificación", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        MainApplication.getInstance().getRequestQueue().add(request);
+
+
+
     }
 
 

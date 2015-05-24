@@ -265,7 +265,6 @@ los que no selecciones puedes agregarlos a la lista de compras"
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:isIndicator="true"
             android:id="@+id/rating_receta_usuario"/>
 
         <Button
@@ -276,8 +275,8 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:id="@+id/hacer_comentario"
             android:textColor="@color/blanco"
             android:background="@color/verde"
-            android:enabled="false"
             android:textSize="@dimen/texto_botones"
+            android:onClick="comentar"
             android:layout_gravity="center"
             android:textAllCaps="false"/>
 

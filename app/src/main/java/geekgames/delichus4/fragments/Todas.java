@@ -20,6 +20,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.etsy.android.grid.StaggeredGridView;
 
 import org.json.JSONArray;
@@ -112,20 +115,12 @@ public class Todas extends Fragment {
             }
         });
 
-        String stringArray = MainApplication.getInstance().sp.getString("recetas",null);
-        if( stringArray != null ){
-            try {
-                recetas = new JSONArray(stringArray);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+        fetchDatabase();
 
-        setAllRecipeList(0);
     }
 
     private void setAllRecipeList(int orden){
-
+        //Toast.makeText(getActivity(), "Cargando recetas", Toast.LENGTH_LONG).show();
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         if(recetas != null){
@@ -209,4 +204,59 @@ public class Todas extends Fragment {
         return unaFicha;
     }
 
+
+    public void fetchDatabase(){
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                "http://www.geekgames.info/dbadmin/test.php?v=8",
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        try {
+                            JSONObject dataBase = jsonObject.getJSONObject("recipeDatabase");
+                            SharedPreferences.Editor editor = MainApplication.getInstance().sp.edit();
+                            editor.putString( "recetas", dataBase.getJSONArray("recetas").toString() );
+                            editor.putString( "listaDefault", dataBase.getJSONArray("orden_default").toString() );
+                            editor.putString( "listaPuntuacion", dataBase.getJSONArray("orden_puntuacion").toString() );
+                            editor.putString( "listaNovedad", dataBase.getJSONArray("orden_novedad").toString() );
+                            editor.putString( "listaVegetariana", dataBase.getJSONArray("orden_vegetariano").toString() );
+                            editor.putString( "listaVegana", dataBase.getJSONArray("orden_vegano").toString() );
+                            editor.commit(); // Very important
+
+                            String stringArray = MainApplication.getInstance().sp.getString("recetas",null);
+                            if( stringArray != null ){
+                                try {
+                                    recetas = new JSONArray(stringArray);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            setAllRecipeList(0);
+
+                        }
+                        catch(JSONException e) {
+                            Toast.makeText(getActivity(), "Error al cargar las recetas" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity(), "unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        MainApplication.getInstance().getRequestQueue().add(request);
+
+    }
+
+
+
+
+
+
+
 }
+

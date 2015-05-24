@@ -22,7 +22,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
-            android:id="@+id/recipe_foto"
+            android:id="@+id/opinion_foto"
             android:src="@drawable/cargando_perfil"
             android:layout_centerHorizontal="true" />
 
@@ -38,7 +38,6 @@
                 android:layout_height="wrap_content"
                 android:text="Revisión por "
                 android:textSize="@dimen/grid_recipe_title"
-                android:id="@+id/comentario_titulo"
                 android:textColor="@color/gris_oscuro"
                 />
 
@@ -48,7 +47,7 @@
                 android:text="Usuario"
                 android:gravity="center"
                 android:textSize="@dimen/grid_recipe_title"
-                android:id="@+id/comentario_autor"
+                android:id="@+id/opinion_autor"
                 android:textColor="@color/naranja"
                 />
 
@@ -59,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="@dimen/grid_recipe_title"
+                android:id="@+id/opinion_titulo"
                 android:textColor="@color/gris_oscuro"
                 android:text="Cadete de cocina"/>
 
@@ -66,7 +66,7 @@
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/recipe_puntuacion"
+            android:id="@+id/opinion_rating"
             android:numStars = "5"
             android:isIndicator="true"
             android:layout_gravity="center"
@@ -77,10 +77,11 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/estrellas_opinion"
             android:textColor="@color/verde"
-            android:id="@+id/opinion_receta"
+            android:id="@+id/opinion_criterio"
             android:text="Me encantó"/>
 
         <EditText
+            android:id="@+id/opinion_text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:minHeight="200dp"
@@ -94,7 +95,16 @@
             android:hint="Escribe tu comentario aqui :)"
             android:textColorHint="@color/gris_claro"/>
 
-
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:text="Enviar"
+            android:textAllCaps="false"
+            android:id="@+id/opinion_enviar"
+            android:textSize="@dimen/texto_botones"
+            android:textColor="@color/blanco"
+            android:background="@color/verde"
+            android:padding="10dp"/>
 
     </LinearLayout>
 

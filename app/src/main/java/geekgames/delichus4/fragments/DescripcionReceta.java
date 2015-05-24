@@ -75,7 +75,7 @@ public class DescripcionReceta extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.receta_intro, container, false);
+        final View rootView = inflater.inflate(R.layout.receta_intro, container, false);
         listView = (ListView) rootView.findViewById(R.id.lista_ingredientes);
         mAdapter = new IngredienteAdapter(getActivity());
         listView.setAdapter(mAdapter);
@@ -86,6 +86,19 @@ public class DescripcionReceta extends Fragment {
         listComentarios = (ListView) rootView.findViewById((R.id.lista_comentarios));
         mAdapter2 = new ComentarioAdapter(getActivity());
         listComentarios.setAdapter(mAdapter2);
+
+       RatingBar calificador = (RatingBar)rootView.findViewById(R.id.rating_receta_usuario);
+        RatingBar.OnRatingBarChangeListener changeRating = new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float ratingNew, boolean fromUser) {
+                ratingBar.setIsIndicator(true);
+                Receta parent = (Receta)getActivity();
+                parent.mainChangeRating( ratingNew);
+            }
+
+        };
+
+        calificador.setOnRatingBarChangeListener(changeRating);
 
         return rootView;
     }

@@ -265,7 +265,6 @@ los que no selecciones puedes agregarlos a la lista de compras"
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:isIndicator="true"
             android:id="@+id/rating_receta_usuario"/>
 
         <Button

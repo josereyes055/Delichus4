@@ -103,12 +103,6 @@ public class SplashScreen extends Activity{
                             editor.putString( "origen", dataBase.getJSONObject("origen").toString() );
                             editor.putString( "tags", dataBase.getJSONObject("tags").toString() );
                             editor.putString( "logros", dataBase.getJSONArray("logros").toString() );
-                            editor.putString( "recetas", dataBase.getJSONArray("recetas").toString() );
-                            editor.putString( "listaDefault", dataBase.getJSONArray("orden_default").toString() );
-                            editor.putString( "listaPuntuacion", dataBase.getJSONArray("orden_puntuacion").toString() );
-                            editor.putString( "listaNovedad", dataBase.getJSONArray("orden_novedad").toString() );
-                            editor.putString( "listaVegetariana", dataBase.getJSONArray("orden_vegetariano").toString() );
-                            editor.putString( "listaVegana", dataBase.getJSONArray("orden_vegano").toString() );
                             editor.putInt( "versionDB", dataBase.getInt("version") );
                             editor.commit(); // Very important
 

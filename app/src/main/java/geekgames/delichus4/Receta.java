@@ -1,5 +1,6 @@
 package geekgames.delichus4;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,18 +24,25 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,6 +91,7 @@ public class Receta extends ActionBarActivity{
     String descripcionReceta;
     String imagenReceta;
     String pasosReceta;
+    String idReceta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +134,7 @@ public class Receta extends ActionBarActivity{
         shareDialog = new ShareDialog(this);
 
         Intent intent = getIntent();
+        idReceta = intent.getStringExtra("id");
         nombreReceta = intent.getStringExtra("nombre");
         descripcionReceta = intent.getStringExtra("descripcion");
         imagenReceta = intent.getStringExtra("imagen");
@@ -166,6 +176,67 @@ public class Receta extends ActionBarActivity{
             ttobj.shutdown();
         }
         super.onPause();
+    }
+
+    public void comentar(View view){
+        view.startAnimation(animScaleRectangular);
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.hacer_comentario);
+
+        TextView autor = (TextView)dialog.findViewById(R.id.opinion_autor);
+        TextView titulo = (TextView)dialog.findViewById(R.id.opinion_titulo);
+        ImageView foto = (ImageView)dialog.findViewById(R.id.opinion_foto);
+        autor.setText(MainApplication.getInstance().sp.getString("userNombre",""));
+        titulo.setText(MainApplication.getInstance().sp.getString("userTitulo",""));
+        Picasso.with(getApplicationContext()).load(MainApplication.getInstance().sp.getString("userFoto","")).placeholder(R.drawable.cargando_perfil).fit().centerCrop().into(foto);
+        // set the custom dialog components - text, image and button
+
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.opinion_enviar);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View parent = v.getRootView();
+                EditText input = (EditText) parent.findViewById(R.id.opinion_text);
+                RatingBar rating = (RatingBar)parent.findViewById(R.id.opinion_rating);
+                if(rating.getRating() != 0 ) {
+                    MainApplication.getInstance().calificar(idReceta, rating.getRating());
+                }
+                String inputText = input.getText().toString();
+                inputText = inputText.replaceAll("\\s+","%20");
+                String query = "http://www.geekgames.info/dbadmin/test.php?v=19&userId="+
+                        String.valueOf( MainApplication.getInstance().sp.getInt("userId", 0) )+
+                        "&recipeId="+idReceta+
+                        "&comentario="+inputText;
+                Log.i("FUCKING DEBUG", query);
+
+                JsonObjectRequest request = new JsonObjectRequest(
+                        query,
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject jsonObject) {
+
+                                Toast.makeText(getApplicationContext(), "Comentario guardado", Toast.LENGTH_SHORT).show();
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError volleyError) {
+                                Toast.makeText(getApplicationContext(), "error al guardar el comentario", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                MainApplication.getInstance().getRequestQueue().add(request);
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
 
@@ -269,6 +340,20 @@ public class Receta extends ActionBarActivity{
             state ++;
         }
         mViewPager.setCurrentItem(state);
+    }
+
+    public void mainChangeRating(float ratingNew){
+
+        MainApplication.getInstance().calificar(idReceta, ratingNew);
+
+       /*RatingBar lerat = (RatingBar)findViewById(R.id.receta_rating);
+        float newval =  (float)( lerat.getRating()+ratingNew )/2;
+        if( lerat.getRating() != 0){
+            lerat.setRating( newval );
+        }else{
+            lerat.setRating(ratingNew);
+        }*/
+
     }
 
     public void recetaPlay(View view){
@@ -568,7 +653,7 @@ public class Receta extends ActionBarActivity{
 
                 default:
                     if(position == totalPasos){
-                        //Log.i("FUCKING DEBUG", "se sumo el puntaje");
+
                         MainApplication.getInstance().uptadteScore(10);
                         return new CompleteReceta();
                     }else{
@@ -594,7 +679,7 @@ public class Receta extends ActionBarActivity{
         public int getCount() {
             Intent intent = getIntent();
             String lpasosReceta = intent.getStringExtra("pasos");
-            Log.i("FUCKING DEBUG", "los pasos: "+ lpasosReceta);
+            //Log.i("FUCKING DEBUG", "los pasos: "+ lpasosReceta);
             int result = Integer.parseInt(lpasosReceta);
             return result+2;
         }

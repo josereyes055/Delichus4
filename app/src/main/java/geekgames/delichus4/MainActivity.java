@@ -2,6 +2,7 @@ package geekgames.delichus4;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import geekgames.delichus4.Dialogs.ListDialog;
 import geekgames.delichus4.fragments.BusquedaAvanzada;
@@ -71,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        //mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setOffscreenPageLimit(1);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(2);
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -84,7 +93,6 @@ public class MainActivity extends ActionBarActivity {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
     }
 
     public void changeButtons(View view, int tag){
@@ -169,7 +177,6 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
     }
-
 
 
     @Override
