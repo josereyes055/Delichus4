@@ -108,6 +108,39 @@ public class MainApplication extends Application {
 
     }
 
+    public void addComplete( int idUser, int idReceta){
+
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                "http://www.geekgames.info/dbadmin/test.php?v=21&userId="+idUser+"&recipeId="+idReceta,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        try {
+                            JSONObject userData = jsonObject;
+
+                            String result = userData.getString("status");
+                            //Toast.makeText(getApplicationContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+
+                        }
+                        catch(JSONException e) {
+
+                            Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        mRequestQueue.add(request);
+
+    }
+
     public void addFollow( int idUser, int idSeguido){
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=17&userId="+idUser+"&followId="+idSeguido,
