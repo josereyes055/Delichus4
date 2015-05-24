@@ -116,6 +116,16 @@
         </activity>
 
         <activity
+            android:name="geekgames.delichus4.seconds.ActivityCompletados"
+            android:parentActivityName="geekgames.delichus4.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/RecipeTheme"
+            android:label="Completados" >
+
+        </activity>
+
+        <activity
             android:name="geekgames.delichus4.seconds.ActivityShoppingList"
             android:parentActivityName="geekgames.delichus4.MainActivity"
             android:configChanges="orientation"

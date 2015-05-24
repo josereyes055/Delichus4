@@ -38,6 +38,7 @@ import geekgames.delichus4.fragments.Perfil;
 import geekgames.delichus4.fragments.Recomendados;
 import geekgames.delichus4.fragments.Todas;
 import geekgames.delichus4.seconds.ActivityAjustes;
+import geekgames.delichus4.seconds.ActivityCompletados;
 import geekgames.delichus4.seconds.ActivityFavoritos;
 import geekgames.delichus4.seconds.ActivityLogros;
 import geekgames.delichus4.seconds.ActivitySeguidos;
@@ -204,6 +205,17 @@ public class MainActivity extends ActionBarActivity {
 
         Intent mainIntent = new Intent().setClass(
                 MainActivity.this, ActivityLogros.class);
+        startActivity(mainIntent);
+
+    }
+
+    public void openCompletados(View view){
+
+        ImageView animacion_op = (ImageView)findViewById(R.id.icon_cocinadas);
+        animacion_op.startAnimation(animScale);
+
+        Intent mainIntent = new Intent().setClass(
+                MainActivity.this, ActivityCompletados.class);
         startActivity(mainIntent);
 
     }

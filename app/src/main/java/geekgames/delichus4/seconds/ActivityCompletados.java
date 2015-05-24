@@ -1,8 +1,6 @@
 package geekgames.delichus4.seconds;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -31,11 +29,9 @@ import java.util.List;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.MiniFichaAdapter;
-import geekgames.delichus4.adapters.SimpleRecipeAdapter;
-import geekgames.delichus4.customObjects.Ficha;
 import geekgames.delichus4.customObjects.MiniFicha;
 
-public class ActivityFavoritos extends ActionBarActivity {
+public class ActivityCompletados extends ActionBarActivity {
 
     private MiniFichaAdapter mAdapter;
     int idUser;
@@ -61,7 +57,7 @@ public class ActivityFavoritos extends ActionBarActivity {
         }
         listaFavs = (ListView) findViewById(R.id.list_favoritos);
         listaFavs.setAdapter(mAdapter);
-        setTitle("Favoritos");
+        setTitle("Completados");
 
         idUser = MainApplication.getInstance().sp.getInt("userId",0);
         fetch();
@@ -98,9 +94,9 @@ public class ActivityFavoritos extends ActionBarActivity {
     }
 
     private void fetch() {
-        Toast.makeText(getApplicationContext(), "Cargando favoritos", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Cargando recetas completadas", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=12&userId="+idUser,
+                "http://www.geekgames.info/dbadmin/test.php?v=13&userId="+idUser,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -119,7 +115,7 @@ public class ActivityFavoritos extends ActionBarActivity {
                             mAdapter.swapRecords(favsRecords);
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Error al crear la lista de favoritos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error al crear la lista de completados", Toast.LENGTH_SHORT).show();
                             Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
@@ -139,7 +135,7 @@ public class ActivityFavoritos extends ActionBarActivity {
     private List<MiniFicha> parse(JSONObject json) throws JSONException {
         ArrayList<MiniFicha> records = new ArrayList<MiniFicha>();
 
-        JSONArray favs = json.getJSONArray("favoritos");
+        JSONArray favs = json.getJSONArray("completados");
 
         // Se pasa la lista de recetas a un Array
         // para poder ordenarlo
@@ -155,11 +151,11 @@ public class ActivityFavoritos extends ActionBarActivity {
                 Date valB = new Date();
 
                 try {
-                    valA = stringToDate((String) a.get("fechaFav"), "yyyy-MM-dd");
-                    valB =  stringToDate((String) b.get("fechaFav"), "yyyy-MM-dd");
+                    valA = stringToDate((String) a.get("fechaComp"), "yyyy-MM-dd");
+                    valB =  stringToDate((String) b.get("fechaComp"), "yyyy-MM-dd");
 
                 } catch (Exception e) {
-                    Log.e("ActivityFavoritos.parse", "JSONException in combineJSONArrays sort section", e);
+                    Log.e("ActivityCompletados.parse", "JSONException in combineJSONArrays sort section", e);
                 }
 
                 int comp = valA.compareTo(valB);
@@ -182,21 +178,21 @@ public class ActivityFavoritos extends ActionBarActivity {
         for(int i =favs.length()-1; i >= 0; i--) {
             JSONObject jsonContent = favs.getJSONObject(i);
 
-            String fecha = jsonContent.getString("fechaFav");
+            String fecha = jsonContent.getString("fechaComp");
 
             // Se añade el encabezado
-            if(fecha.equals(today) && !currentHeader.equals("FAVORITOS DE HOY")) {
-                records.add(new MiniFicha(-1, "FAVORITOS DE HOY", "",  "", 0, "", 0));
-                currentHeader = "FAVORITOS DE HOY";
-            }else if(fecha.equals(yesterday) && !currentHeader.equals("FAVORITOS DE AYER")) {
-                records.add(new MiniFicha(-1, "FAVORITOS DE AYER", "",  "", 0,"",0));
-                currentHeader = "FAVORITOS DE AYER";
-            }else if(!fecha.equals(yesterday) && !fecha.equals(today) && !currentHeader.equals("FAVORITOS DE ANTES")){
-                records.add(new MiniFicha(-1, "FAVORITOS DE ANTES", "",  "", 0,"",0));
-                currentHeader = "FAVORITOS DE ANTES";
+            if(fecha.equals(today) && !currentHeader.equals("COMPLETADOS DE HOY")) {
+                records.add(new MiniFicha(-1, "COMPLETADOS DE HOY", "",  "", 0, "", 0));
+                currentHeader = "COMPLETADOS DE HOY";
+            }else if(fecha.equals(yesterday) && !currentHeader.equals("COMPLETADOS DE AYER")) {
+                records.add(new MiniFicha(-1, "COMPLETADOS DE AYER", "",  "", 0,"",0));
+                currentHeader = "COMPLETADOS DE AYER";
+            }else if(!fecha.equals(yesterday) && !fecha.equals(today) && !currentHeader.equals("COMPLETADOS DE ANTES")){
+                records.add(new MiniFicha(-1, "COMPLETADOS DE ANTES", "",  "", 0,"",0));
+                currentHeader = "COMPLETADOS DE ANTES";
             }
 
-            int idFav = jsonContent.getInt("favId");
+            int idFav = jsonContent.getInt("compId");
 
 
             for(int r =0; r < recetas.length(); r++) {

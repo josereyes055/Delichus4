@@ -30,6 +30,7 @@ import java.util.List;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.PasoRecetaAdapter;
+import geekgames.delichus4.customObjects.Ficha;
 import geekgames.delichus4.customObjects.ImagenPaso;
 
 public class OtherUserPage extends ActionBarActivity {
@@ -39,6 +40,7 @@ public class OtherUserPage extends ActionBarActivity {
     private PasoRecetaAdapter aportesAdapter;
     private PasoRecetaAdapter agregadasAdapter;
     ScrollView sv;
+    JSONArray recetas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,15 @@ public class OtherUserPage extends ActionBarActivity {
         TwoWayView sliderAgregadas = (TwoWayView)findViewById(R.id.fotos_recetas_agregadas);
         sliderAportes.setAdapter(aportesAdapter);
         sliderAgregadas.setAdapter(agregadasAdapter);
+
+        String stringArray = MainApplication.getInstance().sp.getString("recetas",null);
+        if( stringArray != null ){
+            try {
+                recetas = new JSONArray(stringArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
 
         fetch();
@@ -97,7 +108,7 @@ public class OtherUserPage extends ActionBarActivity {
     private void fetch() {
         Toast.makeText(getApplicationContext(), "Cargando información del usuario", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=4&userId="+idUser,
+                "http://www.geekgames.info/dbadmin/test.php?v=22&userId="+idUser,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -120,47 +131,61 @@ public class OtherUserPage extends ActionBarActivity {
                                     MainApplication.getInstance().addFollow(MainApplication.getInstance().sp.getInt("userId",0), Integer.parseInt(idUser) );
                                 }
                             });
-                            int indiceinventado = 0;
-                            ArrayList<ImagenPaso> laListaAgregadas = new ArrayList<>();
-                            ArrayList<ImagenPaso> laListaAportes = new ArrayList<>();
 
-                            if (indiceinventado > 0) {
-                                //for (int i = 0; i < indiceinventado; i++) {
-                                    //String unString = lasFotos.getString(i);
 
-                                    //ImagenPaso unaImagen = new ImagenPaso(unString);
-                                    //laLista.add(unaImagen);
+                                ArrayList<ImagenPaso> laListaAgregadas = new ArrayList<>();
+                                ArrayList<ImagenPaso> laListaAportes  = new ArrayList<>();
 
-                               // }
+                                JSONArray aportes = userData.getJSONArray("aportes");
+                                JSONArray agregados = userData.getJSONArray("agregados");
+
+                                if (aportes.length() > 0) {
+                                    for (int i = 0; i < aportes.length(); i++) {
+                                        String laFoto = aportes.getString(i);
+                                        ImagenPaso unaImagen = new ImagenPaso(laFoto);
+                                        laListaAportes.add(unaImagen);
+                                    }
+                                }
+
+                                if (aportes.length() < 2) {
+                                    for (int i = 0; i < 3; i++) {
+                                        ImagenPaso otraImagen = new ImagenPaso("empty");
+                                        laListaAportes.add(otraImagen);
+                                    }
+                                }
+
+
+                            if (agregados.length() > 0) {
+                                for (int i = 0; i < agregados.length(); i++) {
+                                    JSONObject completeObj = agregados.getJSONObject(i);
+                                    int compId = completeObj.getInt("upId");
+
+                                    if(recetas != null ){
+                                        for (int j = 0; j<recetas.length(); j++){
+                                            JSONObject receta = recetas.getJSONObject(j);
+                                            if(receta.getInt("id") == compId){
+                                                String laFoto = receta.getString("imagen");
+                                                ImagenPaso unaImagen = new ImagenPaso(laFoto);
+                                                laListaAgregadas.add(unaImagen);
+                                            }
+                                        }
+                                    }
+
+                                }
                             }
 
-                            if (indiceinventado < 2) {
+                            if (agregados.length() < 2) {
                                 for (int i = 0; i < 3; i++) {
                                     ImagenPaso otraImagen = new ImagenPaso("empty");
                                     laListaAgregadas.add(otraImagen);
                                 }
                             }
 
-                            if (indiceinventado > 0) {
-                                //for (int i = 0; i < indiceinventado; i++) {
-                                //String unString = lasFotos.getString(i);
-
-                                //ImagenPaso unaImagen = new ImagenPaso(unString);
-                                //laLista.add(unaImagen);
-
-                                // }
-                            }
-
-                            if (indiceinventado < 2) {
-                                for (int i = 0; i < 3; i++) {
-                                    ImagenPaso otraImagen = new ImagenPaso("empty");
-                                    laListaAportes.add(otraImagen);
-                                }
-                            }
 
 
-                            agregadasAdapter.swapRecords(laListaAgregadas);
-                            aportesAdapter.swapRecords(laListaAportes);
+                                agregadasAdapter.swapRecords(laListaAgregadas);
+                                aportesAdapter.swapRecords(laListaAportes);
+
 
                             RatingBar rating = (RatingBar)findViewById(R.id.otro_rating);
                             nombre.setText(userData.getString("nombre") );
@@ -192,6 +217,8 @@ public class OtherUserPage extends ActionBarActivity {
         MainApplication.getInstance().getRequestQueue().add(request);
         //MainApplication.getInstance().fetchUserAchievements(  MainApplication.getInstance().getUserId() );
     }
+
+
 
 
 
