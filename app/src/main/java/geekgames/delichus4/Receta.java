@@ -517,6 +517,7 @@ public class Receta extends ActionBarActivity{
      * Envia una imagen al servidor por medio de una petición POST
      */
     public void sendPhotoToServer(){
+
         uploadFile(mCurrentPhotoPath);
     }
 
@@ -581,11 +582,11 @@ public class Receta extends ActionBarActivity{
 
             Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
             if(serverResponseCode == 200){
-                runOnUiThread(new Runnable() {
+                /*runOnUiThread(new Runnable() {
                     public void run() {
                         //Toast.makeText(this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
             }
 
             //close the streams //
@@ -596,12 +597,12 @@ public class Receta extends ActionBarActivity{
         } catch (MalformedURLException ex) {
 
             ex.printStackTrace();
-            Toast.makeText(this, "MalformedURLException", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "MalformedURLException", Toast.LENGTH_SHORT).show();
             Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.e("Upload file to server Exception", "Exception : " + e.getMessage(), e);
+            //Toast.makeText(this, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("Upload file to server", "Exception : " + e.getMessage(), e);
         }
         return serverResponseCode;
     }
