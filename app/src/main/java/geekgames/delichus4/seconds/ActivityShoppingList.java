@@ -6,8 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import java.util.List;
+
+import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.IngredienteAdapter;
+import geekgames.delichus4.customObjects.Ingrediente;
 
 public class ActivityShoppingList extends ActionBarActivity {
 
@@ -31,12 +35,9 @@ public class ActivityShoppingList extends ActionBarActivity {
 
 
         //fetch();
-        //List<Ingrediente> shoppingList = MainApplication.getInstance().shoppingList;
+        List<Ingrediente> shoppingList = MainApplication.getInstance().shoppingList;
 
-       // mAdapter.swapRecords(shoppingList);*/
-
-
-
+        mAdapter.swapRecords(shoppingList);
     }
 
     @Override

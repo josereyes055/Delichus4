@@ -20,6 +20,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import geekgames.delichus4.customObjects.*;
 import geekgames.delichus4.seconds.OtherUserPage;
 
@@ -34,6 +38,8 @@ public class MainApplication extends Application {
     //public Ficha laReceta;
     public JSONArray losPasos;
     public SharedPreferences sp;
+
+    public List<Ingrediente> shoppingList;
 
 
     public void exploreRecipe( Context ctx, int idReceta, String nombre, String descripcion, String imagen, int pasos ){
@@ -65,6 +71,8 @@ public class MainApplication extends Application {
         mp = MediaPlayer.create(this, R.raw.favoritos);
         sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sInstance = this;
+
+       shoppingList = new ArrayList<Ingrediente>();
     }
 
     public synchronized static MainApplication getInstance() {
@@ -231,9 +239,6 @@ public class MainApplication extends Application {
                 });
 
         MainApplication.getInstance().getRequestQueue().add(request);
-
-
-
     }
 
 
