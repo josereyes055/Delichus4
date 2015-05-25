@@ -58,8 +58,9 @@ public class Recomendados extends Fragment {
     }
 
     private void fetch() {
+        String query = MainApplication.getInstance().sp.getString("query","");
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=5",
+                query,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override

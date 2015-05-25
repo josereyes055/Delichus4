@@ -91,6 +91,17 @@
 
         </LinearLayout>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:text="Finalizar"
+            android:onClick="formNext"
+            android:background="@color/verde"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/label_siguiente"/>
+
     </LinearLayout>
+
+
 
 </ScrollView>

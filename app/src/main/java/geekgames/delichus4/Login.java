@@ -30,6 +30,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import geekgames.delichus4.customObjects.Usuario;
+import geekgames.delichus4.seconds.FormularioInicio;
 import geekgames.delichus4.seconds.RegistroUsuario;
 
 
@@ -220,7 +221,7 @@ public class Login extends Activity {
             editor.commit(); // Very important
 
             Intent mainIntent = new Intent().setClass(
-                    Login.this, MainActivity.class);
+                    Login.this, FormularioInicio.class);
             startActivity(mainIntent);
 
             finish();

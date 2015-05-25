@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/titulo_formulario"
             android:gravity="center"
-            android:text="Por favor, completa éste formulario para conocerte mejor"/>
+            android:text="@string/titulo_formulario"/>
 
         <TextView
             android:layout_width="fill_parent"
@@ -25,7 +25,7 @@
             android:paddingBottom="20dp"
             android:textColor="@color/naranja"
             android:textSize="@dimen/preguntas_formulario"
-            android:text="¿Prefieres algún tipo de alimento por encima de los demás? ¿Cuál?"/>
+            android:text="@string/pregunta_2"/>
 
 
         <LinearLayout
@@ -189,6 +189,15 @@
 
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:text="siguiente"
+            android:onClick="formNext"
+            android:background="@color/verde"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/label_siguiente"/>
 
     </LinearLayout>
 
