@@ -293,7 +293,6 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:id="@+id/hacer_comentario"
             android:textColor="@color/blanco"
             android:background="@color/verde"
-            android:enabled="false"
             android:textSize="@dimen/texto_botones"
             android:layout_gravity="center"
             android:textAllCaps="false"/>
