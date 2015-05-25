@@ -72,15 +72,6 @@
                     android:id="@+id/cronometro"
                     android:background="@null"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:gravity="center"
-                    android:textSize="10dp"
-                    android:textColor="@color/naranja"
-                    android:layout_height="wrap_content"
-                    android:text="tiempo"
-                    android:id="@+id/paso_tiempo" />
-
             </LinearLayout>
 
 

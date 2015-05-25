@@ -46,8 +46,9 @@
     <!--Comentarios-->
 
     <dimen name="user_coment">16sp</dimen>
-    <dimen name="escribir_comentario">22sp</dimen>
-    <dimen name="estrellas_opinion">30sp</dimen>
+    <dimen name="escribir_comentario">18sp</dimen>
+    <dimen name="estrellas_opinion">22sp</dimen>
+    <dimen name="texto_comentario">20sp</dimen>
 
     <!--Crear receta-->
 
@@ -118,8 +119,8 @@
 
     <!--Formulario-->
 
-    <dimen name="titulo_formulario">22sp</dimen>
-    <dimen name="preguntas_formulario">20sp</dimen>
+    <dimen name="titulo_formulario">20sp</dimen>
+    <dimen name="preguntas_formulario">18sp</dimen>
     <dimen name="respuestas_formulario">18sp</dimen>
 
 

@@ -19,9 +19,9 @@
 
 
         <geekgames.delichus4.customViews.CircleImage
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/opinion_foto"
             android:src="@drawable/cargando_perfil"
             android:layout_centerHorizontal="true" />
@@ -30,14 +30,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Revisión por "
-                android:textSize="@dimen/grid_recipe_title"
+                android:textSize="@dimen/texto_comentario"
                 android:textColor="@color/gris_oscuro"
                 />
 
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="Usuario"
                 android:gravity="center"
-                android:textSize="@dimen/grid_recipe_title"
+                android:textSize="@dimen/texto_comentario"
                 android:id="@+id/opinion_autor"
                 android:textColor="@color/naranja"
                 />
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:textSize="@dimen/grid_recipe_title"
+                android:textSize="@dimen/texto_comentario"
                 android:id="@+id/opinion_titulo"
                 android:textColor="@color/gris_oscuro"
                 android:text="Cadete de cocina"/>
@@ -68,6 +68,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/opinion_rating"
             android:numStars = "5"
+            style = "?android:attr/ratingBarStyleSmall"
             android:isIndicator="true"
             android:layout_gravity="center"
             android:layout_centerHorizontal="true"/>
@@ -77,6 +78,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/estrellas_opinion"
             android:textColor="@color/verde"
+            android:layout_marginTop="10dp"
             android:id="@+id/opinion_criterio"
             android:text="Me encantó"/>
 
@@ -84,7 +86,7 @@
             android:id="@+id/opinion_text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:minHeight="200dp"
+            android:minHeight="100dp"
             android:background="@color/blanco_mimetizado"
             android:layout_marginTop="15dp"
             android:paddingTop="20dp"
@@ -96,8 +98,8 @@
             android:textColorHint="@color/gris_claro"/>
 
         <Button
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:text="Enviar"
             android:layout_marginBottom="10dp"
             android:textAllCaps="false"

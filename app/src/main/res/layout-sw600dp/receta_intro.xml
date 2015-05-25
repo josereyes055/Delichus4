@@ -143,7 +143,7 @@
             android:layout_marginBottom="30dp"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="@color/gris_claro"/>
 
         <TextView
             android:layout_marginTop="15dp"
@@ -234,7 +234,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:layout_marginBottom="30dp"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="@color/gris_claro"/>
 
         <geekgames.delichus4.customViews.CircleImage
             android:layout_width="100dp"
@@ -285,7 +285,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:layout_marginBottom="30dp"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="@color/gris_claro"/>
 
         <TextView
             android:paddingBottom="20dp"
@@ -374,7 +374,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:layout_marginBottom="30dp"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="@color/gris_claro"/>
 
         <ListView
             android:layout_width="wrap_content"

@@ -120,7 +120,7 @@
 
     <!--Formulario-->
 
-    <dimen name="titulo_formulario">26sp</dimen>
+    <dimen name="titulo_formulario">24sp</dimen>
     <dimen name="preguntas_formulario">20sp</dimen>
     <dimen name="respuestas_formulario">20sp</dimen>
 
