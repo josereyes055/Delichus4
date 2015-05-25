@@ -134,7 +134,7 @@ public class Todas extends Fragment {
                 return v;
             }
         };
-        final Spinner spinner2 = (Spinner) getView().findViewById(R.id.filtro_receta);
+        final Spinner spinner2 = (Spinner) getView().findViewById(R.id.filtro_seguidos);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapterGG = ArrayAdapter.createFromResource(getActivity(),
             R.array.filtros_seguidos, R.layout.spinner_custom);
