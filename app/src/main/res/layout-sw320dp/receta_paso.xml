@@ -101,7 +101,7 @@
             android:textSize="@dimen/descripcion_paso"
             android:text="descripcion"
             android:id="@+id/paso_descripcion"
-            android:gravity="center" />
+            android:gravity="center_horizontal" />
 
     </LinearLayout>
 

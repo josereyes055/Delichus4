@@ -328,4 +328,22 @@
         <item>Nuez blanca</item>
     </string-array>
 
+   <string name="titulo_formulario">Por favor, completa éste formulario para conocerte mejor</string>
+   <string name="pregunta_1">¿Qué dieta alimenticia sigues?</string>
+   <string name="pregunta_2">¿Prefieres algún tipo de alimento por encima de los demás? ¿Cuál?</string>
+   <string name="pregunta_3">¿Odias alún tipo de alimento?¿Cuál?</string>
+   <string name="pregunta_4">¿Tienes alergia a algún alimento?¿Cual?</string>
+   <string name="pregunta_5">¿Tienes problemas para digerir algún tipo de alimento? ¿Cuál?</string>
+   <string name="pregunta_6">¿Tienes algún tipo de condición especial?¿Cuál?</string>
+
+   
+   <string name="ninguna">Ninguna en especial</string>
+   <string name="diabetica">Diabética</string>
+   <string name="lactosa">Intolerancia a lactosa</string>
+   <string name="gluten">Intolerancia al gluten</string>
+   <string name="hipoglusemica">Hipoglusemica</string>
+   <string name="acidos">Problemas con acidos</string>
+
+
+
 </resources>
