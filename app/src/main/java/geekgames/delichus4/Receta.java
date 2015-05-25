@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -14,7 +15,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -37,7 +37,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
@@ -69,7 +72,8 @@ import geekgames.delichus4.fragments.PasoFragment;
 public class Receta extends ActionBarActivity{
 
     private static final int CAMERA_IMAGE = 1;
-       Animation animScale;
+    private static final int REQUEST_PHOTO_STEP = 2;
+    Animation animScale;
     Animation animScaleSutile;
     Animation animScaleRectangular;
 
@@ -134,14 +138,31 @@ public class Receta extends ActionBarActivity{
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);
 
+        // this part is optional
+        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+
+            @Override
+            public void onSuccess(Sharer.Result result) {
+                Toast.makeText(getApplicationContext(), "Has publicado tu foto!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel(){
+
+            }
+
+            @Override
+            public void onError(FacebookException exception){
+                Toast.makeText(getApplicationContext(), "Hubo un problema al publicar tu foto!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         Intent intent = getIntent();
         idReceta = intent.getStringExtra("id");
         nombreReceta = intent.getStringExtra("nombre");
         descripcionReceta = intent.getStringExtra("descripcion");
         imagenReceta = intent.getStringExtra("imagen");
         pasosReceta = intent.getStringExtra("pasos");
-
-
     }
 
     @Override
@@ -439,8 +460,23 @@ public class Receta extends ActionBarActivity{
         ImageView animacion_op = (ImageView)findViewById(R.id.camara);
         animacion_op.startAnimation(animScaleSutile);
 
-        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        startActivity(intent);
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent, REQUEST_PHOTO_STEP);
+            }
+        }
     }
 
     public void onShareRecipe(View view) {
@@ -498,27 +534,36 @@ public class Receta extends ActionBarActivity{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode != RESULT_OK) return;
+        if(requestCode == REQUEST_PHOTO_STEP){
+            if (resultCode != RESULT_OK) return;
+            this.sendPhotoToServer();
 
-        this.sendPhotoToServer();
+        }else if(requestCode == CAMERA_IMAGE){
+            if (resultCode != RESULT_OK) return;
 
-        if (ShareDialog.canShow(ShareLinkContent.class)) {
+            this.sendPhotoToServer();
 
-            // Get the dimensions of the bitmap
-            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-            bmOptions.inJustDecodeBounds = true;
+            if (ShareDialog.canShow(SharePhotoContent.class)) {
 
-            Bitmap bitMapImage = BitmapFactory.decodeFile("file:"+mCurrentPhotoPath, bmOptions);
+                // Get the dimensions of the bitmap
+                BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+                bmOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
 
-            SharePhoto photo = new SharePhoto.Builder()
-                    .setBitmap(bitMapImage)
-                    .build();
+                Bitmap bitMapImage = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
 
-            SharePhotoContent photoContent = new SharePhotoContent.Builder()
-                    .addPhoto(photo)
-                    .build();
+                SharePhoto photo = new SharePhoto.Builder()
+                        .setBitmap(bitMapImage)
+                        .build();
 
-            shareDialog.show(photoContent);
+                SharePhotoContent photoContent = new SharePhotoContent.Builder()
+                        .addPhoto(photo)
+                        .build();
+
+                shareDialog.show(photoContent);
+            }
+
+        }else if(requestCode == shareDialog.getRequestCode()){
+            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -526,94 +571,11 @@ public class Receta extends ActionBarActivity{
      * Envia una imagen al servidor por medio de una petición POST
      */
     public void sendPhotoToServer(){
-
         uploadFile(mCurrentPhotoPath);
     }
 
-    public int uploadFile(String sourceFileUri) {
-        String upLoadServerUri = "http://www.geekgames.info/dbadmin/php/imgUpload.php";
-        String fileName = sourceFileUri;
-        int serverResponseCode = 0;
-
-        HttpURLConnection conn = null;
-        DataOutputStream dos = null;
-        String lineEnd = "\r\n";
-        String twoHyphens = "--";
-        String boundary = "*****";
-        int bytesRead, bytesAvailable, bufferSize;
-        byte[] buffer;
-        int maxBufferSize = 1 * 1024 * 1024;
-        File sourceFile = new File(sourceFileUri);
-        if (!sourceFile.isFile()) {
-            Log.e("uploadFile", "Source File Does not exist");
-            return 0;
-        }
-        try { // open a URL connection to the Servlet
-            FileInputStream fileInputStream = new FileInputStream(sourceFile);
-            URL url = new URL(upLoadServerUri);
-            conn = (HttpURLConnection) url.openConnection(); // Open a HTTP  connection to  the URL
-            conn.setDoInput(true); // Allow Inputs
-            conn.setDoOutput(true); // Allow Outputs
-            conn.setUseCaches(false); // Don't use a Cached Copy
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("ENCTYPE", "multipart/form-data");
-            conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-            conn.setRequestProperty("imagen", fileName);
-            dos = new DataOutputStream(conn.getOutputStream());
-
-            dos.writeBytes(twoHyphens + boundary + lineEnd);
-            dos.writeBytes("Content-Disposition: form-data; name=\"imagen\";filename=\""+ fileName + "\"" + lineEnd);
-            dos.writeBytes(lineEnd);
-
-            bytesAvailable = fileInputStream.available(); // create a buffer of  maximum size
-
-            bufferSize = Math.min(bytesAvailable, maxBufferSize);
-            buffer = new byte[bufferSize];
-
-            // read file and write it into form...
-            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-            while (bytesRead > 0) {
-                dos.write(buffer, 0, bufferSize);
-                bytesAvailable = fileInputStream.available();
-                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-            }
-
-            // send multipart form data necesssary after file data...
-            dos.writeBytes(lineEnd);
-            dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-
-            // Responses from the server (code and message)
-            serverResponseCode = conn.getResponseCode();
-            String serverResponseMessage = conn.getResponseMessage();
-
-            Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
-            if(serverResponseCode == 200){
-                /*runOnUiThread(new Runnable() {
-                    public void run() {
-                        //Toast.makeText(this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-            }
-
-            //close the streams //
-            fileInputStream.close();
-            dos.flush();
-            dos.close();
-
-        } catch (MalformedURLException ex) {
-
-            ex.printStackTrace();
-            //Toast.makeText(this, "MalformedURLException", Toast.LENGTH_SHORT).show();
-            Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
-        } catch (Exception e) {
-            e.printStackTrace();
-            //Toast.makeText(this, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.e("Upload file to server", "Exception : " + e.getMessage(), e);
-        }
-        return serverResponseCode;
+    public void uploadFile(String sourceFileUri) {
+        new UploadFilesTask().execute(sourceFileUri);
     }
 
     private File createImageFile() throws IOException {
@@ -631,6 +593,87 @@ public class Receta extends ActionBarActivity{
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
+    }
+
+    private class UploadFilesTask extends AsyncTask<String, Integer, Integer> {
+        protected Integer doInBackground(String... params) {
+            String upLoadServerUri = "http://www.geekgames.info/dbadmin/php/imgUpload.php";
+            String fileName = params[0];
+            int serverResponseCode = 0;
+
+            HttpURLConnection conn;
+            DataOutputStream dos;
+            String lineEnd = "\r\n";
+            String twoHyphens = "--";
+            String boundary = "*****";
+            int bytesRead, bytesAvailable, bufferSize;
+            byte[] buffer;
+            int maxBufferSize = 1 * 1024 * 1024;
+            File sourceFile = new File(fileName);
+            if (!sourceFile.isFile()) {
+                Log.e("uploadFile", "Source File Does not exist");
+            }
+            try { // open a URL connection to the Servlet
+                FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                URL url = new URL(upLoadServerUri);
+                conn = (HttpURLConnection) url.openConnection(); // Open a HTTP  connection to  the URL
+                conn.setDoInput(true); // Allow Inputs
+                conn.setDoOutput(true); // Allow Outputs
+                conn.setUseCaches(false); // Don't use a Cached Copy
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Connection", "Keep-Alive");
+                conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+                conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+                conn.setRequestProperty("imagen", fileName);
+                dos = new DataOutputStream(conn.getOutputStream());
+
+                dos.writeBytes(twoHyphens + boundary + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"imagen\";filename=\""+ fileName + "\"" + lineEnd);
+                dos.writeBytes(lineEnd);
+
+                bytesAvailable = fileInputStream.available(); // create a buffer of  maximum size
+
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                buffer = new byte[bufferSize];
+
+                // read file and write it into form...
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                while (bytesRead > 0) {
+                    dos.write(buffer, 0, bufferSize);
+                    bytesAvailable = fileInputStream.available();
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                }
+
+                // send multipart form data necesssary after file data...
+                dos.writeBytes(lineEnd);
+                dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+                // Responses from the server (code and message)
+                serverResponseCode = conn.getResponseCode();
+                String serverResponseMessage = conn.getResponseMessage();
+
+                Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
+
+                //close the streams //
+                fileInputStream.close();
+                dos.flush();
+                dos.close();
+
+            } catch (MalformedURLException ex) {
+
+                ex.printStackTrace();
+                //Toast.makeText(this, "MalformedURLException", Toast.LENGTH_SHORT).show();
+                Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+            } catch (Exception e) {
+                e.printStackTrace();
+                //Toast.makeText(this, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Upload file to server", "Exception : " + e.getMessage(), e);
+            }
+
+            return serverResponseCode;
+        }
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
