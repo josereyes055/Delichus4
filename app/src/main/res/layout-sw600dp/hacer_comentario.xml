@@ -99,6 +99,7 @@
             android:layout_width="130dp"
             android:layout_height="60dp"
             android:text="Enviar"
+            android:layout_marginBottom="20dp"
             android:textAllCaps="false"
             android:id="@+id/opinion_enviar"
             android:textSize="@dimen/texto_botones"

@@ -137,7 +137,7 @@ public class Todas extends Fragment {
         final Spinner spinner2 = (Spinner) getView().findViewById(R.id.filtro_receta);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapterGG = ArrayAdapter.createFromResource(getActivity(),
-            R.array.filtros_seguids, R.layout.spinner_custom);
+            R.array.filtros_seguidos, R.layout.spinner_custom);
         // Specify the layout to use when the list of choices appears
         adapterGG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner*/

@@ -102,6 +102,7 @@
             android:textAllCaps="false"
             android:id="@+id/opinion_enviar"
             android:textSize="@dimen/texto_botones"
+            android:layout_marginBottom="20dp"
             android:textColor="@color/blanco"
             android:background="@color/verde"
             android:padding="10dp"/>
