@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/titulo_formulario"
             android:gravity="center"
-            android:text="Por favor, completa éste formulario para conocerte mejor"/>
+            android:text="@string/titulo_formulario"/>
 
 
         <TextView
@@ -26,7 +26,7 @@
             android:paddingBottom="20dp"
             android:textColor="@color/naranja"
             android:textSize="@dimen/preguntas_formulario"
-            android:text="¿Tienes alergia a algún alimento?¿Cual?"/>
+            android:text="@string/pregunta_4"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -38,39 +38,169 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:id="@+id/dieta_ninguna"
+                android:id="@+id/pref_alimento_ninguna"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Ninguna en específico"/>
+                android:text="@string/ninguna"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:id="@+id/dieta_vegetariana"
+                android:id="@+id/pref_alimento_verduras"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegetariana"/>
+                android:text="@string/verduras"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:id="@+id/dieta_vegana"
+                android:id="@+id/pref_alimento_frutas"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegana"/>
+                android:text="@string/frutas"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:id="@+id/dieta_proteinica"
+                android:id="@+id/pref_alimento_frutosrojos"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Proteínica"/>
+                android:text="@string/frutos_rojos"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_carnesrojas"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/carnes_rojas"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_carnesblancas"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/carnes_blancas"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_pescados"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/pescados"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_mariscos"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/mariscos"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_lacteos"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/lacteos"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_quesos"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/quesos"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_granos"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/granos"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_cereales"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/cereales"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_tuberculos"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/tuberculos"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_hierbasarom"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/hierbas_aromaticas"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_harina"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/harina"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_nueces"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/nueces"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/pref_alimento_pasta"
+                android:textSize="@dimen/respuestas_formulario"
+                android:textColor="@color/gris_sub"
+                android:text="@string/pasta"/>
+
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:text="Siguiente"
+            android:id="@+id/pregunta4_siguiente"
+            android:textColor="@color/blanco"
+            android:background="@color/verde"
+            android:textSize="@dimen/texto_botones"
+            android:layout_gravity="center"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 

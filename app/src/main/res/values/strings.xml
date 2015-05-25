@@ -344,6 +344,27 @@
    <string name="hipoglusemica">Hipoglusemica</string>
    <string name="acidos">Problemas con acidos</string>
 
+   <string name="vegetariana">Vegetariana</string>
+   <string name="vegana">Vegana</string>
+   <string name="proteínica">Proteínica</string>
+
+   <string name="verduras">Verduras</string>
+   <string name="frutas">Frutas</string>
+   <string name="frutos_rojos">Frutos rojos</string>
+   <string name="carnes_rojas">Carnes rojas</string>
+   <string name="carnes_blancas">Carnes blancas</string>
+   <string name="pescados">Pescados</string>
+   <string name="mariscos">Mariscos</string>
+   <string name="lacteos">Lácteos</string>
+   <string name="quesos">Quesos</string>
+   <string name="granos">Granos</string>
+   <string name="cereales">Cereales</string>
+   <string name="tuberculos">Tubérculos</string>
+   <string name="hierbas_aromaticas">Hierbas aromáticas</string>
+   <string name="harina">Harina</string>
+   <string name="nueces">Nueces</string>
+   <string name="pasta">Pasta</string>
+
 
 
 </resources>

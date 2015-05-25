@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/titulo_formulario"
             android:gravity="center"
-            android:text="Por favor, completa éste formulario para conocerte mejor"/>
+            android:text="@string/titulo_formulario"/>
 
 
         <TextView
@@ -26,7 +26,7 @@
             android:paddingBottom="20dp"
             android:textColor="@color/naranja"
             android:textSize="@dimen/preguntas_formulario"
-            android:text="¿Qué dieta alimenticia sigues?"/>
+            android:text="@string/pregunta_1"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -41,7 +41,7 @@
                 android:id="@+id/dieta_ninguna"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Ninguna en específico"/>
+                android:text="@string/ninguna"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -50,7 +50,7 @@
                 android:id="@+id/dieta_vegetariana"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegetariana"/>
+                android:text="@string/vegetariana"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -59,7 +59,7 @@
                 android:id="@+id/dieta_vegana"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegana"/>
+                android:text="@string/vegana"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -68,7 +68,7 @@
                 android:id="@+id/dieta_proteinica"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Proteínica"/>
+                android:text="@string/proteínica"/>
 
         </LinearLayout>
 
