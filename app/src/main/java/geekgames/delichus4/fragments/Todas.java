@@ -114,6 +114,49 @@ public class Todas extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        
+        // A more complicated dynamic way
+        String[] spinnerItems2 = new String[]{"Mako", "Pikachu", "Zack", "Naruto", "Akira"};
+        // create your own spinner array adapter
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_custom,spinnerItems2){
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                 View v = super.getView(position, convertView, parent);
+                ((TextView) v).setGravity(Gravity.CENTER);
+                ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.spinner));
+
+                return v;
+            }
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View v = super.getDropDownView(position, convertView,parent);
+                ((TextView) v).setGravity(Gravity.CENTER);
+                ((TextView) v).setHeight(100);
+                return v;
+            }
+        };
+        final Spinner spinner2 = (Spinner) getView().findViewById(R.id.filtro_receta);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapterGG = ArrayAdapter.createFromResource(getActivity(),
+            R.array.filtros_seguids, R.layout.spinner_custom);
+        // Specify the layout to use when the list of choices appears
+        adapterGG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner*/
+
+        //spinner2.setAdapter(adapterGG);
+        spinner2.setAdapter(adapter3);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                //((TextView) spinner.getChildAt(0)).setTextColor(getResources().getColor(R.color.naranja));
+                //setAllRecipeList(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
 
         fetchDatabase();
 
