@@ -20,6 +20,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -280,7 +286,7 @@ public class ActivityAjustes extends ActionBarActivity {
     }
 
     public int uploadFile(String sourceFileUri, String userId) {
-        String upLoadServerUri = "http://www.geekgames.info/dbadmin/php/imgUpload.php";
+        String upLoadServerUri = "http://www.geekgames.info/dbadmin/php/uploadImage.php";
         String fileName = sourceFileUri;
         int serverResponseCode = 0;
 
@@ -309,7 +315,6 @@ public class ActivityAjustes extends ActionBarActivity {
             conn.setRequestProperty("ENCTYPE", "multipart/form-data");
             conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
             conn.setRequestProperty("imagen", fileName);
-            conn.setRequestProperty("userId",userId );
             dos = new DataOutputStream(conn.getOutputStream());
 
             dos.writeBytes(twoHyphens + boundary + lineEnd);
@@ -339,13 +344,30 @@ public class ActivityAjustes extends ActionBarActivity {
             serverResponseCode = conn.getResponseCode();
             String serverResponseMessage = conn.getResponseMessage();
 
+            String query = "http://www.geekgames.info/dbadmin/test.php?v=24&userId="+userId+"&imageName="+sourceFile.getName();
+            JsonObjectRequest request = new JsonObjectRequest(
+                    query,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject jsonObject) {
+                            Log.i("Photo","Imagen Actualizada");
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            Log.i("Photo","Error al actualizar imagen");
+                        }
+                    });
+            MainApplication.getInstance().getRequestQueue().add(request);
+
             Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
             if(serverResponseCode == 200){
-                /*runOnUiThread(new Runnable() {
-                    public void run() {
-                        //Toast.makeText(this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
-                    }
-                });*/
+                SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = app_preferences.edit();
+                editor.putString("userFoto", "http://www.geekgames.info/dbadmin/img/"+sourceFile.getName());
+                editor.commit();
             }
 
             //close the streams //
