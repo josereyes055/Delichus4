@@ -19,6 +19,7 @@
             android:text="@string/titulo_formulario"/>
 
 
+<<<<<<< HEAD
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -27,6 +28,16 @@
                 android:textColor="@color/naranja"
                 android:textSize="@dimen/preguntas_formulario"
                 android:text="@string/pregunta_1"/>
+=======
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:textColor="@color/naranja"
+            android:textSize="@dimen/preguntas_formulario"
+            android:text="@string/pregunta_1"/>
+>>>>>>> origin/master
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -41,7 +52,7 @@
                 android:id="@+id/dieta_ninguna"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Ninguna en específico"/>
+                android:text="@string/ninguna"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -50,7 +61,7 @@
                 android:id="@+id/dieta_vegetariana"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegetariana"/>
+                android:text="@string/vegetariana"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -59,7 +70,7 @@
                 android:id="@+id/dieta_vegana"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegana"/>
+                android:text="@string/vegana"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -68,7 +79,7 @@
                 android:id="@+id/dieta_proteinica"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Proteínica"/>
+                android:text="@string/proteínica"/>
 
         </LinearLayout>
 

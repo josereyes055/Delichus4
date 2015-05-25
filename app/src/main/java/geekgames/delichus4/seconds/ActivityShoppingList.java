@@ -32,8 +32,6 @@ public class ActivityShoppingList extends ActionBarActivity {
         listView.setAdapter(mAdapter);
         setTitle("Lista de compras");
 
-
-
         //fetch();
         List<Ingrediente> shoppingList = MainApplication.getInstance().shoppingList;
 

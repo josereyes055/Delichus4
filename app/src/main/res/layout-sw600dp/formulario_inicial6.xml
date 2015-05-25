@@ -88,10 +88,10 @@
                 android:textColor="@color/gris_sub"
                 android:text="@string/acidos"/>
 
-
         </LinearLayout>
 
         <Button
+<<<<<<< HEAD
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:text="Finalizar"
@@ -99,6 +99,18 @@
             android:background="@color/verde"
             android:textColor="@color/blanco"
             android:textSize="@dimen/label_siguiente"/>
+=======
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:text="Siguiente"
+            android:id="@+id/pregunta6_siguiente"
+            android:textColor="@color/blanco"
+            android:background="@color/verde"
+            android:textSize="@dimen/texto_botones"
+            android:layout_gravity="center"
+            android:textAllCaps="false"/>
+>>>>>>> origin/master
 
     </LinearLayout>
 

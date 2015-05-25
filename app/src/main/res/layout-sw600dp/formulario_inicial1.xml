@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
@@ -41,7 +42,7 @@
                 android:id="@+id/dieta_ninguna"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Ninguna en específico"/>
+                android:text="@string/ninguna"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -50,7 +51,7 @@
                 android:id="@+id/dieta_vegetariana"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegetariana"/>
+                android:text="@string/vegetariana"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -59,7 +60,7 @@
                 android:id="@+id/dieta_vegana"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Vegana"/>
+                android:text="@string/vegana"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -68,11 +69,12 @@
                 android:id="@+id/dieta_proteinica"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
-                android:text="Proteínica"/>
+                android:text="@string/proteínica"/>
 
         </LinearLayout>
 
         <Button
+<<<<<<< HEAD
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:text="siguiente"
@@ -80,6 +82,18 @@
             android:background="@color/verde"
             android:textColor="@color/blanco"
             android:textSize="@dimen/label_siguiente"/>
+=======
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:text="Siguiente"
+            android:id="@+id/pregunta1_siguiente"
+            android:textColor="@color/blanco"
+            android:background="@color/verde"
+            android:textSize="@dimen/texto_botones"
+            android:layout_gravity="center"
+            android:textAllCaps="false"/>
+>>>>>>> origin/master
 
      </LinearLayout>
 

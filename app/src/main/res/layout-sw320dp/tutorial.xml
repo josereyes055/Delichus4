@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/tuto1"
+        android:id="@+id/imagenTuto"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imagenTuto"
+        android:layout_alignRight="@+id/imagenTuto"
+        android:layout_margin="10dp"
+        android:onClick="changeImagen"
+        android:text="Siguiente"
+        android:id="@+id/btnTuto"/>
+
+</RelativeLayout>
