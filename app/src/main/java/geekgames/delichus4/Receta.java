@@ -59,6 +59,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import geekgames.delichus4.customObjects.Ingrediente;
 import geekgames.delichus4.customViews.CustomPager;
 import geekgames.delichus4.fragments.ActivarAyudante;
 import geekgames.delichus4.fragments.CompleteReceta;
@@ -395,7 +396,15 @@ public class Receta extends ActionBarActivity{
             CheckBox checkBox = (CheckBox) listaIngrediente.getChildAt(i).findViewById(R.id.checkBox);
             if(!checkBox.isChecked()){
                 Log.i("FUCKING DEBUG", "agregando item " + i+" a la shoppingList");
-                //MainApplication.getInstance().shoppingList.add(laReceta.ingredientes.get(i));
+
+                String nombre = ((TextView) listaIngrediente.getChildAt(i).findViewById(R.id.ingrediente_nombre)).getText().toString();
+                String unidad = ((TextView) listaIngrediente.getChildAt(i).findViewById(R.id.ingrediente_unidad)).getText().toString();
+                String cantidad = ((TextView) listaIngrediente.getChildAt(i).findViewById(R.id.ingrediente_cantidad)).getText().toString();
+
+                Ingrediente ingrediente = new Ingrediente(-1, nombre, Double.parseDouble(cantidad), unidad);
+
+
+                MainApplication.getInstance().shoppingList.add(ingrediente);
             }
         }
         Toast.makeText(this, "Los ingredientes no disponibles se agregaron a la lista de compras", Toast.LENGTH_LONG).show();

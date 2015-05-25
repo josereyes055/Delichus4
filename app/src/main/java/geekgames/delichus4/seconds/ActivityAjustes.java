@@ -121,7 +121,7 @@ public class ActivityAjustes extends ActionBarActivity {
                 "Cancelar" };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Photo!");
+        builder.setTitle("Cambiar foto de perfil");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
@@ -178,6 +178,8 @@ public class ActivityAjustes extends ActionBarActivity {
                 storageDir      /* directory */
         );
 
+        cameraFileName = image.getAbsolutePath();
+
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(image));
         intent.putExtra("return-data", true);
@@ -213,7 +215,7 @@ public class ActivityAjustes extends ActionBarActivity {
                 mImg.setImageBitmap(avatar);
 
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String imageFileName = "JPEG_" + timeStamp + "_";
+                String imageFileName = "PNG_" + timeStamp + "_" + ".png";
                 //create a file to write bitmap data
                 File f = new File(this.getApplicationContext().getCacheDir(), imageFileName);
 
