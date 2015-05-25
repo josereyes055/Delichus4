@@ -39,7 +39,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:id="@+id/pref_alimento_ninguna"
+                android:id="@+id/_ninguna"
                 android:textSize="@dimen/respuestas_formulario"
                 android:textColor="@color/gris_sub"
                 android:text="@string/ninguna"/>
