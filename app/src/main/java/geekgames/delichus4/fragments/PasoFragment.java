@@ -4,6 +4,7 @@ package geekgames.delichus4.fragments;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,9 +67,12 @@ public class PasoFragment extends Fragment{
         TextView numero = (TextView)laView.findViewById(R.id.numero_paso);
         TextView descripcion = (TextView)laView.findViewById(R.id.paso_descripcion);
         ImageView imagen = (ImageView)laView.findViewById(R.id.paso_imagen);
-        //TextView tiempo = (TextView)laView.findViewById(R.id.paso_tiempo);
+        final TextView tiempo = (TextView)laView.findViewById(R.id.leChronometre);
+        ImageButton btnTiempo = (ImageButton)laView.findViewById(R.id.cronometro);
         TwoWayView slider = (TwoWayView)laView.findViewById(R.id.fotosPasos);
         slider.setAdapter(mAdapter);
+
+
 
 
 
@@ -112,15 +118,57 @@ public class PasoFragment extends Fragment{
                     imagen.setImageResource(idDraw);
                 }
 
-                numero.setText(String.valueOf(index+1));
+                numero.setText(String.valueOf(index + 1));
                 descripcion.setText(paso.getString("paso"));
-               // tiempo.setText("tiempo: " + paso.getInt("tiempo"));
+
+                int losSegundos = paso.getInt("tiempo");
+                final boolean running = false;
+
+                if( losSegundos > 0 ){
+                    tiempo.setText( formatearTiempo( (double)losSegundos) );
+                    final CountDownTimer timer = new CountDownTimer(losSegundos*1000, 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                            tiempo.setText( formatearTiempo( (double)millisUntilFinished/1000) );
+                        }
+
+                        public void onFinish() {
+                            tiempo.setText("done!");
+                        }
+                    };
+
+                    btnTiempo.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            timer.start();
+
+                        }
+                    });
+
+
+                }else{
+                    btnTiempo.setVisibility(View.INVISIBLE);
+                }
+
             }
 
         } catch (JSONException e) {
             Toast.makeText(getActivity(), "Unable to parse data: " + e, Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    String formatearTiempo(double secs){
+        String tiempo = "";
+        double calculo = secs / 60;
+        double entero = Math.floor( calculo );
+        double sobra = calculo - entero;
+        double seconds = sobra*60;
+        Log.i("FUCKING DEBUG",calculo+","+entero+","+sobra+","+seconds);
+        int minutos =  (int)entero ;
+        int segundos = (int)seconds;
+        tiempo = minutos+":"+segundos;
+        return  tiempo;
     }
 
 
