@@ -53,6 +53,7 @@ public class ActivityAjustes extends ActionBarActivity {
     private static final int CHOICE_AVATAR_FROM_CAMERA = 0;
     private static final int CHOICE_AVATAR_FROM_CAMERA_CROP = 1;
     private static final int CHOICE_AVATAR_FROM_GALLERY = 2;
+    private static final int CHOICE_AVATAR_FROM_GALLERY_CROP = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +140,11 @@ public class ActivityAjustes extends ActionBarActivity {
                         e.printStackTrace();
                     }
                 } else if (items[item].equals("Escoger foto")) {
-                    choiceAvatarFromGallery();
+                    try {
+                        choiceAvatarFromGallery();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else if (items[item].equals("Cancelar")) {
                     dialog.dismiss();
                 }
@@ -170,6 +175,7 @@ public class ActivityAjustes extends ActionBarActivity {
     }*/
 
     private String cameraFileName;
+    private String galleryFileName;
 
     public void choiceAvatarFromCamera() throws IOException {
 
@@ -192,10 +198,28 @@ public class ActivityAjustes extends ActionBarActivity {
         startActivityForResult(intent, CHOICE_AVATAR_FROM_CAMERA_CROP);
     }
 
-    public void choiceAvatarFromGallery() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
+    public void choiceAvatarFromGallery() throws IOException {
+        //Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        //intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("image/*");
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "PNG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".png",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        galleryFileName = image.getAbsolutePath();
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(image));
+        intent.putExtra("outputFormat", "PNG");
+        //startActivityForResult(getCropIntent(intent), CHOICE_AVATAR_FROM_GALLERY);
         startActivityForResult(getCropIntent(intent), CHOICE_AVATAR_FROM_GALLERY);
     }
 
@@ -256,6 +280,12 @@ public class ActivityAjustes extends ActionBarActivity {
                 Uri uri = Uri.fromFile(new File(cameraFileName));
                 intent.setDataAndType(uri, "image/*");
                 startActivityForResult(getCropIntent(intent), CHOICE_AVATAR_FROM_CAMERA);
+
+            } else if (requestCode == CHOICE_AVATAR_FROM_GALLERY_CROP) {
+                Intent intent = new Intent("com.android.camera.action.CROP");
+                Uri uri = Uri.fromFile(new File(galleryFileName));
+                intent.setDataAndType(uri, "image/*");
+                startActivityForResult(getCropIntent(intent), CHOICE_AVATAR_FROM_GALLERY);
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
