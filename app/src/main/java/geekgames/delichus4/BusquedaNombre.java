@@ -202,7 +202,8 @@ public class BusquedaNombre extends ActionBarActivity{
 
             }
             catch(JSONException e) {
-                Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error interno", Toast.LENGTH_SHORT).show();
             }
         }
 

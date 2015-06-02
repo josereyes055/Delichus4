@@ -225,7 +225,8 @@ public class Todas extends Fragment {
                 }
             }
             catch(JSONException e) {
-                Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error interno" , Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -287,7 +288,8 @@ public class Todas extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getActivity(), "unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), "unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Error en la base de datos" , Toast.LENGTH_SHORT).show();
                     }
                 });
 

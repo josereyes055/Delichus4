@@ -67,15 +67,17 @@ public class SplashScreen extends Activity{
 
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(getApplicationContext(), "unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error interno", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.i("FUCKING DEBUG", "el disque error es: "+volleyError.getMessage());
+                       // Toast.makeText(getApplicationContext(), "unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Seguro que funciona tu internet?" , Toast.LENGTH_SHORT).show();
+                        Log.i("FUCKING DEBUG", "el disque error es: " + volleyError.getMessage());
                     }
                 });
 
@@ -110,14 +112,16 @@ public class SplashScreen extends Activity{
 
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error interno", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), "unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Seguro que funciona tu internet?" , Toast.LENGTH_SHORT).show();
                     }
                 });
 

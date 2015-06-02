@@ -1,7 +1,10 @@
 package geekgames.delichus4;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -9,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
@@ -96,7 +100,10 @@ public class Receta extends ActionBarActivity{
     String descripcionReceta;
     String imagenReceta;
     String pasosReceta;
-    String idReceta;
+    public String idReceta;
+    public int idPaso;
+
+    int tipoFoto = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -248,7 +255,7 @@ public class Receta extends ActionBarActivity{
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError volleyError) {
-                                Toast.makeText(getApplicationContext(), "error al guardar el comentario", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Error al guardar el comentario", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -379,7 +386,13 @@ public class Receta extends ActionBarActivity{
     }
 
     public void recetaPlay(View view){
+
         view.startAnimation(animScale);
+        try {
+            Log.i("FUCKING DEBUF", "id = "+ MainApplication.getInstance().losPasos.getJSONObject(mViewPager.getCurrentItem()-2).getInt("id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void selectAllIngredients(View view){
@@ -456,7 +469,14 @@ public class Receta extends ActionBarActivity{
     }
 
     public void onCameraClick(View view){
-
+        tipoFoto = 1;
+        try {
+            idPaso = MainApplication.getInstance().losPasos.getJSONObject(mViewPager.getCurrentItem()-2).getInt("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i("FUCKING DEBUG", "id paso = "+idPaso);
+        Log.i("FUCKING DEBUG","el gran triplemalparido tipo es: "+tipoFoto);
         ImageView animacion_op = (ImageView)findViewById(R.id.camara);
         animacion_op.startAnimation(animScaleSutile);
 
@@ -508,7 +528,8 @@ public class Receta extends ActionBarActivity{
     }
 
     public void onTakePictureRecipe(View view){
-
+        tipoFoto = 2;
+        Log.i("FUCKING DEBUG","el gran triplemalparido tipo es: "+tipoFoto);
         ImageView animacion_op = (ImageView)findViewById(R.id.boton_camara_grande);
         animacion_op.startAnimation(animScaleSutile);
 
@@ -536,12 +557,14 @@ public class Receta extends ActionBarActivity{
 
         if(requestCode == REQUEST_PHOTO_STEP){
             if (resultCode != RESULT_OK) return;
+
             this.sendPhotoToServer();
 
         }else if(requestCode == CAMERA_IMAGE){
             if (resultCode != RESULT_OK) return;
 
             this.sendPhotoToServer();
+
 
             if (ShareDialog.canShow(SharePhotoContent.class)) {
 
@@ -657,6 +680,38 @@ public class Receta extends ActionBarActivity{
                 Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
 
                 //close the streams //
+
+                String query = "http://www.geekgames.info/dbadmin/test.php?v=26";
+                if(tipoFoto == 1){
+                    query += "&tipo=paso";
+                    query += "&recipeId="+idPaso;
+                    query += "&userId="+MainApplication.getInstance().sp.getInt("userId",0)+"&imageName="+sourceFile.getName();
+
+                }
+                if(tipoFoto == 2){
+                    query += "&tipo=receta";
+                    query += "&recipeId="+idReceta;
+                    query += "&userId="+MainApplication.getInstance().sp.getInt("userId",0)+"&imageName="+sourceFile.getName();
+                }
+                JsonObjectRequest request = new JsonObjectRequest(
+                        query,
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject jsonObject) {
+                                Log.i("Photo","Imagen Actualizada");
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError volleyError) {
+                                Log.i("Photo","Error al actualizar imagen");
+                            }
+                        });
+                MainApplication.getInstance().getRequestQueue().add(request);
+
+
+
                 fileInputStream.close();
                 dos.flush();
                 dos.close();
@@ -691,7 +746,7 @@ public class Receta extends ActionBarActivity{
             int numPasos = Integer.parseInt(lpasosReceta);
 
             String text = "Saludos";
-            int totalPasos = numPasos+1;
+            int totalPasos = numPasos+2;
 
             switch (position){
                 case 0:
@@ -718,6 +773,7 @@ public class Receta extends ActionBarActivity{
                                 ttobj.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                             }
 
+
                         } catch (JSONException e) {
 
                         }
@@ -734,7 +790,7 @@ public class Receta extends ActionBarActivity{
             String lpasosReceta = intent.getStringExtra("pasos");
             //Log.i("FUCKING DEBUG", "los pasos: "+ lpasosReceta);
             int result = Integer.parseInt(lpasosReceta);
-            return result+2;
+            return result+3;
         }
     }
 

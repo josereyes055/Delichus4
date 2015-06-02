@@ -179,7 +179,8 @@ public class ResultFiltros extends Fragment {
 
             }
             catch(JSONException e) {
-                Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error al crear la lista de recetas", Toast.LENGTH_SHORT).show();
             }
         }
 

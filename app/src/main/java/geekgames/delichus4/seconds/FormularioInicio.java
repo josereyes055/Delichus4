@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -131,6 +130,7 @@ public class FormularioInicio extends ActionBarActivity {
             Intent mainIntent = new Intent().setClass(
                     FormularioInicio.this, Tutorial.class);
             startActivity(mainIntent);
+            finish();
         }
 
         pos ++;

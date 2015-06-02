@@ -1,6 +1,7 @@
 package geekgames.delichus4.seconds;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
@@ -41,6 +44,7 @@ public class OtherUserPage extends ActionBarActivity {
     private PasoRecetaAdapter agregadasAdapter;
     ScrollView sv;
     JSONArray recetas;
+    Animation animScaleRectangular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class OtherUserPage extends ActionBarActivity {
         sv.setVisibility(View.INVISIBLE);
         aportesAdapter = new PasoRecetaAdapter(getApplicationContext());
         agregadasAdapter = new PasoRecetaAdapter(getApplicationContext());
+        animScaleRectangular = AnimationUtils.loadAnimation(this, R.anim.scale_button_rectangular_animation);
 
         TwoWayView sliderAportes = (TwoWayView)findViewById(R.id.fotos_aportes);
         TwoWayView sliderAgregadas = (TwoWayView)findViewById(R.id.fotos_recetas_agregadas);
@@ -108,7 +113,7 @@ public class OtherUserPage extends ActionBarActivity {
     private void fetch() {
         Toast.makeText(getApplicationContext(), "Cargando información del usuario", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=22&userId="+idUser,
+                "http://www.geekgames.info/dbadmin/test.php?v=22&userId="+idUser+"&visitorId="+MainApplication.getInstance().sp.getInt("userId",0),
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -123,14 +128,29 @@ public class OtherUserPage extends ActionBarActivity {
                             TextView titulo = (TextView)findViewById(R.id.otro_perfil_titulo);
                             TextView nivel = (TextView) findViewById(R.id.otro_nivel);
                             TextView reputa = (TextView)findViewById(R.id.otro_reputacion);
-                            ImageView favBtn = (ImageView)findViewById(R.id.seguir);
-                            favBtn.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
+                            TextView seguidores = (TextView)findViewById(R.id.personas_que_lo_siguen);
+                            final ImageView favBtn = (ImageView) findViewById(R.id.seguir);
+                            Log.i("FUCKING DEBUG", "el bool = "+userData.getBoolean("follow"));
+                            boolean seguido = userData.getBoolean("follow");
+                            if( seguido == false ) {
 
-                                    MainApplication.getInstance().addFollow(MainApplication.getInstance().sp.getInt("userId",0), Integer.parseInt(idUser) );
-                                }
-                            });
+                                favBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                        v.startAnimation(animScaleRectangular);
+                                        MainApplication.getInstance().addFollow(MainApplication.getInstance().sp.getInt("userId", 0), Integer.parseInt(idUser));
+                                        Drawable drawSpeak = getResources().getDrawable(R.drawable.siguiendo);
+                                        favBtn.setImageDrawable(drawSpeak);
+                                        favBtn.setEnabled(false);
+
+                                    }
+                                });
+                            }
+                            else{
+                                Drawable drawSpeak = getResources().getDrawable(R.drawable.siguiendo);
+                                favBtn.setImageDrawable(drawSpeak);
+                            }
 
 
                                 ArrayList<ImagenPaso> laListaAgregadas = new ArrayList<>();
@@ -194,6 +214,7 @@ public class OtherUserPage extends ActionBarActivity {
                             nivel.setText(userData.getString("nivel"));
                             reputa.setText(userData.getInt("promedio")+".0");
                             rating.setRating(userData.getInt("promedio"));
+                            seguidores.setText(userData.getInt("seguidores")+"");
 
                             sv.smoothScrollTo(0, 0);
                             AlphaAnimation animate_apear = new AlphaAnimation(0,1);
@@ -203,14 +224,16 @@ public class OtherUserPage extends ActionBarActivity {
 
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error interno" , Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error en la base de datos" , Toast.LENGTH_SHORT).show();
                     }
                 });
 

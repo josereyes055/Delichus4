@@ -116,7 +116,7 @@ public class MainApplication extends Application {
 
     }
 
-    public void addComplete( int idUser, int idReceta){
+    public void addComplete( int idUser, String idReceta){
 
 
         JsonObjectRequest request = new JsonObjectRequest(
@@ -151,7 +151,7 @@ public class MainApplication extends Application {
 
     public void addFollow( int idUser, int idSeguido){
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://www.geekgames.info/dbadmin/test.php?v=17&userId="+idUser+"&followId="+idSeguido,
+                "http://www.geekgames.info/dbadmin/test.php?v=25&userId="+idUser+"&followId="+idSeguido,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override

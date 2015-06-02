@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 
+import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.Receta;
 
@@ -32,8 +33,10 @@ public class CompleteReceta extends Fragment{
 
         };
 
-        calificador.setOnRatingBarChangeListener(changeRating);
 
+        calificador.setOnRatingBarChangeListener(changeRating);
+        Receta parent = (Receta)getActivity();
+        MainApplication.getInstance().addComplete(MainApplication.getInstance().sp.getInt("userId",0), parent.idReceta);
         return rootView;
     }
 

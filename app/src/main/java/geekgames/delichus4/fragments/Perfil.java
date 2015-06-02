@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 
 public class Perfil extends Fragment {
@@ -43,6 +44,12 @@ public class Perfil extends Fragment {
                 PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         ImageView profile = (ImageView) getView().findViewById(R.id.perfil_imagen);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainApplication.getInstance().visitAutor(getActivity(), app_preferences.getInt("userId",0));
+            }
+        });
         TextView nombre = (TextView) getView().findViewById(R.id.perfil_username);
         TextView titulo = (TextView) getView().findViewById(R.id.perfil_titulo);
         TextView nivel = (TextView) getView().findViewById(R.id.perfil_nivel);
