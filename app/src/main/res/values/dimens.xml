@@ -97,4 +97,8 @@
     <dimen name="receta_texto">24sp</dimen>
     <dimen name="grid_recipe_descripcion_recom">28sp</dimen>
 
+    <!--Crear receta-->
+
+    <dimen name="formulario_crear_receta">20sp</dimen>
+
 </resources>

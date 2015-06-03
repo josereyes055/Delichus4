@@ -74,13 +74,6 @@
                 android:id="@+id/descripcion_logro"
                 android:text="Descipción"/>
 
-
-
-
-
-
-
-
     </LinearLayout>
 
 </LinearLayout>

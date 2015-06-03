@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/borrar_ingrediente"
+            android:id="@+id/borrar_ingrediente"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/borrar_ingrediente"
+            android:layout_marginTop="-2dp"
+            android:layout_marginLeft="10dp"
+            android:text="Ingrediente"
+            android:id="@+id/nombre_selector_ingrediente"/>
+
+        </LinearLayout>
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:id="@+id/unidad_de_medida"
+        android:layout_gravity="center"
+        style="@android:style/Widget.Holo.Spinner"
+        android:drawSelectorOnTop="true"
+        android:focusableInTouchMode="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="30dp">
+
+        <NumberPicker
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/picker_ingrediente_entero"
+            android:layout_weight="1">
+
+            </NumberPicker>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="y"
+            android:gravity="center"
+            android:textSize="@dimen/y"/>
+        <NumberPicker
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/picker_ingrediente_fraccion"
+            android:layout_weight="1">
+
+        </NumberPicker>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/torta"
+            android:src="@drawable/cero"/>
+
+        </LinearLayout>
+
+</LinearLayout>

@@ -103,7 +103,7 @@
 
     <!--Spinner custom-->
 
-    <dimen name="spinner">17sp</dimen>
+    <dimen name="spinner">15sp</dimen>
     <dimen name="spinner_items">20sp</dimen>
 
     <!--Recetas fin-->
@@ -123,6 +123,9 @@
     <dimen name="preguntas_formulario">18sp</dimen>
     <dimen name="respuestas_formulario">18sp</dimen>
 
+    <!--Crear receta-->
+
+    <dimen name="formulario_crear_receta">16sp</dimen>
 
 
 

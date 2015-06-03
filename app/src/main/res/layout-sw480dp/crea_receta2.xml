@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/otroscrolldemierda"
+    android:background="@color/fondo">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-70dp"
+            android:scaleType="fitCenter"
+            android:id="@+id/receta_imagen"
+            android:src="@drawable/top_crea_receta"/>
+
+        <geekgames.delichus4.customViews.CircleImage
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="-110dp"
+            android:id="@+id/other_user_foto"
+            android:src="@drawable/cargando_perfil"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/formulario_crear_receta"
+                android:text="Configura la cantidad de ingredientes que utilizarás"/>
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textSize="22dp"
+                android:transcriptMode="disabled"
+                android:id="@+id/lista_ingredientes_crea_receta"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/naranja"
+                android:textSize="@dimen/titulo_receta"
+                android:text="Pasos"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="30dp"
+                android:paddingTop="20dp"
+                android:lineSpacingExtra="5dp"
+                android:textSize="@dimen/sub_ingrediente"
+                android:textColor="@color/gris_sub"
+                android:gravity="center"
+                android:text="Para crear los pasos debes escoger la acción y siempre empezar tus frases por un verbo, de esta será más fácil seguir tu receta"/>
+
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog"
+                android:id="@+id/tipo_paso"
+                android:layout_gravity="center"
+                style="@android:style/Widget.Holo.Spinner"
+                android:drawSelectorOnTop="true"
+                android:focusableInTouchMode="true" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:textSize="@dimen/formulario_crear_receta"
+                android:layout_marginTop="10dp"
+                android:id="@+id/paso_texto"
+                android:hint="Escribe aquí el paso..."
+                android:textColorHint="@color/gris_claro"
+                android:gravity="center_horizontal"
+                android:background="@color/blanco"/>
+
+            <Button
+                android:layout_width="220dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Agregar otro paso"
+                android:id="@+id/agregar_paso"
+                android:textColor="@color/blanco"
+                android:background="@color/verde"
+                android:textSize="@dimen/texto_botones"
+                android:layout_gravity="center"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/formulario_crear_receta"
+                android:text="¿Qué tipos de coccición utlizas durante tu receta?"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/formulario_crear_receta"
+                android:text="Poner botones programaticos"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/formulario_crear_receta"
+                android:text="Tags"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/formulario_crear_receta"
+                android:text="Poner botones programaticos"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:text="Finalizar"
+            android:background="@color/verde"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/label_siguiente"/>
+
+    </LinearLayout>
+
+</ScrollView>

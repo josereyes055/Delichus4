@@ -121,5 +121,8 @@
     <dimen name="preguntas_formulario">22sp</dimen>
     <dimen name="respuestas_formulario">22sp</dimen>
 
+    <!--Crear receta-->
+
+    <dimen name="formulario_crear_receta">22sp</dimen>
 
 </resources>
