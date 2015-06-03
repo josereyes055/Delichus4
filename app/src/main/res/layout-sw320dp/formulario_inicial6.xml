@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-40dp"
+            android:layout_marginTop="-10dp"
             android:id="@+id/receta_imagen"
             android:src="@drawable/top_formulario"/>
 
@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:gravity="center"
-            android:layout_marginTop="-35dp"
             android:textColor="@color/naranja"
             android:textSize="@dimen/preguntas_formulario"
             android:text="@string/pregunta_6"/>
