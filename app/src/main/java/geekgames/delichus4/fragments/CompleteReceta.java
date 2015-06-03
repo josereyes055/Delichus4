@@ -1,13 +1,30 @@
 package geekgames.delichus4.fragments;
 
+import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
@@ -36,8 +53,98 @@ public class CompleteReceta extends Fragment{
 
         calificador.setOnRatingBarChangeListener(changeRating);
         Receta parent = (Receta)getActivity();
-        MainApplication.getInstance().addComplete(MainApplication.getInstance().sp.getInt("userId",0), parent.idReceta);
+        addComplete(MainApplication.getInstance().sp.getInt("userId", 0), parent.idReceta);
         return rootView;
+    }
+
+    public void addComplete( int idUser, String idReceta){
+
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                "http://www.geekgames.info/dbadmin/test.php?v=21&userId="+idUser+"&recipeId="+idReceta,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        try {
+                            JSONObject userData = jsonObject;
+
+                            String result = userData.getString("status");
+                            //Toast.makeText(getApplicationContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                            JSONArray logros = userData.getJSONArray("logrosObtenidos");
+                            if(logros.length() > 0 ) {
+                                for (int i = 0; i < logros.length(); i++){
+                                    alertaLogro(logros.getInt(i));
+                                }
+                            }
+
+
+                        }
+                        catch(JSONException e) {
+
+                            Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        MainApplication.getInstance().mRequestQueue.add(request);
+
+    }
+
+    public void alertaLogro( int idLogro){
+
+        SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String prefArray = app_preferences.getString("logros", null);
+
+        try {
+
+
+            JSONArray logros = new JSONArray(prefArray);
+            for (int i= 0; i<logros.length(); i++){
+                JSONObject logro = logros.getJSONObject( i);
+                if ( idLogro == Integer.parseInt(logro.getString("id")) ){
+
+                    final Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.logro_desbloqueado);
+
+                    TextView nombre = (TextView)dialog.findViewById(R.id.logro_desbloqueado);
+                    TextView titulo = (TextView)dialog.findViewById(R.id.titulo_desbloqueado);
+                    TextView descripcion = (TextView)dialog.findViewById(R.id.descripcion_logro);
+                    // set the custom dialog components - text, image and button
+
+                    titulo.setText(logro.getString("titulo") );
+                    descripcion.setText(logro.getString("descripcion"));
+                    nombre.setText( logro.getString("logro") );
+
+
+                    Button dialogButton = (Button) dialog.findViewById(R.id.ok_logro);
+                    // if button is clicked, close the custom dialog
+                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
+
+                }
+            }
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

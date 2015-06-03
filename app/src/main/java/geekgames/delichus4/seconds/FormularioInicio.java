@@ -73,7 +73,7 @@ public class FormularioInicio extends ActionBarActivity {
                     campos += valores[i]+",";
                 }
             }
-            if(dieta.getChildCount()>0){
+            if(campos.length()>0){
                 campos = campos.substring(0, campos.length() - 1);
             }
             Log.i("FUCKINGDEBUG","seleccionados; "+campos);
@@ -115,7 +115,7 @@ public class FormularioInicio extends ActionBarActivity {
                     campos += valores[i]+",";
                 }
             }
-            if(condicion.getChildCount()>0){
+            if(campos.length()>0){
                 campos = campos.substring(0, campos.length() - 1);
             }
             Log.i("FUCKINGDEBUG","seleccionados; "+campos);
@@ -149,7 +149,7 @@ public class FormularioInicio extends ActionBarActivity {
                 campos += valores[i]+",";
             }
         }
-        if(parent.getChildCount()>0){
+        if(campos.length()>0){
             campos = campos.substring(0, campos.length() - 1);
         }
         Log.i("FUCKINGDEBUG","seleccionados; "+campos);

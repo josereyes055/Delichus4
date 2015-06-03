@@ -207,6 +207,8 @@ public class Receta extends ActionBarActivity{
         super.onPause();
     }
 
+
+
     public void comentar(View view){
         view.startAnimation(animScaleRectangular);
 

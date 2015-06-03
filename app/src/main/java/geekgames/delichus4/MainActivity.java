@@ -232,7 +232,6 @@ public class MainActivity extends ActionBarActivity {
 
         // set the custom dialog components - text, image and button
 
-
         Button dialogButton = (Button) dialog.findViewById(R.id.btn_buscar_nombre);
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new View.OnClickListener() {

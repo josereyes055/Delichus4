@@ -53,6 +53,14 @@
                 android:textColor="@color/gris_sub"
                 android:text="Has desbloqueado el logro"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titulo"
+            android:textColor="@color/gris_oscuro"
+            android:id="@+id/logro_desbloqueado"
+            android:text="El logro"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +68,7 @@
                 android:textSize="@dimen/titulo"
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/verde"
-                android:id="@+id/logro_desbloqueado"
+                android:id="@+id/titulo_desbloqueado"
                 android:text="El titulo"/>
 
             <TextView
@@ -76,7 +84,19 @@
 
 
 
-
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Ok"
+            android:id="@+id/ok_logro"
+            android:textColor="@color/blanco"
+            android:background="@color/verde"
+            android:enabled="true"
+            android:textSize="22dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"/>
 
 
 
