@@ -10,20 +10,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-40dp"
+            android:id="@+id/receta_imagen"
+            android:src="@drawable/top_formulario"/>
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/titulo_formulario"
             android:padding="10dp"
             android:gravity="center"
-            android:text="@string/titulo_formulario"/>
-
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
             android:textColor="@color/naranja"
+            android:layout_marginTop="-35dp"
             android:textSize="@dimen/preguntas_formulario"
             android:text="@string/pregunta_3"/>
 
@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp"
+            android:layout_marginTop="-10dp"
             android:id="@+id/odia_checkbox">
 
 

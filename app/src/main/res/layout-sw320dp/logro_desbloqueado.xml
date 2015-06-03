@@ -4,7 +4,6 @@
     android:gravity="center"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:id="@+id/background"
     android:background="@drawable/recipe_background">
@@ -19,8 +18,8 @@
 
 
        <ImageView
-           android:layout_width="100dp"
-           android:layout_height="100dp"
+           android:layout_width="90dp"
+           android:layout_height="90dp"
            android:paddingTop="20dp"
            android:layout_marginBottom="10dp"
            android:src="@drawable/logro_completo"/>
@@ -65,7 +64,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titulo"
-                android:layout_marginLeft="8dp"
                 android:textColor="@color/verde"
                 android:id="@+id/tituo_desbloqueado"
                 android:text="El titulo"/>
@@ -76,15 +74,14 @@
                 android:minHeight="100dp"
                 android:gravity="center"
                 android:textSize="@dimen/ganado"
-                android:layout_marginLeft="8dp"
                 android:textColor="@color/gris_sub"
                 android:id="@+id/descripcion_logro"
                 android:text="Descipción"/>
 
 
         <Button
-            android:layout_width="150dp"
-            android:layout_height="60dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:text="Ok"
@@ -92,7 +89,7 @@
             android:textColor="@color/blanco"
             android:background="@color/verde"
             android:enabled="true"
-            android:textSize="22dp"
+            android:textSize="@dimen/texto_botones"
             android:layout_gravity="center"
             android:textAllCaps="false"/>
 

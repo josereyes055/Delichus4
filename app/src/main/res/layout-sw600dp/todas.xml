@@ -3,62 +3,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     android:background="@color/fondo"
-    >
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Todas las recetas"
-                android:gravity="center"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/recomendadosTitle"
-                android:textColor="@color/naranja"
-                android:textStyle="bold"
-                android:textSize="@dimen/section_title" />
+        <TextView
+            android:id="@+id/recomendadosTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Todas las recetas"
+            android:textColor="@color/naranja"
+            android:textSize="@dimen/section_title"
+            android:textStyle="bold" />
 
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="@android:color/darker_gray" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:background="@color/blanco">
+            android:background="@color/blanco"
+            android:weightSum="2">
 
             <Spinner
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
                 android:id="@+id/filtro_receta"
-                android:layout_gravity="center"
                 style="@android:style/Widget.Holo.Spinner"
-                android:drawSelectorOnTop="true"
-                android:focusableInTouchMode="true" />
-
-            <Spinner
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                android:id="@+id/fitro_seguidos"
                 android:layout_gravity="center"
-                style="@android:style/Widget.Holo.Spinner"
+                android:layout_weight="1"
                 android:drawSelectorOnTop="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:spinnerMode="dialog" />
+
+            <Spinner
+                android:id="@+id/fitro_seguidos"
+                style="@android:style/Widget.Holo.Spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:drawSelectorOnTop="true"
+                android:focusableInTouchMode="true"
+                android:spinnerMode="dialog" />
 
 
         </LinearLayout>
@@ -66,20 +65,18 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="@android:color/darker_gray" />
 
-        <com.etsy.android.grid.StaggeredGridView
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.etsy.android.grid.StaggeredGridView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/grid_super_op"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:item_margin="5dp"
+            app:column_count="2"
 
-            app:column_count="2" />
+            app:item_margin="5dp" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>

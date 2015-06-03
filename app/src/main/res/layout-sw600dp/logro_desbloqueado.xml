@@ -4,7 +4,6 @@
     android:gravity="center"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:id="@+id/background"
     android:background="@drawable/recipe_background">
@@ -19,8 +18,8 @@
 
 
        <ImageView
-           android:layout_width="150dp"
-           android:layout_height="150dp"
+           android:layout_width="110dp"
+           android:layout_height="110dp"
            android:paddingTop="20dp"
            android:layout_marginBottom="10dp"
            android:src="@drawable/logro_completo"/>
@@ -90,7 +89,7 @@
                 android:textColor="@color/blanco"
                 android:background="@color/verde"
                 android:enabled="true"
-                android:textSize="22dp"
+                android:textSize="@dimen/texto_botones"
                 android:layout_gravity="center"
                 android:textAllCaps="false"/>
 
