@@ -157,6 +157,7 @@
                      android:layout_width="300dp"
                      android:layout_height="wrap_content"
                      android:text="Tamaño de los textos"
+                     android:textColor="@color/gris_claro"
                      android:textSize="@dimen/lables"
                      android:layout_centerVertical="true"
                      android:layout_toEndOf="@+id/ico_typo" />

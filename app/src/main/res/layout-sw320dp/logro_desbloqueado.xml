@@ -28,7 +28,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center">
 
 
@@ -60,6 +60,19 @@
             android:id="@+id/logro_desbloqueado"
             android:text="El logro"/>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titulo"
+                android:textColor="@color/gris_sub"
+                android:layout_marginRight="5dp"
+                android:text="Título"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +81,9 @@
                 android:id="@+id/titulo_desbloqueado"
                 android:text="El titulo"/>
 
-            <TextView
+        </LinearLayout>
+
+        <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
@@ -85,6 +100,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:text="Ok"
+            android:focusable="true"
             android:id="@+id/ok_logro"
             android:textColor="@color/blanco"
             android:background="@color/verde"

@@ -156,6 +156,7 @@
                      android:layout_marginLeft="15dp"
                      android:layout_width="300dp"
                      android:layout_height="wrap_content"
+                     android:textColor="@color/gris_claro"
                      android:text="Tamaño de los textos"
                      android:textSize="@dimen/lables"
                      android:layout_centerVertical="true"

@@ -146,6 +146,7 @@
             android:layout_height="wrap_content"
             android:isIndicator="false"
             android:id="@+id/ratingFinal"
+            style = "?android:attr/ratingBarStyleSmall"
             />
 
     </LinearLayout>

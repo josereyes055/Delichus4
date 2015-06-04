@@ -61,6 +61,7 @@
 
     <dimen name="logro">20sp</dimen>
     <dimen name="descipcion_logro">18sp</dimen>
+    <dimen name="titulo_cocinero_logro">25sp</dimen>
 
     <!--Min_user-->
 

@@ -50,6 +50,7 @@ public class TituloAdapter extends ArrayAdapter<Logro> {
         //NOTE: You would normally use the ViewHolder pattern here
         TextView nombre = (TextView) convertView.findViewById(R.id.titulillo);
         final LinearLayout fondo = (LinearLayout)convertView.findViewById(R.id.contenedor_titulo);
+        final TextView letras = (TextView)convertView.findViewById(R.id.titulillo);
         fondo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +59,8 @@ public class TituloAdapter extends ArrayAdapter<Logro> {
                 editor.putString("userTitulo", logro.getTitulo());
                 editor.commit();
                 fondo.setBackgroundColor(getContext().getResources().getColor(R.color.verde));
-                Toast.makeText(getContext(), "Titulo cambiado", Toast.LENGTH_SHORT).show();
+                letras.setTextColor(getContext().getResources().getColor(R.color.blanco));
+                Toast.makeText(getContext(), "Cambiaste tu titulo!", Toast.LENGTH_SHORT).show();
             }
         });
 
