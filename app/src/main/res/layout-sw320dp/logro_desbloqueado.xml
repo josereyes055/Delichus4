@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titulo"
                 android:textColor="@color/verde"
-                android:id="@+id/tituo_desbloqueado"
+                android:id="@+id/titulo_desbloqueado"
                 android:text="El titulo"/>
 
             <TextView

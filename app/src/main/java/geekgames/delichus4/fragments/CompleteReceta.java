@@ -3,6 +3,7 @@ package geekgames.delichus4.fragments;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -70,7 +71,7 @@ public class CompleteReceta extends Fragment{
                             JSONObject userData = jsonObject;
 
                             String result = userData.getString("status");
-                            //Toast.makeText(getApplicationContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "Aï¿½adido a favoritos", Toast.LENGTH_SHORT).show();
                             JSONArray logros = userData.getJSONArray("logrosObtenidos");
                             if(logros.length() > 0 ) {
                                 for (int i = 0; i < logros.length(); i++){
@@ -132,7 +133,13 @@ public class CompleteReceta extends Fragment{
                         }
                     });
 
+                    Vibrator v = (Vibrator) getActivity().getSystemService(getActivity().VIBRATOR_SERVICE);
+                    // Vibrate for 500 milliseconds
+                    long[] pattern = {0, 100, 1000, 300, 200, 100, 500, 200, 100};
+                    v.vibrate(pattern, -1);
+                    MainApplication.logro.start();
                     dialog.show();
+
 
 
                 }

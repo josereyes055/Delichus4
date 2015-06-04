@@ -116,11 +116,11 @@ public class Recomendados extends Fragment {
         favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Log.i("FUCKING DEBUG", "se va a adherir " + unaFicha.nombre +" como favorito" );
-               v.startAnimation(animScale);
-               MainApplication.mp.start();
-               MainApplication.getInstance().addFav( MainApplication.getInstance().sp.getInt("userId",0), unaFicha.id );
-
+                //Log.i("FUCKING DEBUG", "se va a adherir " + unaFicha.nombre +" como favorito" );
+                v.setBackgroundResource(R.drawable.fav_grande_on);
+                v.startAnimation(animScale);
+                MainApplication.mp.start();
+                MainApplication.getInstance().addFav( MainApplication.getInstance().sp.getInt("userId",0), unaFicha.id );
             }
         });
         ImageView fotoV = (ImageView) getView().findViewById(R.id.recipe_foto);

@@ -95,16 +95,23 @@ public class ActivitySeguidos extends ActionBarActivity {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         try {
-                            List<Seguido> segsRecords = parse(jsonObject);
 
-                            AlphaAnimation animate_apear = new AlphaAnimation(0,1);
-                            animate_apear.setDuration(400);
+                            JSONArray json = jsonObject.getJSONArray("seguidos");
+                            if( json.length() > 0 ){
+                                List<Seguido> segsRecords = parse(json);
+
+                                AlphaAnimation animate_apear = new AlphaAnimation(0,1);
+                                animate_apear.setDuration(400);
 
 
-                            animate_apear.setFillAfter(true);
-                            cargadas.startAnimation(animate_apear);
+                                animate_apear.setFillAfter(true);
+                                cargadas.startAnimation(animate_apear);
 
-                            mAdapter.swapRecords(segsRecords);
+                                mAdapter.swapRecords(segsRecords);
+                            }else{
+                                Toast.makeText(getApplicationContext(), "Aún no sigues a nadie"  , Toast.LENGTH_LONG).show();
+                                finish();
+                            }
 
 
                         }
@@ -126,10 +133,10 @@ public class ActivitySeguidos extends ActionBarActivity {
         //MainApplication.getInstance().fetchUserAchievements(  MainApplication.getInstance().getUserId() );
     }
 
-    private List<Seguido> parse(JSONObject json) throws JSONException {
+    private List<Seguido> parse(JSONArray json) throws JSONException {
         ArrayList<Seguido> records = new ArrayList<Seguido>();
 
-        JSONArray segs = json.getJSONArray("seguidos");
+        JSONArray segs = json;
 
         for(int i =0; i < segs.length(); i++) {
             JSONObject jsonContent = segs.getJSONObject(i);

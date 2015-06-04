@@ -34,6 +34,7 @@ public class MainApplication extends Application {
     public RequestQueue mRequestQueue;
     //public Usuario usuario;
     public static MediaPlayer mp;
+    public static MediaPlayer logro;
 
     //public Ficha laReceta;
     public JSONArray losPasos;
@@ -69,6 +70,7 @@ public class MainApplication extends Application {
 
         mRequestQueue = Volley.newRequestQueue(this);
         mp = MediaPlayer.create(this, R.raw.favoritos);
+        logro = MediaPlayer.create(this, R.raw.favoritos);
         sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sInstance = this;
 

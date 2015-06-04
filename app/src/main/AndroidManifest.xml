@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -158,6 +159,16 @@
             android:screenOrientation="portrait"
             android:theme="@style/RecipeTheme"
             android:label="Ajustes" >
+
+        </activity>
+
+        <activity
+            android:name="geekgames.delichus4.seconds.ActivityTitulos"
+            android:parentActivityName="geekgames.delichus4.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/RecipeTheme"
+            android:label="Titulos" >
 
         </activity>
 

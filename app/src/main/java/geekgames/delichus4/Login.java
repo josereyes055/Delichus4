@@ -222,11 +222,19 @@ public class Login extends Activity {
             editor.putString("userLogros", user.getJSONArray("logros").toString());
             editor.commit(); // Very important
 
-            Intent mainIntent = new Intent().setClass(
-                    Login.this, FormularioInicio.class);
-            startActivity(mainIntent);
+            String query = app_preferences.getString("query", null);
 
-            finish();
+            if( query == null ) {
+                Intent mainIntent = new Intent().setClass(
+                        Login.this, FormularioInicio.class);
+                startActivity(mainIntent);
+                finish();
+            }else{
+                Intent mainIntent = new Intent().setClass(
+                        Login.this, MainActivity.class);
+                startActivity(mainIntent);
+                finish();
+            }
 
         }else{
             Toast.makeText(getApplicationContext(), response.getString("loginResponse"), Toast.LENGTH_SHORT).show();

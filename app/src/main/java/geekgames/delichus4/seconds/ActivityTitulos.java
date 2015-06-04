@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,12 +26,12 @@ import java.util.List;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 import geekgames.delichus4.adapters.LogroAdapter;
+import geekgames.delichus4.adapters.TituloAdapter;
 import geekgames.delichus4.customObjects.Logro;
-import geekgames.delichus4.customObjects.MiniFicha;
 
-public class ActivityLogros extends ActionBarActivity {
+public class ActivityTitulos extends ActionBarActivity {
 
-    private LogroAdapter mAdapter;
+    private TituloAdapter mAdapter;
     int idUser;
     ListView listaLogros;
 
@@ -38,15 +39,15 @@ public class ActivityLogros extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.logros);
+        setContentView(R.layout.titulos);
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdapter = new LogroAdapter(this);
+        mAdapter = new TituloAdapter(this);
 
-        listaLogros = (ListView) findViewById(R.id.list_logros);
+        listaLogros = (ListView) findViewById(R.id.list_titulos);
         listaLogros.setAdapter(mAdapter);
-        setTitle("Logros");
+        setTitle("Titulos");
 
         idUser = MainApplication.getInstance().sp.getInt("userId",0);
 
@@ -133,9 +134,8 @@ public class ActivityLogros extends ActionBarActivity {
 
 
     private List<Logro> parse(JSONArray jsonObject) throws JSONException {
-        ArrayList<Logro> records = new ArrayList<Logro>();
+
         ArrayList<Logro> logrosAlcanzados = new ArrayList<Logro>();
-        ArrayList<Logro> logrosPorRealizar = new ArrayList<Logro>();
 
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String prefArray = app_preferences.getString("logros", null);
@@ -168,28 +168,13 @@ public class ActivityLogros extends ActionBarActivity {
 
                 if (done) {
                     logrosAlcanzados.add(record);
-                } else {
-                    logrosPorRealizar.add(record);
                 }
             }
 
         }// end prefArrray if
 
-        // Si hay logros alcanzados se
-        // añade el header
-        if(logrosAlcanzados.size() > 0) {
-            records.add(new Logro(-1, "LOGROS ALCANZADOS", "", "", false));
-            records.addAll(logrosAlcanzados);
-        }
 
-
-        // Si hay logros por realizar se añade el header
-        if(logrosPorRealizar.size() > 0) {
-            records.add(new Logro(-1, "LOGROS POR REALIZAR", "", "", false));
-            records.addAll(logrosPorRealizar);
-        }
-
-        return records;
+        return logrosAlcanzados;
     }
 
 }

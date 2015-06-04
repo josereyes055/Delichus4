@@ -107,16 +107,23 @@ public class ActivityFavoritos extends ActionBarActivity {
                     public void onResponse(JSONObject jsonObject) {
                         try {
                             currentHeader = "";
-                            List<MiniFicha> favsRecords = parse(jsonObject);
 
-                            AlphaAnimation animate_apear = new AlphaAnimation(0,1);
-                            animate_apear.setDuration(400);
+                            JSONArray json = jsonObject.getJSONArray("favoritos");
+                            if( json.length() > 0) {
+                                List<MiniFicha> favsRecords = parse(json);
+
+                                AlphaAnimation animate_apear = new AlphaAnimation(0, 1);
+                                animate_apear.setDuration(400);
 
 
-                            animate_apear.setFillAfter(true);
-                            listaFavs.startAnimation(animate_apear);
+                                animate_apear.setFillAfter(true);
+                                listaFavs.startAnimation(animate_apear);
 
-                            mAdapter.swapRecords(favsRecords);
+                                mAdapter.swapRecords(favsRecords);
+                            }else{
+                                Toast.makeText(getApplicationContext(), "No tienes recetas favoritas,¿por qué no buscas una?"  , Toast.LENGTH_LONG).show();
+                                finish();
+                            }
                         }
                         catch(JSONException e) {
                             Toast.makeText(getApplicationContext(), getString(R.string.error_seguidos)  , Toast.LENGTH_SHORT).show();
@@ -136,10 +143,10 @@ public class ActivityFavoritos extends ActionBarActivity {
         //MainApplication.getInstance().fetchUserAchievements(  MainApplication.getInstance().getUserId() );
     }
 
-    private List<MiniFicha> parse(JSONObject json) throws JSONException {
+    private List<MiniFicha> parse(JSONArray json) throws JSONException {
         ArrayList<MiniFicha> records = new ArrayList<MiniFicha>();
 
-        JSONArray favs = json.getJSONArray("favoritos");
+        JSONArray favs = json;
 
         // Se pasa la lista de recetas a un Array
         // para poder ordenarlo

@@ -80,7 +80,8 @@ public class ActivityAjustes extends ActionBarActivity {
     public void logOut(View view){
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = app_preferences.edit();
-        editor.clear();
+        editor.remove("userId");
+        editor.commit();
         Intent mainIntent = new Intent().setClass(
                 ActivityAjustes.this, Login.class);
         startActivity(mainIntent);
@@ -120,6 +121,12 @@ public class ActivityAjustes extends ActionBarActivity {
     public void openSeguidos(View view){
         Intent mainIntent = new Intent().setClass(
                 ActivityAjustes.this, ActivitySeguidos.class);
+        startActivity(mainIntent);
+    }
+
+    public void openTitulos(View view){
+        Intent mainIntent = new Intent().setClass(
+                ActivityAjustes.this, ActivityTitulos.class);
         startActivity(mainIntent);
     }
 

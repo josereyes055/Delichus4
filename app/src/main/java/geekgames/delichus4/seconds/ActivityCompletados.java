@@ -103,7 +103,9 @@ public class ActivityCompletados extends ActionBarActivity {
                     public void onResponse(JSONObject jsonObject) {
                         try {
                             currentHeader = "";
-                            List<MiniFicha> favsRecords = parse(jsonObject);
+                            JSONArray json = jsonObject.getJSONArray("completados");
+                            if( json.length() > 0 ){
+                            List<MiniFicha> favsRecords = parse(json);
 
                             AlphaAnimation animate_apear = new AlphaAnimation(0,1);
                             animate_apear.setDuration(400);
@@ -113,9 +115,13 @@ public class ActivityCompletados extends ActionBarActivity {
                             listaFavs.startAnimation(animate_apear);
 
                             mAdapter.swapRecords(favsRecords);
+                            }else{
+                                Toast.makeText(getApplicationContext(), "No has preparado ningun plato, busca uno que te guste"  , Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), getString(R.string.error_seguidos)  , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_seguidos)  , Toast.LENGTH_LONG).show();
                             Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
@@ -132,10 +138,10 @@ public class ActivityCompletados extends ActionBarActivity {
         //MainApplication.getInstance().fetchUserAchievements(  MainApplication.getInstance().getUserId() );
     }
 
-    private List<MiniFicha> parse(JSONObject json) throws JSONException {
+    private List<MiniFicha> parse(JSONArray json) throws JSONException {
         ArrayList<MiniFicha> records = new ArrayList<MiniFicha>();
 
-        JSONArray favs = json.getJSONArray("completados");
+        JSONArray favs = json;
 
         // Se pasa la lista de recetas a un Array
         // para poder ordenarlo
