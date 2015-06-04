@@ -72,13 +72,6 @@
             android:layout_gravity="center"
             android:layout_centerHorizontal="true"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/estrellas_opinion"
-            android:textColor="@color/verde"
-            android:id="@+id/opinion_criterio"
-            android:text="Me encantó"/>
 
         <EditText
             android:id="@+id/opinion_text"

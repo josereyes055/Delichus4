@@ -116,7 +116,7 @@ public class Todas extends Fragment {
         });
         
         // A more complicated dynamic way
-        String[] spinnerItems2 = new String[]{" Comartida por Mako", "Comartida por Pikachu", "Comartida por Zack", "Comartida por Naruto", "Comartida por Akira"};
+        String[] spinnerItems2 = new String[]{" Compartida por Mako", "Compartida por Pikachu", "Compartida por Zack", "Compartida por Naruto", "Compartida por Akira"};
         // create your own spinner array adapter
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_custom,spinnerItems2){
             public View getView(int position, View convertView, ViewGroup parent) {
