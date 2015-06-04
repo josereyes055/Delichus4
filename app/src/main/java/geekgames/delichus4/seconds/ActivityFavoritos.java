@@ -98,7 +98,7 @@ public class ActivityFavoritos extends ActionBarActivity {
     }
 
     private void fetch() {
-        Toast.makeText(getApplicationContext(), "Cargando favoritos", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.cargando_seguidos)  , Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=12&userId="+idUser,
                 null,
@@ -119,7 +119,7 @@ public class ActivityFavoritos extends ActionBarActivity {
                             mAdapter.swapRecords(favsRecords);
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Error al crear la lista de favoritos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_seguidos)  , Toast.LENGTH_SHORT).show();
                             Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
@@ -127,7 +127,7 @@ public class ActivityFavoritos extends ActionBarActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "No se pudo cargar la lista de favoritos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                         Log.e("FETCH JSON ERROR", volleyError.getMessage());
                     }
                 });

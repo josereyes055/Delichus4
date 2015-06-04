@@ -72,7 +72,7 @@ public class Recomendados extends Fragment {
                         }
                         catch(JSONException e) {
                           //  Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getActivity(), "Error interno", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.error_interno)  , Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -80,7 +80,7 @@ public class Recomendados extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
                       //  Toast.makeText(getActivity(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getActivity(), "Error en la base de datos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                     }
                 });
 

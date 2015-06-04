@@ -111,7 +111,8 @@ public class OtherUserPage extends ActionBarActivity {
     }
 
     private void fetch() {
-        Toast.makeText(getApplicationContext(), "Cargando información del usuario", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.info_usuario)  , Toast.LENGTH_SHORT).show();
+
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=22&userId="+idUser+"&visitorId="+MainApplication.getInstance().sp.getInt("userId",0),
                 null,
@@ -225,7 +226,7 @@ public class OtherUserPage extends ActionBarActivity {
                         }
                         catch(JSONException e) {
                            // Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "Error interno" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_interno)  , Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -233,7 +234,7 @@ public class OtherUserPage extends ActionBarActivity {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
                        // Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), "Error en la base de datos" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                     }
                 });
 

@@ -96,19 +96,19 @@ public class MainApplication extends Application {
                             JSONObject userData = jsonObject;
 
                             String result = userData.getString("status");
-                            Toast.makeText(getApplicationContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.si_favoritos)  , Toast.LENGTH_SHORT).show();
 
                         }
                         catch(JSONException e) {
 
-                            Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.no_favoritos)  , Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -129,19 +129,19 @@ public class MainApplication extends Application {
                             JSONObject userData = jsonObject;
 
                             String result = userData.getString("status");
-                            Toast.makeText(getApplicationContext(), "Añadido a seguidos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.si_seguido)  , Toast.LENGTH_SHORT).show();
 
                         }
                         catch(JSONException e) {
 
-                            Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.no_seguido)  , Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -196,14 +196,14 @@ public class MainApplication extends Application {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
 
-                        Toast.makeText(getApplicationContext(), "Calificación guardada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.si_calificacion)  , Toast.LENGTH_SHORT).show();
 
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "error al guardar la calificación", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.no_calificacion)  , Toast.LENGTH_SHORT).show();
                     }
                 });
 

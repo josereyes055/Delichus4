@@ -129,7 +129,7 @@ public class DescripcionReceta extends Fragment {
     }
 
     private void fetchReceta(String idReceta){
-        Toast.makeText(getActivity(), "Cargando receta", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Consultando la receta", Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=6&recipeId="+idReceta,
                 null,
@@ -142,7 +142,7 @@ public class DescripcionReceta extends Fragment {
                         }
                         catch(JSONException e) {
                           // Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getActivity(), "Error interno" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.error_recetas_activity)  , Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -150,7 +150,7 @@ public class DescripcionReceta extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
                        // Toast.makeText(getActivity(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getActivity(), "Error al acceder a la base de datos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                     }
                 });
 

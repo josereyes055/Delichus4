@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Delichus</string>
+
+   <string name="internet">¿Seguro que tienes internet?</string>
+   <string name="error_interno">No sé dónde lo puse, ¿Lo volvemos a buscar?</string>
+   <string name="coment_guardado">Muy interesante, muchas gracias :)</string>
+   <string name="coment_no_guardado">Creo que no lo anoté, ¿Podrías repetírmelo?</string>
+   <string name="lista_compras">He agregado los ingredientes que no tienes a tu lista de compras</string>
+   <string name="si_foto">¡Has publicado tu foto!</string>
+   <string name="no_foto">No he podido publicar tu foto :(</string>
+   <string name="si_seguido">Lo añadí a tu lista de seguidos</string>
+   <string name="no_seguido">No pude añadirlo tu lista de seguidos :S</string>
+   <string name="si_calificacion">¡Muchas gracias por tu opinión!</string>
+   <string name="no_calificacion">Upss.. no escuché.. ¿Me repites?</string>
+   <string name="si_favoritos">¡Listop! Ya está en tus favoritos ;)</string>
+   <string name="no_favoritos">Creo que no la pude agregar...</string>
+   <string name="no_recetas">No encontré recetas con esas características :/</string>
+   <string name="error_recetas">Espera, no pude buscarlo :S</string>
+   <string name="si_registro">Felicidades ya eres un miembro de la cocina de Delichus!</string>
+   <string name="no_contrasena">Revisa, las contraseñas no coinciden :S</string>
+   <string name="no_registro">Lo siento, no pude registrarte...¿Lo intentamos otra vez?</string>
+   <string name="info_usuario">Cargando la información de éste cocinero</string>
+   <string name="no_registro_info">Perdona, no pude registrar la información :(</string>
+   <string name="no_lectura_info">¡Escribes muy chiquito! No pude leer la información :(</string>
+   <string name="cargando_seguidos">¡Espera! ¡Espera! ¡Los estoy buscando!</string>
+   <string name="error_seguidos">No los encontré por ningún lado... ¿Los volvemos a buscar?</string>
+   <string name="error_recetas_activity">No las encontré por ningún lado... ¿Las volvemos a buscar?</string>
+   <string name="cargando_completadas">Dame un momento, las estoy ordenando para ti :D</string>
+
+
+
+   <string name="app_name">Delichus</string>
     <string name="usuario">User</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>

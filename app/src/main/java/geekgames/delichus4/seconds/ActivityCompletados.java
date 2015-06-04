@@ -94,7 +94,7 @@ public class ActivityCompletados extends ActionBarActivity {
     }
 
     private void fetch() {
-        Toast.makeText(getApplicationContext(), "Cargando recetas completadas", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.cargando_completadas)  , Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=13&userId="+idUser,
                 null,
@@ -115,7 +115,7 @@ public class ActivityCompletados extends ActionBarActivity {
                             mAdapter.swapRecords(favsRecords);
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Error al crear la lista de completados", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_seguidos)  , Toast.LENGTH_SHORT).show();
                             Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
@@ -123,7 +123,7 @@ public class ActivityCompletados extends ActionBarActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "No se pudo cargar la lista de favoritos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                         Log.e("FETCH JSON ERROR", volleyError.getMessage());
                     }
                 });

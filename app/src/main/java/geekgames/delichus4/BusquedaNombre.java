@@ -142,14 +142,14 @@ public class BusquedaNombre extends ActionBarActivity{
 
                             JSONArray jsonImages = jsonObject.getJSONArray("resultados");
                             if(jsonImages.length()<1){
-                                Toast.makeText(getApplicationContext(), "No se encontraron recetas", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getString(R.string.no_recetas)  , Toast.LENGTH_SHORT).show();
 
                             }else {
                                 setRecipeList(jsonImages);
                             }
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Error al cargar la lista de resultados", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_interno)  , Toast.LENGTH_SHORT).show();
                             Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
@@ -157,7 +157,7 @@ public class BusquedaNombre extends ActionBarActivity{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "Error al ejecutar la busqueda", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_recetas)  , Toast.LENGTH_SHORT).show();
                         Log.e("FETCH JSON ERROR",  volleyError.getMessage());
                     }
                 });
@@ -203,7 +203,7 @@ public class BusquedaNombre extends ActionBarActivity{
             }
             catch(JSONException e) {
                 //Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Error interno", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_interno)  , Toast.LENGTH_SHORT).show();
             }
         }
 

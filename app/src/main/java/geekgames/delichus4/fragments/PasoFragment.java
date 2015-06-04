@@ -153,7 +153,7 @@ public class PasoFragment extends Fragment{
             }
 
         } catch (JSONException e) {
-            Toast.makeText(getActivity(), "Unable to parse data: " + e, Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), getString(R.string.error_interno)  , Toast.LENGTH_SHORT).show();
         }
 
     }

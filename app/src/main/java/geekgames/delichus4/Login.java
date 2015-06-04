@@ -135,14 +135,14 @@ public class Login extends Activity {
 
                        }
                        catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "No se pudo leer la información: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                           Toast.makeText(getApplicationContext(), getString(R.string.no_lectura_info)  , Toast.LENGTH_SHORT).show();
                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "No pudo registrarse la información: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.no_registro_info)  , Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -185,7 +185,7 @@ public class Login extends Activity {
                         }
                         catch(JSONException e) {
                            // Toast.makeText(getApplicationContext(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "Error interno", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_interno)  , Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -193,7 +193,7 @@ public class Login extends Activity {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
                       //  Toast.makeText(getApplicationContext(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), "Seguro que funciona tu internet?" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                     }
                 });
 

@@ -87,7 +87,7 @@ public class ActivitySeguidos extends ActionBarActivity {
     }
 
     private void fetch() {
-        Toast.makeText(getApplicationContext(), "Cargando usuarios seguidos", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.cargando_seguidos)  , Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://www.geekgames.info/dbadmin/test.php?v=14&userId="+idUser,
                 null,
@@ -109,7 +109,7 @@ public class ActivitySeguidos extends ActionBarActivity {
 
                         }
                         catch(JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Error al crear la lista de personas a las que sigues", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_seguidos)  , Toast.LENGTH_SHORT).show();
                             Log.e("PARSE JSON ERROR", e.getMessage());
                         }
                     }
@@ -117,7 +117,7 @@ public class ActivitySeguidos extends ActionBarActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "Error al cargar la lista de personas a las que sigues", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.internet)  , Toast.LENGTH_SHORT).show();
                         Log.e("FETCH JSON ERROR", volleyError.getMessage());
                     }
                 });

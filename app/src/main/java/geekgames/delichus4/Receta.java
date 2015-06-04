@@ -150,7 +150,7 @@ public class Receta extends ActionBarActivity{
 
             @Override
             public void onSuccess(Sharer.Result result) {
-                Toast.makeText(getApplicationContext(), "Has publicado tu foto!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.si_foto)  , Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -160,7 +160,7 @@ public class Receta extends ActionBarActivity{
 
             @Override
             public void onError(FacebookException exception){
-                Toast.makeText(getApplicationContext(), "Hubo un problema al publicar tu foto!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.no_foto)  , Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -250,14 +250,14 @@ public class Receta extends ActionBarActivity{
                             @Override
                             public void onResponse(JSONObject jsonObject) {
 
-                                Toast.makeText(getApplicationContext(), "Comentario guardado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getString(R.string.coment_guardado)  , Toast.LENGTH_SHORT).show();
 
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError volleyError) {
-                                Toast.makeText(getApplicationContext(), "Error al guardar el comentario", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getString(R.string.coment_no_guardado)  , Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -443,7 +443,7 @@ public class Receta extends ActionBarActivity{
                 MainApplication.getInstance().shoppingList.add(ingrediente);
             }
         }
-        Toast.makeText(this, "Los ingredientes no disponibles se agregaron a la lista de compras", Toast.LENGTH_LONG).show();
+             Toast.makeText(getApplicationContext(), getString(R.string.lista_compras)  , Toast.LENGTH_SHORT).show();
     }
 
     public void validateCheckbox(){

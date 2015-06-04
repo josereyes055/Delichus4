@@ -91,16 +91,17 @@
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:id="@+id/paso_imagen"/>
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="200px"
             android:layout_weight="1.5"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="-70dp"
             android:padding="10dp"
             android:textSize="@dimen/descripcion_paso"
             android:text="descripcion"
             android:id="@+id/paso_descripcion"
-            android:gravity="center_horizontal" />
+            android:gravity="center" />
 
     </LinearLayout>
 

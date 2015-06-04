@@ -44,7 +44,7 @@ public class RegistroUsuario extends ActionBarActivity {
 
         if (!contrasena.getText().toString().equals( contrasena_valid.getText().toString())) {
 
-            Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.no_contrasena)  , Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -65,7 +65,7 @@ public class RegistroUsuario extends ActionBarActivity {
 
                             JSONObject userData = jsonObject;
 //                            String result = userData.getString("status");
-                            Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.si_registro)  , Toast.LENGTH_LONG).show();
 
                         Intent mainIntent = new Intent().setClass(
                                 RegistroUsuario.this, Login.class);
@@ -83,7 +83,7 @@ public class RegistroUsuario extends ActionBarActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getApplicationContext(), "No pudo registrarse la información: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.no_registro)  , Toast.LENGTH_LONG).show();
 
                     }
                 });
