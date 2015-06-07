@@ -231,12 +231,12 @@ public class ActivityAjustes extends ActionBarActivity {
     }
 
     private Intent getCropIntent(Intent intent) {
-        //intent.putExtra("crop", "true");
-        //intent.putExtra("aspectX", 1);
-        //intent.putExtra("aspectY", 1);
-        //intent.putExtra("outputX", 320);
-        //intent.putExtra("outputY", 320);
-        //intent.putExtra("return-data", true);
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("outputX", 320);
+        intent.putExtra("outputY", 320);
+        intent.putExtra("return-data", true);
         return intent;
     }
 
