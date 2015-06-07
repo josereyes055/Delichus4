@@ -247,9 +247,9 @@ public class ActivityAjustes extends ActionBarActivity {
                 //ToastUtils.toastType0(mActivity, "CHOICE_AVATAR_FROM_CAMERA", Toast.LENGTH_SHORT);
                 Bitmap avatar = getBitmapFromData(data);
 
-                //ImageView mImg;
-                //mImg = (ImageView) findViewById(R.id.ico_perfil);
-               // mImg.setImageBitmap(avatar);
+                ImageView mImg;
+                mImg = (ImageView) findViewById(R.id.ico_perfil);
+                mImg.setImageBitmap(avatar);
 
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageFileName = "PNG_" + timeStamp + "_" + ".png";
