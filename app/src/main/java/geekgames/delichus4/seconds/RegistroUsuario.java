@@ -52,7 +52,7 @@ public class RegistroUsuario extends ActionBarActivity {
         insertUser(nombre_usuario.getText().toString(), mail_usuario.getText().toString(), contrasena.getText().toString());
     }
 
-    public void insertUser( String nombre, String correo, String pass){
+    public void insertUser( final String nombre, String correo, final String pass){
         String query = "http://www.geekgames.info/dbadmin/test.php?v=10&nombre="+nombre+"&correo="+correo+"&pass="+pass+"&imagen=";
         Log.i("FUCKING DEBUG", "consulta: "+query);
         JsonObjectRequest request = new JsonObjectRequest(
@@ -69,6 +69,10 @@ public class RegistroUsuario extends ActionBarActivity {
 
                         Intent mainIntent = new Intent().setClass(
                                 RegistroUsuario.this, Login.class);
+                        mainIntent.putExtra("register", true);
+                        mainIntent.putExtra("user",nombre);
+                        mainIntent.putExtra("pass",pass);
+
                         startActivity(mainIntent);
 
 

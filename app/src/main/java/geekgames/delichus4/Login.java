@@ -108,6 +108,14 @@ public class Login extends Activity {
             }
         };
 
+        boolean fromRegister = this.getIntent().getBooleanExtra("register", false);
+
+        if(fromRegister){
+            String user = this.getIntent().getStringExtra("user");
+            String pass = this.getIntent().getStringExtra("pass");
+            dbAccess(user,pass);
+        }
+
     }
 
     public void insertUser( final String nombre, String correo, String pass, String imagen){
