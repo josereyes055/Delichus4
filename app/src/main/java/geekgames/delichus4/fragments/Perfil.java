@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
 
-public class Perfil extends Fragment {
+public class Perfil extends Fragment implements MainApplication.OnRefreshListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,7 +35,6 @@ public class Perfil extends Fragment {
             setLabels();
 
     }
-
 
 
     private void setLabels()  {
@@ -73,4 +72,8 @@ public class Perfil extends Fragment {
     }
 
 
+    @Override
+    public void onRefresh() {
+
+    }
 }
