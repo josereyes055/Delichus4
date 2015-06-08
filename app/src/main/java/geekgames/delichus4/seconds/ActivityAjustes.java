@@ -245,53 +245,42 @@ public class ActivityAjustes extends ActionBarActivity {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == CHOICE_AVATAR_FROM_CAMERA || requestCode == CHOICE_AVATAR_FROM_GALLERY) {
                 //ToastUtils.toastType0(mActivity, "CHOICE_AVATAR_FROM_CAMERA", Toast.LENGTH_SHORT);
-                //Bitmap avatar = getBitmapFromData(data);
-                Bitmap avatar;
-                Uri imageUri = data.getData();
+                Bitmap avatar = getBitmapFromData(data);
+
+                ImageView mImg;
+                mImg = (ImageView) findViewById(R.id.ico_perfil);
+                mImg.setImageBitmap(avatar);
+
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                String imageFileName = "PNG_" + timeStamp + "_" + ".png";
+                //create a file to write bitmap data
+                File f = new File(this.getApplicationContext().getCacheDir(), imageFileName);
+
                 try {
-                    avatar = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-
-                    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                    String imageFileName = "PNG_" + timeStamp + "_" + ".png";
-                    //create a file to write bitmap data
-                    File f = new File(this.getApplicationContext().getCacheDir(), imageFileName);
-
-                    try {
-                        f.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    //Convert bitmap to byte array
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    avatar.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-                    byte[] bitmapdata = bos.toByteArray();
-
-                    //write the bytes in file
-                    FileOutputStream fos = null;
-                    try {
-                        fos = new FileOutputStream(f);
-                        fos.write(bitmapdata);
-                        fos.flush();
-                        fos.close();
-
-                        uploadFile(f.getAbsolutePath(), String.valueOf( MainApplication.getInstance().sp.getInt("userId", 0) ));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    f.createNewFile();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                
-                //ImageView mImg;
-                //mImg = (ImageView) findViewById(R.id.ico_perfil);
-                //mImg.setImageBitmap(avatar);
 
+                //Convert bitmap to byte array
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                avatar.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+                byte[] bitmapdata = bos.toByteArray();
 
+                //write the bytes in file
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(f);
+                    fos.write(bitmapdata);
+                    fos.flush();
+                    fos.close();
 
-
+                    uploadFile(f.getAbsolutePath(), String.valueOf( MainApplication.getInstance().sp.getInt("userId", 0) ));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             } else if (requestCode == CHOICE_AVATAR_FROM_CAMERA_CROP) {
                 Intent intent = new Intent("com.android.camera.action.CROP");
