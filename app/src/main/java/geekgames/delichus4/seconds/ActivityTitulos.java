@@ -9,7 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -22,6 +25,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
@@ -47,6 +52,35 @@ public class ActivityTitulos extends ActionBarActivity {
 
         listaLogros = (ListView) findViewById(R.id.list_titulos);
         listaLogros.setAdapter(mAdapter);
+
+        listaLogros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+               @Override
+               public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                   for(int j = 0; j<adapterView.getChildCount();j++){
+                       View child = adapterView.getChildAt(j);
+                        LinearLayout fondo = (LinearLayout)child.findViewById(R.id.contenedor_titulo);
+                       final TextView letras = (TextView)child.findViewById(R.id.titulillo);
+                       fondo.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.blanco));
+                       letras.setTextColor(getApplicationContext().getResources().getColor(R.color.gris_oscuro));
+                   }
+                   View child = adapterView.getChildAt(i);
+                   LinearLayout fondo = (LinearLayout)child.findViewById(R.id.contenedor_titulo);
+                   final TextView letras = (TextView)child.findViewById(R.id.titulillo);
+                   fondo.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.verde));
+                   letras.setTextColor(getApplicationContext().getResources().getColor(R.color.blanco));
+
+                   final Logro logro = mAdapter.getItem(i);
+
+                   SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                   SharedPreferences.Editor editor = app_preferences.edit();
+                   editor.putString("userTitulo", logro.getTitulo());
+                   editor.commit();
+
+                   Toast.makeText(getApplicationContext(), "Cambiaste tu titulo!", Toast.LENGTH_SHORT).show();
+               }
+           });
+
         setTitle("Titulos");
 
         idUser = MainApplication.getInstance().sp.getInt("userId",0);
@@ -98,6 +132,14 @@ public class ActivityTitulos extends ActionBarActivity {
                             JSONArray completed = jsonObject.getJSONArray("logros_usuario");
                             if(completed.length() > 0) {}else{
                                 Toast.makeText(getApplicationContext(), "Aún no tienes logros que presumir :/"  , Toast.LENGTH_LONG).show();
+                                TimerTask task = new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        finish();}
+                                };
+                                // Simulate a long loading process on application startup.
+                                Timer timer = new Timer();
+                                timer.schedule(task, 3000);
 
                             }
                                 List<Logro> logrosRecords = parse(completed);

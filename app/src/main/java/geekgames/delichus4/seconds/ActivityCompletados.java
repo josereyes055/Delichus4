@@ -25,6 +25,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
@@ -117,7 +119,14 @@ public class ActivityCompletados extends ActionBarActivity {
                             mAdapter.swapRecords(favsRecords);
                             }else{
                                 Toast.makeText(getApplicationContext(), "No has preparado ningun plato, busca uno que te guste"  , Toast.LENGTH_SHORT).show();
-                                finish();
+                                TimerTask task = new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        finish();}
+                                };
+                                // Simulate a long loading process on application startup.
+                                Timer timer = new Timer();
+                                timer.schedule(task, 3000);
                             }
                         }
                         catch(JSONException e) {

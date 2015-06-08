@@ -184,6 +184,7 @@ public class MainApplication extends Application {
                 });
 
         MainApplication.getInstance().getRequestQueue().add(request);
+        Toast.makeText(getApplicationContext(), "Has ganado "+puntaje+" puntos", Toast.LENGTH_SHORT).show();
     }
 
     public void calificar(String idReceta, double ratingNew){
