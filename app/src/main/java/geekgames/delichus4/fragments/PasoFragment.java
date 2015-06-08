@@ -167,7 +167,12 @@ public class PasoFragment extends Fragment{
         Log.i("FUCKING DEBUG",calculo+","+entero+","+sobra+","+seconds);
         int minutos =  (int)entero ;
         int segundos = (int)seconds;
-        tiempo = minutos+":"+segundos;
+        String minString = ""+minutos;
+        String secString = ""+segundos;
+        if(minutos<10){ minString = "0"+minutos; }
+        if(segundos<10){ secString = "0"+segundos; }
+
+        tiempo = minString+":"+secString;
         return  tiempo;
     }
 

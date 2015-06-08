@@ -5,8 +5,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
@@ -34,6 +37,17 @@ public class ActivityShoppingList extends ActionBarActivity {
 
         //fetch();
         List<Ingrediente> shoppingList = MainApplication.getInstance().shoppingList;
+        if(shoppingList.size() == 0){
+            Toast.makeText(getApplicationContext(), "No tienes ingredientes pendientes por comprar", Toast.LENGTH_SHORT).show();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    finish();}
+            };
+            // Simulate a long loading process on application startup.
+            Timer timer = new Timer();
+            timer.schedule(task, 3000);
+        }
 
         mAdapter.swapRecords(shoppingList);
     }

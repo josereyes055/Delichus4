@@ -40,6 +40,13 @@
                     android:textColor="@color/cafe"
                     android:text="@string/usuario"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/cafe"
+                    android:textSize="@dimen/user_coment"
+                    android:text="10/10/2015"/>
 
             </LinearLayout>
 

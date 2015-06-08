@@ -21,6 +21,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import geekgames.delichus4.MainApplication;
 import geekgames.delichus4.R;
@@ -110,7 +112,14 @@ public class ActivitySeguidos extends ActionBarActivity {
                                 mAdapter.swapRecords(segsRecords);
                             }else{
                                 Toast.makeText(getApplicationContext(), "Aún no sigues a nadie"  , Toast.LENGTH_LONG).show();
-                                finish();
+                                TimerTask task = new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        finish();}
+                                };
+                                // Simulate a long loading process on application startup.
+                                Timer timer = new Timer();
+                                timer.schedule(task, 3000);
                             }
 
 

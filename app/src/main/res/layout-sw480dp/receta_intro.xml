@@ -159,15 +159,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:paddingBottom="30dp"
             android:lineSpacingExtra="5dp"
             android:textSize="@dimen/sub_ingrediente"
             android:textColor="@color/gris_sub"
             android:gravity="center"
-            android:text="Selecciona los ingredientes que ya tienes,
-los que no selecciones puedes agregarlos a la lista de compras"
+            android:text="Selecciona los ingredientes que te hacen falta para agregarlos a la lista de compras"
             />
 
         <LinearLayout
@@ -237,8 +236,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:text="Comenzar receta"
             android:id="@+id/botonComenzar"
             android:textColor="@color/blanco"
-            android:background="#c4c4c4"
-            android:enabled="false"
+            android:background="@color/verde"
             android:textSize="@dimen/texto_botones"
             android:layout_gravity="center_horizontal"
             android:textAllCaps="false"

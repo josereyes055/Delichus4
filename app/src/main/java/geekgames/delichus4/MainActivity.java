@@ -87,6 +87,9 @@ public class MainActivity extends ActionBarActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
             public void onPageSelected(int position) {
                 changeButtons(null, position);
+                if( position == 3){
+                    ((MainApplication.OnRefreshListener)mSectionsPagerAdapter.getItem(position)).onRefresh();
+                }
             }
         });
 

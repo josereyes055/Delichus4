@@ -42,6 +42,10 @@ public class MainApplication extends Application {
 
     public List<Ingrediente> shoppingList;
 
+    public interface OnRefreshListener {
+        public void onRefresh();
+    }
+
 
     public void exploreRecipe( Context ctx, int idReceta, String nombre, String descripcion, String imagen, int pasos ){
         Intent mainIntent = new Intent().setClass(
@@ -184,6 +188,7 @@ public class MainApplication extends Application {
                 });
 
         MainApplication.getInstance().getRequestQueue().add(request);
+        Toast.makeText(getApplicationContext(), "Has ganado "+puntaje+" puntos", Toast.LENGTH_SHORT).show();
     }
 
     public void calificar(String idReceta, double ratingNew){

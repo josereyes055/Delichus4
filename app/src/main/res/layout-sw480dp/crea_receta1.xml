@@ -87,6 +87,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
@@ -96,14 +97,22 @@
                 android:textSize="@dimen/formulario_crear_receta"
                 android:text="Dale a los demás una corta descripción de tu receta"/>
 
-            <EditText
+            <Button
+                android:layout_width="230dp"
+                android:layout_height="50dp"
+                android:text="Agragar foto"
+                android:textAllCaps="false"
+                android:background="@color/verde"
+                android:layout_margin="20dp"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/label_siguiente"/>
+
+
+            <ImageView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="80dp"
-                android:textSize="@dimen/formulario_crear_receta"
-                android:id="@+id/desc_corta_input"
-                android:layout_marginTop="10dp"
-                android:background="@color/blanco"/>
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/top_foto"/>
 
         </LinearLayout>
 

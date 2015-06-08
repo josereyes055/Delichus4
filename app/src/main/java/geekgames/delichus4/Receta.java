@@ -231,39 +231,44 @@ public class Receta extends ActionBarActivity{
             public void onClick(View v) {
                 View parent = v.getRootView();
                 EditText input = (EditText) parent.findViewById(R.id.opinion_text);
+
                 RatingBar rating = (RatingBar)parent.findViewById(R.id.opinion_rating);
                 if(rating.getRating() != 0 ) {
                     MainApplication.getInstance().calificar(idReceta, rating.getRating());
                 }
                 String inputText = input.getText().toString();
-                inputText = inputText.replaceAll("\\s+","%20");
-                String query = "http://www.geekgames.info/dbadmin/test.php?v=19&userId="+
-                        String.valueOf( MainApplication.getInstance().sp.getInt("userId", 0) )+
-                        "&recipeId="+idReceta+
-                        "&comentario="+inputText;
-                Log.i("FUCKING DEBUG", query);
+                if( inputText.length() > 0) {
+                    inputText = inputText.replaceAll("\\s+", "%20");
+                    String query = "http://www.geekgames.info/dbadmin/test.php?v=19&userId=" +
+                            String.valueOf(MainApplication.getInstance().sp.getInt("userId", 0)) +
+                            "&recipeId=" + idReceta +
+                            "&comentario=" + inputText;
+                    Log.i("FUCKING DEBUG", query);
 
-                JsonObjectRequest request = new JsonObjectRequest(
-                        query,
-                        null,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject jsonObject) {
+                    JsonObjectRequest request = new JsonObjectRequest(
+                            query,
+                            null,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject jsonObject) {
 
-                                Toast.makeText(getApplicationContext(), getString(R.string.coment_guardado)  , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), getString(R.string.coment_guardado), Toast.LENGTH_SHORT).show();
 
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError volleyError) {
-                                Toast.makeText(getApplicationContext(), getString(R.string.coment_no_guardado)  , Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError volleyError) {
+                                    Toast.makeText(getApplicationContext(), getString(R.string.coment_no_guardado), Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
-                MainApplication.getInstance().getRequestQueue().add(request);
+                    MainApplication.getInstance().getRequestQueue().add(request);
 
-                dialog.dismiss();
+                    dialog.dismiss();
+                }else{
+                    Toast.makeText(getApplicationContext(), "No has escrito nada...",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -276,6 +281,7 @@ public class Receta extends ActionBarActivity{
         laVieja = false;
         ToggleButton tb = (ToggleButton)findViewById(R.id.viejaToggle);
         tb.setChecked(false);
+        Toast.makeText(getApplicationContext(), "Asistente desabilitada",Toast.LENGTH_LONG).show();
     }
 
     public void letItBeVieja(View view){
@@ -283,6 +289,7 @@ public class Receta extends ActionBarActivity{
         laVieja = true;
         ToggleButton tb = (ToggleButton)findViewById(R.id.viejaToggle);
         tb.setChecked(true);
+        Toast.makeText(getApplicationContext(), "Asistente habilitada",Toast.LENGTH_LONG).show();
     }
 
     public void toggleVieja(View view){
@@ -291,8 +298,26 @@ public class Receta extends ActionBarActivity{
         Drawable drawSpeak;
         if( laVieja ){
             drawSpeak = getResources().getDrawable(R.drawable.asistente);
+            Toast.makeText(getApplicationContext(), "Asistente habilitada",Toast.LENGTH_LONG).show();
+            try {
+                //Log.i("FUCKING DEBUF", "id = "+ MainApplication.getInstance().losPasos.getJSONObject().getInt("id"));
+                JSONArray pasos = MainApplication.getInstance().losPasos;
+
+                JSONObject paso = pasos.getJSONObject(mViewPager.getCurrentItem()-2);
+                String text = paso.getString("paso");
+                if(laVieja) {
+                    ttobj.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }else {
+
             drawSpeak = getResources().getDrawable(R.drawable.no_asistente);
+            Toast.makeText(getApplicationContext(), "Asistente desabilitada",Toast.LENGTH_LONG).show();
+
         }
         speak.setImageDrawable(drawSpeak);
     }
@@ -391,7 +416,15 @@ public class Receta extends ActionBarActivity{
 
         view.startAnimation(animScale);
         try {
-            Log.i("FUCKING DEBUF", "id = "+ MainApplication.getInstance().losPasos.getJSONObject(mViewPager.getCurrentItem()-2).getInt("id"));
+            //Log.i("FUCKING DEBUF", "id = "+ MainApplication.getInstance().losPasos.getJSONObject().getInt("id"));
+            JSONArray pasos = MainApplication.getInstance().losPasos;
+
+            JSONObject paso = pasos.getJSONObject(mViewPager.getCurrentItem()-2);
+            String text = paso.getString("paso");
+            if(laVieja) {
+                ttobj.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -461,12 +494,8 @@ public class Receta extends ActionBarActivity{
 
         if(allChecked) {
             selectAllButton.setBackground(this.getResources().getDrawable(R.color.naranja));
-            comenzar.setBackground(this.getResources().getDrawable(R.color.verde));
-            comenzar.setEnabled(true);
         } else {
             selectAllButton.setBackground(this.getResources().getDrawable(R.color.verde));
-            comenzar.setBackground(this.getResources().getDrawable(R.color.disable));
-            comenzar.setEnabled(false);
         }
     }
 
@@ -502,6 +531,7 @@ public class Receta extends ActionBarActivity{
     }
 
     public void onShareRecipe(View view) {
+        view.startAnimation(animScale);
 
         /*ImageView image = (ImageView)this.findViewById(R.id.receta_imagen);
         image.setDrawingCacheEnabled(true);
@@ -530,6 +560,8 @@ public class Receta extends ActionBarActivity{
     }
 
     public void onTakePictureRecipe(View view){
+        view.startAnimation(animScaleRectangular);
+
         tipoFoto = 2;
         Log.i("FUCKING DEBUG","el gran triplemalparido tipo es: "+tipoFoto);
         ImageView animacion_op = (ImageView)findViewById(R.id.boton_camara_grande);
@@ -688,12 +720,13 @@ public class Receta extends ActionBarActivity{
                     query += "&tipo=paso";
                     query += "&recipeId="+idPaso;
                     query += "&userId="+MainApplication.getInstance().sp.getInt("userId",0)+"&imageName="+sourceFile.getName();
-
+                    MainApplication.getInstance().uptadteScore(10);
                 }
                 if(tipoFoto == 2){
                     query += "&tipo=receta";
                     query += "&recipeId="+idReceta;
                     query += "&userId="+MainApplication.getInstance().sp.getInt("userId",0)+"&imageName="+sourceFile.getName();
+                    MainApplication.getInstance().uptadteScore(15);
                 }
                 JsonObjectRequest request = new JsonObjectRequest(
                         query,
@@ -763,7 +796,7 @@ public class Receta extends ActionBarActivity{
 
                 default:
                     if(position == totalPasos){
-
+                        MainApplication.getInstance().uptadteScore(10);
                         MainApplication.getInstance().uptadteScore(10);
                         return new CompleteReceta();
                     }else{
@@ -797,6 +830,7 @@ public class Receta extends ActionBarActivity{
     }
 
     public void cerrar(View view){
+        view.startAnimation(animScaleRectangular);
         this.finish();
 
     }

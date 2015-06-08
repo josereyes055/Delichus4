@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 
 import geekgames.delichus4.MainApplication;
@@ -39,6 +40,8 @@ public class TituloAdapter extends ArrayAdapter<Logro> {
         notifyDataSetChanged();
     }
 
+    public HashMap<String, View> childviewReferences = new HashMap<String, View>();
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -51,9 +54,11 @@ public class TituloAdapter extends ArrayAdapter<Logro> {
         TextView nombre = (TextView) convertView.findViewById(R.id.titulillo);
         final LinearLayout fondo = (LinearLayout)convertView.findViewById(R.id.contenedor_titulo);
         final TextView letras = (TextView)convertView.findViewById(R.id.titulillo);
-        fondo.setOnClickListener(new View.OnClickListener() {
+        /*fondo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                 SharedPreferences.Editor editor = app_preferences.edit();
                 editor.putString("userTitulo", logro.getTitulo());
@@ -62,7 +67,7 @@ public class TituloAdapter extends ArrayAdapter<Logro> {
                 letras.setTextColor(getContext().getResources().getColor(R.color.blanco));
                 Toast.makeText(getContext(), "Cambiaste tu titulo!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         String titulo = logro.getTitulo();
         if(titulo.equals( MainApplication.getInstance().sp.getString("userTitulo", null) ) ){
@@ -71,6 +76,8 @@ public class TituloAdapter extends ArrayAdapter<Logro> {
         }
 
         nombre.setText(logro.getTitulo());
+
+        childviewReferences.put("item"+position, convertView );
 
         return convertView;
     }

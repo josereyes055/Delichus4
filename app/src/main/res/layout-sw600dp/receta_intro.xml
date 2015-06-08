@@ -164,8 +164,8 @@
             android:textSize="@dimen/sub_ingrediente"
             android:textColor="@color/gris_sub"
             android:gravity="center"
-            android:text="Selecciona los ingredientes que ya tienes,
-los que no selecciones puedes agregarlos a la lista de compras"
+            android:text="Selecciona los ingredientes que te hacen falta para agregarlos
+            a la lista de compras"
             />
 
         <LinearLayout
@@ -222,8 +222,7 @@ los que no selecciones puedes agregarlos a la lista de compras"
             android:text="Comenzar receta"
             android:id="@+id/botonComenzar"
             android:textColor="@color/blanco"
-            android:background="#c4c4c4"
-            android:enabled="false"
+            android:background="@color/verde"
             android:textSize="@dimen/texto_botones"
             android:layout_gravity="center"
             android:textAllCaps="false"
