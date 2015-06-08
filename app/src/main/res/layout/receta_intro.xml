@@ -165,8 +165,7 @@
             android:textSize="@dimen/sub_ingrediente"
             android:textColor="@color/gris_sub"
             android:gravity="center"
-            android:text="Selecciona los ingredientes que ya tienes,
-los que no selecciones puedes agregarlos a la lista de compras"
+            android:text="Selecciona los ingredientes que te hacen falta para agregarlos a la lista de compras"
             />
 
         <LinearLayout

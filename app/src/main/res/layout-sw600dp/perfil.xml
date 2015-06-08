@@ -14,7 +14,7 @@
         <geekgames.delichus4.customViews.CircleImage
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/cargando_perfil"
+            android:src="@drawable/noob"
             android:id="@+id/perfil_imagen" />
 
         <LinearLayout

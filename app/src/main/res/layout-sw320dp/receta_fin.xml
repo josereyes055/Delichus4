@@ -128,14 +128,6 @@
         android:textSize="@dimen/receta_fin"
         android:text="de experiencia"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="fill_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/sub_ingrediente"
-        android:text="Califica esta receta"/>
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -144,9 +136,8 @@
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:isIndicator="false"
+            android:layout_marginTop="10dp"
             android:id="@+id/ratingFinal"
-            style = "?android:attr/ratingBarStyleSmall"
             />
 
     </LinearLayout>
@@ -154,7 +145,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="Seguir cocinando"
         android:id="@+id/volver_inicio"
         android:textColor="@color/blanco"
